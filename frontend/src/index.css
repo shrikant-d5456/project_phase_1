@@ -17,7 +17,10 @@ body{
 }
 
 .inp{
-  padding: 4px;
+  border-radius: 10px;
+  font-size: small;
+  color: grey;
+  padding: 5px 10px;
   border: 1px solid rgb(207, 207, 207);
   outline: none;
 }
@@ -27,10 +30,39 @@ body{
 }
 
 .btn1{
-  box-shadow: 1px 1px 10px #ffb8fb;
-  background-color: rgb(144, 0, 255);
-  font-weight:600;
-  border: 1px solid #9900ff;
+  background-color: #ffffff;
+  font-weight:500;
+  border-radius: 10px;
+  border: 1px solid rgb(0, 255, 0);
   padding: 4px 20px;
-  color: white;
+  color: rgba(44, 44, 44, 0.808);
+}
+
+.anime {
+  background-size: 400%;
+  background-image: linear-gradient(to right, #d8d8d800 10%, #d8d8d800 20%, #d8d8d800 30%, #00000000 40%, hsl(48, 100%, 50%) 50%, #d8d8d800 60%, #d8d8d800 70%, #d8d8d800 80%, #d8d8d800 90%, #cfcfcf00 100%);
+  animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+.zoom-img img {
+  transition: transform 0.5s ease-in-out;
+}
+
+.zoom-img img:hover {
+  transform: scale(1.1);
+}
+
+.loginbgimg{
+  background-image: url("https://cdn.pixabay.com/photo/2024/03/20/04/00/ai-generated-8644565_1280.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

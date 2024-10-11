@@ -9,7 +9,7 @@ const Hearder = ({ post }) => {
   return (
 
     <div key={post._id} className='w-full'>
-      <div className='w-full m-auto bg-white p-2'>
+      <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
         <div><img className='w-full h-[200px]' src={post.img} alt="" /></div>
         <div>
           <h1 className='font-medium my-1'>{post.title}</h1>

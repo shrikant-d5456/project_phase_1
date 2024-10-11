@@ -5,6 +5,7 @@ import Slider from '../components/Slider.jsx';
 import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext.jsx';
+import Navbar from './Navbar.jsx';
 
 const Home = () => {
   const [posts, setposts] = useState([]);
@@ -39,19 +40,48 @@ const Home = () => {
 
   return (
     <div className='w-full'>
-      <Slider />
-      <h1 className='text-2xl font-semibold text-gray-600 my-4 lg:mx-52 mx-4 '>Popular Topics </h1>
-        <hr />
-      <div className='w-10/12 flex flex-wrap justify-center items-center m-auto gap-8'>  
+      <Navbar />
+
+      <div className=' lg:px-20 px-4 my-8 rounded-2xl'>
+        <Slider />
+      </div>
+
+      <div className=' w-full m-auto  flex justify-center items-center gap-10 px-4  overflow-scroll'>
+        {
+          [...Array(5)].map(()=>(
+        <div className='flex justify-center items-center flex-col hover:text-green-800 cursor-pointer mt-4'>
+          <img
+            className=' h-[100px] w-[100px] lg:h-[150px] lg:w-[150px] rounded-full shadow-none mb-4 hover:scale-110 transition-all'
+            src="https://krishnaayurved.com/cdn/shop/collections/Category_banner-01_720x.jpg?v=1662485951" alt="img" />
+          <p>shop/collections</p>
+        </div>
+        ))
+        }
+
+      </div>
+
+     <div className=' w-full'>
+
+     <h1 className='text-2xl font-semibold text-gray-600 mt-20 mb-10 text-center'>Popular Topics </h1>
+      
+
+      <div className='w-full flex flex-wrap justify-center items-center m-auto gap-4 '>
         {posts.map((post) => (
-          
-          <div className='lg:w-1/3'>
-          <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
-            <HomePost key={post._id} post={post} />
-          </Link>
+
+          <div className='lg:w-1/4'>
+            <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
+              <HomePost key={post._id} post={post} />
+            </Link>
           </div>
         ))}
       </div>
+
+     </div>
+
+
+
+
+
     </div>
 
   );

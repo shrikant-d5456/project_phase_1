@@ -15,7 +15,7 @@ const App = () => {
   return (
     <UserContextProvider>
       <div className='lg:text-base text-sm'>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
