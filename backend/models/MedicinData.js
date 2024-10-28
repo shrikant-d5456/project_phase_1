@@ -1,28 +1,14 @@
 import mongoose from "mongoose";
 
-const PostSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    desc: {
-        type: String,
-        required: true,
-    },
+const medicineSchema = mongoose.Schema({
     img: {
         type: String,
-        required: true,
+        required: [true, 'Image is required']
     },
-    username: {
+    disease_name: {
         type: String,
-        required: true,
-    },
-    userId: {
-        type: String,
-        required: true,
-    },
-    categories: {
-        type: [String], // Array of strings
+        required: [true, "Disease Name is required"],
+        minlength: [2, "Disease name must be at least 2 characters long"]
     },
     established: {
         type: Number,
@@ -74,4 +60,4 @@ const PostSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-export const Posts = mongoose.model("Post", PostSchema);
+export const Medicine = mongoose.model("medicineData", medicineSchema);

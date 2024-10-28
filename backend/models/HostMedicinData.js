@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const PostSchema = new mongoose.Schema({
+const hostMedicineSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -74,4 +74,4 @@ const PostSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-export const Posts = mongoose.model("Post", PostSchema);
+export const HostMedicine = mongoose.models.HostMedicine || mongoose.model("HostMedicine", hostMedicineSchema);
