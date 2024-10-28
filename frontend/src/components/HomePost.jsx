@@ -1,4 +1,5 @@
 import React from 'react'
+// import Navbar from '../pages/Navbar';
 
 const Hearder = ({ post }) => {
 
@@ -7,8 +8,9 @@ const Hearder = ({ post }) => {
   console.log(trimmedStr); // Output: "Hello"
 
   return (
+<>
 
-    <div key={post._id} className='w-full'>
+<div key={post._id} className='w-full'>
       <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
         <div><img className='w-full h-[200px]' src={post.img} alt="" /></div>
         <div>
@@ -24,6 +26,8 @@ const Hearder = ({ post }) => {
       </div>
       
     </div>
+</>
+   
 
 
   )

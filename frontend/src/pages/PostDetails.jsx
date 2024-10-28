@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { URL } from '../url';
 import { UserContext } from '../Context/UserContext';
 import Comment from '../components/Comment';
+import Navbar from '../components/Navbar';
 
 const PostDetails = () => {
 
@@ -45,6 +46,8 @@ const PostDetails = () => {
 
 
   return (
+    <>
+    <Navbar/>
     <div className='lg:w-10/12 lg:p-1 p-2 m-auto' >
       <div key={post._id} className='w-full bg-transparent text-black pt-20'>
         {
@@ -77,6 +80,8 @@ const PostDetails = () => {
 
       <Comment post={post} />
     </div>
+    </>
+   
 
   )
 }

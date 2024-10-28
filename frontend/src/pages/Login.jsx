@@ -3,7 +3,7 @@ import axios from 'axios';
 import { URL } from '../url.js';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext.jsx';
-import { BsDoorClosed, BsXCircleFill } from 'react-icons/bs';
+import {BsXCircleFill } from 'react-icons/bs';
 import Modal from "react-modal";
 import Home from './Home.jsx';
 
@@ -17,6 +17,7 @@ const Login = () => {
   const [closeModal, setcloseModal] = useState(false);
 
   const handleLogin = async () => {
+
     try {
       const resp = await axios.post(`${URL}/auth/api/login`, { email, password });
 
@@ -27,6 +28,7 @@ const Login = () => {
       console.log(resp.data.id);
 
       setErr(false);
+      setModalIsOpen(false);
       navigate('/');
     } catch (err) {
       console.log(err);
@@ -34,103 +36,81 @@ const Login = () => {
     }
   };
 
-  const CloseEventCall = ()=>{
+  const CloseEventCall = () => {
     setModalIsOpen(false);
     navigate("/");
   }
 
   return (
     <>
-    <Home/>
-    
-    <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      className=" overflow-scroll transition-all"
-    >
-      <div className='flex w-full h-screen justify-center  items-center text-center'>
+      <Home />
 
-        <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-24 pl-[10px] border-[1px] text-white bg-gray-500 rounded-full shadow-xl' 
-        onClick={CloseEventCall}
-        ><BsXCircleFill/>
-        </button>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        className="transition-all"
+        preventScroll={false}
+      >
+        <div className='flex w-full h-screen justify-center  items-center text-center bg-[#0cff0c53] shadow-2xl'>
 
-        <div className=' lg:w-8/12 w-full flex gap-4 text-start h-fit p-8 shadow-xl rounded-tl-2xl rounded-br-2xl   loginbgimg'>
+          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-24 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl'
+            onClick={CloseEventCall}
+          ><BsXCircleFill />
+          </button>
 
-          <div className='lg:block hidden w-3/5'>
-          </div>
+          <div className=' lg:w-8/12 w-full flex gap-4 text-start h-[550px] lg:p-8 p-4 shadow-xl rounded-tl-3xl rounded-br-3xl   loginbgimg'>
 
-          <div className=' lg:w-2/5 w-full flex flex-col gap-4 bg-white rounded-tl-2xl rounded-br-2xl p-4 shadow-inner'>
-            <p className='font-bold text-xl text-center text-gray-800'>Unlock  <br /> Maximum Saving</p>
+            <div className='lg:block hidden w-3/5'>
+            </div>
 
-            <p className=' text-sm text-center text-gray-500'>Unlock Great Healt</p>
+            <div className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#fff9] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'>
+              <p className='font-bold text-xl text-center text-gray-800'>Unlock  <br /> Maximum Saving</p>
 
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Enter Username'
-              className='inp'
-            />
+              <p className=' text-sm text-center text-gray-500'>Unlock Great Healt</p>
 
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Enter Email'
-              className='inp'
-            />
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='Enter Email'
+                className='inp'
+              />
 
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Enter Phone no'
-              className='inp'
-            />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Enter password'
+                className='inp'
+              />
 
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Enter Password'
-              className='inp'
-            />
+              
+              
+              <button
+                type='submit'
+                onClick={handleLogin}
+                className='btn1 hover:bg-green-400 hover:text-white transition-all'>
+                Log In
+              </button>
 
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Confirm Password'
-              className='inp'
-            />
-
-            <button
-              onClick={handleLogin}
-              className='btn1 hover:bg-green-400 hover:text-white transition-all'>
-              Log In
-            </button>
-
-            <p>
-              Don't have an account?
-              <Link to="/signup" className="text-blue-500 text-sm underline">
-                SignUp
-              </Link>
-            </p>
-
-            {
-              err &&
-              <p className=" text-center text-red-500 text-sm underline">
-                Something went wrong
+              <p>
+                Don't have an account?
+                <Link to="/signup" className="text-blue-500 text-sm underline">
+                  SignUp
+                </Link>
               </p>
-            }
 
+              {
+                err &&
+                <p className=" text-center text-red-500 text-sm underline">
+                  Something went wrong
+                </p>
+              }
 
-
+            </div>
           </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
     </>
   );
 };

@@ -5,13 +5,13 @@ import Slider from '../components/Slider.jsx';
 import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext.jsx';
-import Navbar from './Navbar.jsx';
+import Navbar from '../components/Navbar.jsx';
 
 const Home = () => {
   const [posts, setposts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
   const getposts = async () => {
     try {
@@ -66,9 +66,9 @@ const Home = () => {
       
 
       <div className='w-full flex flex-wrap justify-center items-center m-auto gap-4 '>
-        {posts.map((post) => (
+        {posts.map((post,index) => (
 
-          <div className='lg:w-1/4'>
+          <div key={index} className='lg:w-1/4'>
             <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
               <HomePost key={post._id} post={post} />
             </Link>

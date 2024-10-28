@@ -10,6 +10,7 @@ import CreatePost from './pages/Createpost';
 import EditPost from './pages/EditPost';
 import Profile from './pages/Profile';
 import { UserContextProvider } from './Context/UserContext';
+import FiveStepValidation from './pages/FiveStepValidation';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/profile' element={<Profile />} />
         </Routes>
         <Footer />
+        {/* <FiveStepValidation/> */}
       </div>
        
     </UserContextProvider>
