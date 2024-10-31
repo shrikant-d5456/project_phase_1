@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { URL } from '../url';
 import { UserContext } from '../Context/UserContext';
-import ProfilePost from '../components/ProfilePost';
+import ProfilePost from './ProfilePost';
 import Navbar from '../components/Navbar';
 
 const Profile = () => {
@@ -44,10 +44,8 @@ const Profile = () => {
   }, []);
 
   return (
-
     <>
     <Navbar/>
-
       <div className='w-10/12 m-auto'>
         <p className=' text-2xl font-semibold my-4  pl-2 text-gray-800'>Your Post</p>
 
@@ -64,26 +62,30 @@ const Profile = () => {
           <div className='lg:w-1/5  '>
             <p className=' text-2xl font-semibold my-4 text-gray-800'>Your Profile</p>
             <div className=' flex flex-col gap-2 text-sm border-[1px] border-green-500 p-4' >
+              
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className='inp'
               />
+              
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className='inp'
               />
+              
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className='inp'
               />
+              
               <button onClick={setUser} className='btn1'>Update</button>
-
+            
             </div>
           </div>
         </div>

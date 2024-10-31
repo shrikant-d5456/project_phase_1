@@ -3,7 +3,7 @@ import axios from 'axios'
 import { URL } from '../url.js';
 import {Link, useNavigate } from 'react-router-dom'
 import Modal from "react-modal";
-import Home from './Home.jsx';
+import Home from '../pages/Home.jsx';
 import {BsXCircleFill } from 'react-icons/bs';
 
 
@@ -14,22 +14,22 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [err, setErr] = useState(false);
-  const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [closeModal, setcloseModal] = useState(false);
+  const navigate = useNavigate();
+
 
   const handlereg = async () => {
     try {
       const resp = await axios.post(URL + "/auth/api/sign", { username, email, password });
-      console.log("signup :" + resp.data)
+      console.log("signup :" + resp.data);
 
-      setUsername(resp.data.username)
-      setEmail(resp.data.email)
-      setPassword(resp.data.password)
-      setErr(false)
-      navigate('/login')
-    }
-    catch (err) {
+      setUsername(resp.data.username);
+      setEmail(resp.data.email);
+      setPassword(resp.data.password);
+      setErr(false);
+      navigate('/login');
+    }catch (err) {
       console.log(err)
       setErr(true)
     }
@@ -45,7 +45,6 @@ const Signup = () => {
   return (
     <>
       <Home />
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -59,7 +58,7 @@ const Signup = () => {
           ><BsXCircleFill />
           </button>
 
-          <div className=' lg:w-8/12 w-full flex gap-4 text-start h-[550px] lg:p-8 p-4 shadow-xl rounded-tl-3xl rounded-br-3xl   loginbgimg'>
+          <div className=' lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8 p-4 shadow-xl rounded-tl-3xl rounded-br-3xl   loginbgimg'>
 
             <div className='lg:block hidden w-3/5'>
             </div>
@@ -68,8 +67,7 @@ const Signup = () => {
               className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#fff9] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
             >
 
-              <p className='font-bold text-xl text-center text-gray-800'>Unlock  <br /> Maximum Saving</p>
-
+              <p className='font-bold text-xl text-center text-gray-800'>Unlock<br/>Maximum Saving</p>
               <p className=' text-sm text-center text-gray-500'>Unlock Great Healt</p>
 
               <input
@@ -93,14 +91,6 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder='Enter Password'
-                className='inp'
-              />
-
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder='Confirm Password'
                 className='inp'
               />
 

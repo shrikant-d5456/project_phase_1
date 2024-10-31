@@ -14,36 +14,69 @@ const Createpost = () => {
 
     const [cat, setCat] = useState("");
     const [cats, setCats] = useState([]);
+
+    const [ingredient, setIngredient] = useState("");
+    const [ingredients, setIngredients] = useState([]);
+
+    const [step, setStep] = useState("");
+    const [steps, setSteps] = useState([]);
+
     const [title, setTitle] = useState("");
     const [img, setImg] = useState("");
     const [desc, setDesc] = useState("");
+    const [established, setEstablished] = useState("");
+    const [places, setPlaces] = useState("");
     const [error, setError] = useState("");
+    const [wpmh, setWpmh] = useState("");
+    const [vitamin, setVitsmin] = useState("");
+    const [video_link, setVideo_link] = useState("");
 
 
     const addCategory = () => {
         setCats([...cats, cat]);
         setCat("");
     };
-
     const deleteCategory = (i) => {
         setCats(cats.filter((_, index) => index !== i));
     };
 
+    const addIngredient = () => {
+        setIngredients([...ingredients, ingredient]);
+        setIngredient("");
+    };
+    const deleteIngredient = (i) => {
+        setIngredients(ingredients.filter((_, index) => index !== i));
+    };
+
+    const addStep = () => {
+        setSteps([...steps, step]);
+        setStep("");
+    };
+    const deleteStep = (i) => {
+        setIngredients(steps.filter((_, index) => index !== i));
+    };
+
     const uploadPost = async () => {
         if (!title || !desc || !img || !user?.id || !user?.username) {
-            // console.log('All fields are required.');
-            setError(!user?.id ? "please login" : "All fields are required." );
+            setError(!user?.id ? "please login" : "All fields are required.");
             return;
         }
         else {
-            try{
+            try {
                 const payload = {
                     title,
                     desc,
                     img,  // Assuming img is a URL or base64 encoded string
                     username: user.username,
                     categories: cats,
-                    userId: user.id
+                    userId: user.id,
+                    established,
+                    places,
+                    wpmh,
+                    vitamin,
+                    ingredient: ingredients,
+                    step: steps,
+                    video_link,
                 };
                 const resp = await axios.post(`${URL}/auth/post/create`, payload, {
                     headers: {
@@ -53,9 +86,8 @@ const Createpost = () => {
                 console.log(resp.data);
                 alert("your post is uploadded");
                 usenavigate("/");
-                
-            } 
-            catch(err){
+            }
+            catch (err) {
                 console.log(err);
                 setError("something went wrong");
             }
@@ -63,7 +95,7 @@ const Createpost = () => {
     };
 
     return (
-        <div className='flex flex-col gap-4 w-full h-screen m-auto'>
+        <div className='flex flex-col gap-4 w-full h-full m-auto pb-8'>
             <Navbar />
             <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8 border bg-[#beffcd99] '>
                 <h1 className=' text-2xl font-semibold my-2 text-gray-800'>Create Post</h1>
@@ -77,11 +109,107 @@ const Createpost = () => {
                 />
 
                 <input
+                    value={img}
                     onChange={(e) => setImg(e.target.value)}
                     type='text'
-                    placeholder='Enter image URL or base64 string'
+                    placeholder='Enter image URL or base64 string '
                     className='inp'
                 />
+
+                <input
+                    value={video_link}
+                    onChange={(e) => setVideo_link(e.target.value)}
+                    type='text'
+                    placeholder='paste video link here..'
+                    className='inp'
+                />
+
+                <input
+                    value={established}
+                    onChange={(e) => setEstablished(e.target.value)}
+                    type='text'
+                    placeholder='Enter established date'
+                    className='inp'
+                />
+
+                <input
+                    value={places}
+                    onChange={(e) => setPlaces(e.target.value)}
+                    type='text'
+                    placeholder='Enter Place'
+                    className='inp'
+                />
+
+                <input
+                    value={wpmh}
+                    onChange={(e) => setWpmh(e.target.value)}
+                    type='text'
+                    placeholder='Which Patient this medicine is harmful '
+                    className='inp'
+                />
+
+                <input
+                    value={vitamin}
+                    onChange={(e) => setVitsmin(e.target.value)}
+                    type='text'
+                    placeholder='Vitamin section'
+                    className='inp'
+                />
+
+                <div className='flex w-full'>
+                    <input
+                        value={ingredient}
+                        onChange={(e) => setIngredient(e.target.value)}
+                        type="text"
+                        placeholder='Enter ingredients'
+                        className='inp w-full'
+                    />
+                    <button
+                        onClick={addIngredient}
+                        className='btn1 px-2'
+                    >
+                        <BsPlusCircleFill />
+                    </button>
+                </div>
+                
+                <div className='flex flex-wrap'>
+                    {ingredients.map((c, index) => (
+                        <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
+                            <p className='w-fit'>{c}</p>
+                            <button onClick={() => deleteIngredient(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle /></button>
+                        </div>
+                    ))}
+                </div>
+
+                <hr className='border-[1px] border-[#1aff00]' />
+
+
+                <div className='flex w-full'>
+                    <input
+                        value={step}
+                        onChange={(e) => setStep(e.target.value)}
+                        type="text"
+                        placeholder='Enter steps'
+                        className='inp w-full'
+                    />
+                    <button
+                        onClick={addStep}
+                        className='btn1 px-2'
+                    >
+                        <BsPlusCircleFill />
+                    </button>
+                </div>
+                <div className='flex flex-wrap'>
+                    {steps.map((c, index) => (
+                        <div key={index} className='flex gap-2 text-sm bg-[#1aff00] rounded-r-full  py-1 px-1 '>
+                            <p className='w-fit px-4'><span className=' text-white font-semibold'>step {index+1} : </span> {c}</p>
+                            <button onClick={() => deleteStep(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle /></button>
+                        </div>
+                    ))}
+                </div>
+
+                <hr className='border-[1px] border-[#1aff00]' />
+
                 <div className='flex w-full'>
                     <input
                         value={cat}
@@ -90,26 +218,23 @@ const Createpost = () => {
                         placeholder='Enter category'
                         className='inp w-full'
                     />
-
                     <button
                         onClick={addCategory}
                         className='btn1 px-2'
                     >
                         <BsPlusCircleFill />
                     </button>
-
                 </div>
-
-
                 <div className='flex flex-wrap'>
                     {cats.map((c, index) => (
                         <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
                             <p className='w-fit'>{c}</p>
-                            <button onClick={() => deleteCategory(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle/></button>
+                            <button onClick={() => deleteCategory(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle /></button>
                         </div>
                     ))}
                 </div>
 
+                <hr className='border-[1px] border-[#1aff00]' />
 
                 <textarea
                     value={desc}

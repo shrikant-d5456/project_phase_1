@@ -52,9 +52,7 @@ const FiveStepValidation = () => {
 
             <div className='w-full lg:m-auto lg:w-10/12 flex justify-center items-center'>
                 
-                {
-                    
-                    researcher.map((ele, index) => (
+                {researcher.map((ele, index) => (
                         <div className={`${!ele.loading || "animate-pulse"} ${ele.display || "opacity-40"} flex justify-center items-center my-8`}>
                             <div className='flex justify-center items-center w-[50px] h-[50px] bggr border-4 border-green-500 rounded-full '>
                             <p className={`${!ele.loading || "animate-ping"} text-green-500 font-bold text-4xl absolute`}>{!ele.loading === true ? <BsCheckCircleFill/>: ""}</p>
@@ -65,10 +63,9 @@ const FiveStepValidation = () => {
                     ))
                 }
             </div>
-            <div className=' lg:w-10/12 w-full flex justify-center flex-wrap items-center lg:m-auto'>
 
-                {
-                    researcher.map((ele, index) => (
+            <div className=' lg:w-10/12 w-full flex justify-center flex-wrap items-center lg:m-auto'>
+                {researcher.map((ele, index) => (
                         <div key={index} className={` ${ele.display || "opacity-40"}  w-[250px] h-[250px]  flex flex-col justify-center items-center mx-14 my-4 border-8 border-green-500   rounded-full p-8 `}>
                             <p className={`${!ele.loading || "animate-ping"} text-green-500 font-bold text-4xl absolute`}>{!ele.loading === true ? <BsCheckCircleFill/>: < BsSearch/>}</p>
                             <img
@@ -79,7 +76,6 @@ const FiveStepValidation = () => {
                         </div>
                     ))
                 }
-
             </div>
         </>
     )
