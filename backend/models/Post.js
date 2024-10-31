@@ -23,9 +23,10 @@ const PostSchema = new mongoose.Schema({
     },
     categories: {
         type: [String], // Array of strings
+        required: true,
     },
     established: {
-        type: Number,
+        type: String,
     },
     places: {
         type: String,
@@ -33,18 +34,17 @@ const PostSchema = new mongoose.Schema({
     // Which Patient this medicine is harmful => wpmh
     wpmh: {
         type: String,
-        required: [true, "This data is required"],
+        default:"anybudy",
     },
     vitamin: {
         type: String,
     },
-    ingredients: {
-        type: String,
-        required: [true, "Ingredients are required"]
+    ingredient: {
+        type: [String], // Array of strings
+        required: true,
     },
-    steps: {
+    step: {
         type: [String],
-        required: [true, "Steps are required"]
     },
     ratings: {
         type: Number,
@@ -69,6 +69,27 @@ const PostSchema = new mongoose.Schema({
         default:false,
     },
     validator5:{
+        type:Boolean,
+        default:false,
+    },
+    
+    checked1:{
+        type:Boolean,
+        default:false,
+    },
+    checked2:{
+        type:Boolean,
+        default:false,
+    },
+    checked3:{
+        type:Boolean,
+        default:false,
+    },
+    checked4:{
+        type:Boolean,
+        default:false,
+    },
+    checked5:{
         type:Boolean,
         default:false,
     },

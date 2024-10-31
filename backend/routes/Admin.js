@@ -26,6 +26,6 @@ router.delete('/delete/:id', deleteAdmin);
 router.post('/logout', logoutAdmin);
 
 // Get all admins
-router.get('/', getAllAdmin);
+router.get('/alladmin', getAllAdmin);
 
 export default router;

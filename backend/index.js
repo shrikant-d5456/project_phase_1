@@ -6,7 +6,7 @@ import authRouter from './routes/Auth.js'
 import userRouter from "./routes/User.js"
 import postRouter from "./routes/Post.js"
 import commentRouter from "./routes/Comment.js"
-import medicineRoutes from "./routes/Medicine.js";
+import medicineRoutes from "./routes/Verification.js";
 import adminRoutes from "./routes/Admin.js";
 
 

@@ -23,9 +23,10 @@ const hostMedicineSchema = new mongoose.Schema({
     },
     categories: {
         type: [String], // Array of strings
+        required: true,
     },
     established: {
-        type: Number,
+        type: String,
     },
     places: {
         type: String,
@@ -33,18 +34,17 @@ const hostMedicineSchema = new mongoose.Schema({
     // Which Patient this medicine is harmful => wpmh
     wpmh: {
         type: String,
-        required: [true, "This data is required"],
+        default:"anybudy",
     },
     vitamin: {
         type: String,
     },
-    ingredients: {
-        type: String,
-        required: [true, "Ingredients are required"]
+    ingredient: {
+        type: [String], // Array of strings
+        required: true,
     },
-    steps: {
+    step: {
         type: [String],
-        required: [true, "Steps are required"]
     },
     ratings: {
         type: Number,
@@ -74,4 +74,4 @@ const hostMedicineSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-export const HostMedicine = mongoose.models.HostMedicine || mongoose.model("HostMedicine", hostMedicineSchema);
+export const HostMedicine = mongoose.model("HostMedicine", hostMedicineSchema);

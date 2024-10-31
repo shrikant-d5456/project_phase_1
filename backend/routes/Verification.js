@@ -1,9 +1,9 @@
 import express from 'express';
-import { createMedicine,ifValidationTrue,getAllData, updateByAdmin1,updateByAdmin2,updateByAdmin3,updateByAdmin4,updateByAdmin5,} from '../controller/medicineFunctions.js';
+import {onlyHostedData, ifValidationTrue,getAllData, updateByAdmin1,updateByAdmin2,updateByAdmin3,updateByAdmin4,updateByAdmin5,} from '../controller/VerificationFunctions.js';
 
 const router = express.Router();
 
-router.post('/create', createMedicine);
+// router.post('/create', createMedicine);
 
 router.get('/', getAllData);
 
@@ -17,6 +17,7 @@ router.put('/admin5/:id', updateByAdmin5);
 router.post('/admin/postData/:id', ifValidationTrue);
 
 
+router.get('/hostData', onlyHostedData);
 
 
 export default router;
