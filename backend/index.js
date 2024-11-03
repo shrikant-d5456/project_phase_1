@@ -23,9 +23,13 @@ mongoose.connect(mongoDBURL)
     .then(() => {
         console.log("Connected to DB");
         app.listen(PORT, () => {
-            console.log(`Server is running on: ${PORT}`);
+            console.log("Server is running on:", {PORT});
         });
     })
     .catch((err) => {
         console.error(err);
     });
+
+    app.listen(5000, () => {
+        console.log("app is running on port 5000")
+    })

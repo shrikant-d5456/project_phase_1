@@ -7,6 +7,10 @@
 body{
   font-family: "Poppins", sans-serif;
   background-color: rgb(255, 255, 255);
+  background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0=");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 .btn{
@@ -17,12 +21,13 @@ body{
 }
 
 .inp{
-  border-radius: 10px;
+  border-radius: 2px;
   font-size: small;
-  color: grey;
+  color: rgb(78, 78, 78);
   padding: 5px 10px;
-  border: 1px solid rgb(207, 207, 207);
+  border: 1px solid rgb(255, 255, 255);
   outline: none;
+  
 }
 
 .awssld__bullets {
@@ -30,12 +35,12 @@ body{
 }
 
 .btn1{
-  background-color: #ffffff;
+  background-color: #1aff00;
   font-weight:500;
-  border-radius: 10px;
-  border: 1px solid rgb(0, 255, 0);
+  border-radius: 2px;
+  border: 2px solid rgb(0, 255, 0);
   padding: 4px 20px;
-  color: rgba(44, 44, 44, 0.808);
+  color: rgba(255, 255, 255, 0.808);
 }
 
 .anime {
@@ -53,16 +58,51 @@ body{
   }
 }
 
-.zoom-img img {
-  transition: transform 0.5s ease-in-out;
-}
-
-.zoom-img img:hover {
-  transform: scale(1.1);
-}
 
 .loginbgimg{
   background-image: url("https://cdn.pixabay.com/photo/2024/03/20/04/00/ai-generated-8644565_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 20px auto;
+  position: relative;
+  border: 3px solid #000000;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  width: 6px;
+  height: 24px;
+  background: #000000;
+  transform: rotate(-45deg);
+  position: absolute;
+  bottom: -20px;
+  left: 46px;
+}
+
+@keyframes animloader {
+  0% {
+    transform: translate(-10px, -10px);
+  }
+  25% {
+    transform: translate(-10px, 10px);
+  }
+  50% {
+    transform: translate(10px, 10px);
+  }
+  75% {
+    transform: translate(10px, -10px);
+  }
+  100% {
+    transform: translate(-10px, -10px);
+  }
+}
+    

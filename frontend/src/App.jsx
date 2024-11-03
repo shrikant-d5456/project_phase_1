@@ -1,15 +1,16 @@
 import React from 'react'; 
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Login from "./components/Login";
+import Signup from './components/Signup';
 import PostDetails from './pages/PostDetails';
 import CreatePost from './pages/Createpost';
 import EditPost from './pages/EditPost';
 import Profile from './pages/Profile';
 import { UserContextProvider } from './Context/UserContext';
+import FiveStepValidation from './pages/FiveStepValidation';
+import AdminPage from './pages/AdminPage';
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
           <Route path='/profile' element={<Profile />} />
         </Routes>
         <Footer />
+        {/* <FiveStepValidation/> */}
+        <AdminPage/>
       </div>
        
     </UserContextProvider>

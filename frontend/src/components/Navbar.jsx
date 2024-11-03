@@ -1,93 +1,118 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { URL } from '../url.js';
-import { useNavigate,Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext.jsx';
-import { BsList } from 'react-icons/bs';
+import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX } from 'react-icons/bs';
 
 
 const Navbar = () => {
 
   const navigate = useNavigate();
-  const {user,setUser} = useContext(UserContext);
-
-
+  const { user, setUser } = useContext(UserContext);
   const [menu, setmenu] = useState(false);
 
   const handlelogout = async () => {
-
     try {
       const resp = await axios.post(URL + "/auth/api/logout")
-
       console.log(resp.data);
       setUser(null);
       setmenu(false)
-
       navigate('/login');
     }
     catch (err) {
-      console.log(err)
+      console.log("someting went wrongs")
     }
-
   }
 
   return (
-    <div className='fixed z-10  flex w-full justify-between items-center py-2 bg-black/20 lg:px-10 px-4 '>
-       
-        <div className='lg:hidden flex flex-col absolute bg-[#ae00ff99] text-white px-10 top-14 left-1'>
-        
-        {menu && <>
-        { !user &&
-          <>
-          <Link to="/login"><button onClick={()=>setmenu(false)} className='btn'>Login</button></Link>
-          <Link to="/signup"><button onClick={()=>setmenu(false)} className='btn'>Sign Up</button></Link>
-          </>
-          }
-
-          { user && 
-          <>
-          <button onClick={handlelogout}className='btn'>Logout</button>
-           <Link to="/profile"><button onClick={()=>setmenu(false)} className='btn'>Profile</button></Link>
-           <Link to="/createpost"><button onClick={()=>setmenu(false)} className='btn'>Create</button></Link>
-          </>}
-          </>
-        }
-           
-        </div>
-        <div>
-            <Link to='/'> 
-            <p className='text-white flex justify-center items-center gap-4'>
-              <button onClick={()=>setmenu(!menu)} ><BsList className='text-xl font-bold'/></button> 
-              Blog App
-            </p></Link>
+    <header>
+      <div>
+        <div className=' bg-[#1aff00] text-white font-semibold text-center p-1 overflow-hidden'>
+          <p className=' text-sm '>Welcome to Our Website!</p>
         </div>
 
-        <div >
-            <input type="text" className=' w-40 bg-transparent border px-4 my-2' placeholder='search..' />
+        <div className='flex justify-between items-center p-4'>
+          <Link to="/"><div>Logo</div></Link>
+
+          <div className=' sticky  hidden lg:flex justify-center items-center border-[1px] border-gray-200 outline-none rounded-full px-4 py-2 shadow-sm'>
+            <input
+              className='outline-none'
+              type="text" />
+            <i><BsSearch /></i>
+          </div>
+
+
+          <div className=' z-10 absolute top-11 right-14'>
+            {menu &&
+              <div className=' bg-white rounded-md border-[1px] border-gray-200 flex flex-col py-2 px-8 gap-2 '>
+
+                {!user &&
+                  <span className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer' onClick={() => navigate("/login")}><BsPersonAdd />Login</span>
+                }
+                {user &&
+                  <>
+                    <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
+                    <span className='flex gap-2 items-center hover:text-green-800 cursor-pointer'><BsBag />Cart</span>
+
+                    <Link to="/profile">
+                      <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
+                        <BsPerson />
+                        Profile
+                      </span>
+                    </Link>
+
+                    <Link to="/createpost">
+                      <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
+                        <BsFilePost />
+                        Create
+                      </span>
+                    </Link>
+                  </>}
+
+              </div>
+            }
+          </div>
+
+          <div>
+            <button className='lg:hidden block bg-white text-xl shadow-xl p-2 rounded-md border-[1px] border-gray-200' onClick={() => setmenu(!menu)}>{menu ? <BsX /> : <BsList />}</button>
+            <div className=' lg:flex hidden py-2 px-8 gap-8 '>
+              {!user &&
+                <span className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer' onClick={() => navigate("/login")}><BsPersonAdd />Login</span>
+              }
+              {user &&
+                <>
+
+                  <Link to="/profile">
+                    <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
+                      <BsPerson />
+                      Profile
+                    </span>
+                  </Link>
+
+                  <Link to="/createpost">
+                    <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
+                      <BsFilePost />
+                      Create
+                    </span>
+                  </Link>
+                  <span className='flex gap-2 items-center hover:text-green-800 cursor-pointer'><BsBag />Cart</span>
+                  <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
+                </>}
+            </div>
+          </div>
         </div>
-        <div className='gap-4 lg:block hidden'>
-          { !user &&
-          <>
-          <Link to="/login"><button className='btn'>Login</button></Link>
-          <Link to="/signup"><button className='btn'>Sign Up</button></Link>
-          </>
-          }
+      </div>
 
-          { user && 
-          <>
-          <button onClick={handlelogout}
-          className='btn'>Logout</button>
-           <Link to="/profile"><button className='btn'>Profile</button></Link>
+      <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none shadow-sm border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll'>
+        <Link to="/"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Home</li></Link>
+        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Post</li>
+        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Service</li>
+        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>About</li>
+        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Contact</li>
+      </div>
 
-           <Link to="/createpost"><button className='btn'>Create</button></Link>
-          </>}
-           
-
-
-            
-        </div>
-     
-    </div>
+    </header>
   )
 }
 
