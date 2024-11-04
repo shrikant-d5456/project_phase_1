@@ -142,7 +142,7 @@ export const onlyHostedData = async (req, res) => {
 
         if (validPosts.length > 0) {
             // Map valid posts to HostMedicine model instances
-            const hostData = validPosts.map(post => new HostMedicine(post.toObject()));
+            const hostData = validPosts;
             res.status(200).send({ msg: "Data hosted", data: hostData });
         } else {
             res.status(400).send({ msg: "No valid data to host" });
