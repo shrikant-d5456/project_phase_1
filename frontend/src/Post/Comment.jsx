@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { URL } from '../url';
-import { UserContext } from '../Context/UserContext';
+import { UserContext } from '../Utils/UserContext';
 import axios from 'axios';
 import { BsBoxArrowInUpLeft, BsPencilSquare, BsSend, BsSendCheckFill, BsTrash3Fill } from "react-icons/bs";
 

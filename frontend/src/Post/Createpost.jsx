@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { URL } from '../url';
-import { UserContext } from '../Context/UserContext';
+import { UserContext } from '../Utils/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusCircleFill, BsXCircle } from 'react-icons/bs';
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 
 const Createpost = () => {
     const { user } = useContext(UserContext);
@@ -96,7 +96,6 @@ const Createpost = () => {
 
     return (
         <div className='flex flex-col gap-4 w-full h-full m-auto pb-8'>
-            <Navbar />
             <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8 border bg-[#beffcd99] '>
                 <h1 className=' text-2xl font-semibold my-2 text-gray-800'>Create Post</h1>
 

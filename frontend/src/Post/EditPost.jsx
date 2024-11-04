@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BsPlugFill, BsPlusCircle, BsPlusCircleFill, BsTrash, BsTrash2 } from 'react-icons/bs'
 import React, { useContext, useEffect, useState } from 'react';
 import { URL } from '../url';
-import { UserContext } from '../Context/UserContext';
+import { UserContext } from '../Utils/UserContext';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const EditPost = () => {

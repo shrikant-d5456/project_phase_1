@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { URL } from '../url.js';
 import { useNavigate, Link } from 'react-router-dom'
-import { UserContext } from '../Context/UserContext.jsx';
+import { UserContext } from '../Utils/UserContext.jsx';
 import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX } from 'react-icons/bs';
 
 
-const Navbar = () => {
+const PostNavbar = () => {
 
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
@@ -55,14 +55,14 @@ const Navbar = () => {
                     <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
                     <span className='flex gap-2 items-center hover:text-green-800 cursor-pointer'><BsBag />Cart</span>
 
-                    <Link to="/profile">
+                    <Link to="/post-layout/profile">
                       <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                         <BsPerson />
                         Profile
                       </span>
                     </Link>
 
-                    <Link to="/createpost">
+                    <Link to="/post-layout/createpost">
                       <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                         <BsFilePost />
                         Create
@@ -82,7 +82,6 @@ const Navbar = () => {
               }
               {user &&
                 <>
-
                   <Link to="/profile">
                     <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                       <BsPerson />
@@ -116,4 +115,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default PostNavbar

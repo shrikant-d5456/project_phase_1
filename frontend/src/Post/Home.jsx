@@ -4,8 +4,8 @@ import axios from 'axios';
 import Slider from '../components/Slider.jsx';
 import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../Context/UserContext.jsx';
-import Navbar from '../components/Navbar.jsx';
+import { UserContext } from '../Utils/UserContext.jsx';
+// import Navbar from '../components/Navbar.jsx';
 
 const Home = () => {
   const [posts, setposts] = useState([]);
@@ -40,7 +40,6 @@ const Home = () => {
 
   return (
     <div className='w-full'>
-      <Navbar />
       <div className=' lg:px-20 px-4 my-8 rounded-2xl'>
         <Slider />
       </div>

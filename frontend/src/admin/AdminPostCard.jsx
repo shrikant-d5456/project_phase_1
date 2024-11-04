@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
-import { UserContext } from '../Context/UserContext.jsx';
+import { UserContext } from '../Utils/UserContext.jsx';
 import { Link } from 'react-router-dom';
 
-const Hearder = ({ post }) => {
+const PostCard = ({ post }) => {
 
   const { user } = useContext(UserContext);
   // console.log(user);
@@ -33,10 +33,10 @@ const Hearder = ({ post }) => {
           <button className='absolute m-4 cursor-auto bg-green-500 px-4 py-1 text-white font-semibold'
           >{(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5)? "uploaded":"uploading.."}</button>
           : ""}
-        <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
+        <Link key={post._id} to={user ? `/admin/post/${post._id}` : "/login"}>
           <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
             <div>
-              <img className='w-full h-[200px]' src={post.img} alt="" />
+              <img className='w-full h-[150px]' src={post.img} alt="" />
             </div>
 
             {userType === "admin" ?
@@ -57,12 +57,12 @@ const Hearder = ({ post }) => {
               </div> : ""}
 
             <div>
-              <h1 className='font-medium my-1'>{post.title}</h1>
+              <h1 className='font-medium my-1'>{post.title.substring(0, 30)}..</h1>
               <span>
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
                 <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
               </span>
-              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0, 95)}..<span className=' text-blue-400'>Read More</span></p>
+              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,40 )}..<span className=' text-blue-400'>Read More</span></p>
             </div>
 
 
@@ -74,4 +74,4 @@ const Hearder = ({ post }) => {
   )
 }
 
-export default Hearder
+export default PostCard

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { URL } from '../url.js';
 import {Link, useNavigate } from 'react-router-dom'
 import Modal from "react-modal";
-import Home from '../pages/Home.jsx';
+import Home from '../Post/Home.jsx';
 import {BsXCircleFill } from 'react-icons/bs';
 
 
@@ -53,7 +53,7 @@ const Signup = () => {
       >
         <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[#0cff0c53] shadow-2xl'>
 
-          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-24 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl'
+          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-20 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl'
             onClick={CloseEventCall}
           ><BsXCircleFill />
           </button>
@@ -106,7 +106,7 @@ const Signup = () => {
                 type='submit'
                 onClick={handlereg}
                 className='btn1 hover:bg-green-400 hover:text-white transition-all'>
-                Log In
+                Sign Up
               </button>
 
               <p>
