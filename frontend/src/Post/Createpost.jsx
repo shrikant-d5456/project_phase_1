@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { URL } from '../url';
 import { UserContext } from '../Utils/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Createpost = () => {
     console.log("User ID:", user?.id, "Username:", user?.username);
 
     const usenavigate = useNavigate();
+    const ingredientFocus = useRef(0);
 
     const [cat, setCat] = useState("");
     const [cats, setCats] = useState([]);
@@ -43,6 +44,7 @@ const Createpost = () => {
     const addIngredient = () => {
         setIngredients([...ingredients, ingredient]);
         setIngredient("");
+        ingredientFocus.current.focus();
     };
     const deleteIngredient = (i) => {
         setIngredients(ingredients.filter((_, index) => index !== i));
@@ -95,8 +97,8 @@ const Createpost = () => {
     };
 
     return (
-        <div className='flex flex-col gap-4 w-full h-full m-auto pb-8'>
-            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8 border bg-[#beffcd99] '>
+        <div className='flex flex-col gap-4 w-full h-full m-auto pb-8 mt-4'>
+            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#beffcd99] shadow-xl '>
                 <h1 className=' text-2xl font-semibold my-2 text-gray-800'>Create Post</h1>
 
                 <input
@@ -162,12 +164,13 @@ const Createpost = () => {
                         type="text"
                         placeholder='Enter ingredients'
                         className='inp w-full'
+                        ref={ingredientFocus}
                     />
                     <button
                         onClick={addIngredient}
                         className='btn1 px-2'
                     >
-                        <BsPlusCircleFill />
+                    <BsPlusCircleFill />
                     </button>
                 </div>
                 

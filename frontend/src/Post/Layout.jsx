@@ -7,7 +7,7 @@ import Profile from './Profile'
 import Home from './Home'
 import PostNavbar from '../components/PostNavbar'
 import ProtectedRoute from '../Utils/ProtectedRoute'
-
+import FiveStepValidation from "./FiveStepValidation"
 const Layout = () => {
   return (
     <>
@@ -17,6 +17,7 @@ const Layout = () => {
 
         <Route element={<ProtectedRoute />}>
           <Route path='/posts/post/:id' element={<PostDetails />} />
+          <Route path='/posts/post/post-validatation/:id' element={<FiveStepValidation />} />
           <Route path='/createpost' element={<Createpost />} />
           <Route path='/post/editpost/:id' element={<EditPost />} />
           <Route path='/profile' element={<Profile />} />

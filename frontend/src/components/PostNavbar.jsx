@@ -103,14 +103,6 @@ const PostNavbar = () => {
         </div>
       </div>
 
-      <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none shadow-sm border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll'>
-        <Link to="/"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Home</li></Link>
-        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Post</li>
-        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Service</li>
-        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>About</li>
-        <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Contact</li>
-      </div>
-
     </header>
   )
 }

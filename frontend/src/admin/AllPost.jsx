@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className='w-full flex flex-wrap justify-center items-center m-auto gap-4 '>
+      <div className='w-full flex flex-wrap lg:justify-start justify-center items-center m-auto '>
         {posts.map((post, index) => (
          <div key={index} className='lg:w-1/4'>
               <AdminPostCard key={post._id} post={post} />

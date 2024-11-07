@@ -26,7 +26,7 @@ const AdminLayout = () => {
     {
       path_icon:"BsGrid1X2Fill",
       path_name:"All Post",
-      path_link :"/admin/all-post",
+      path_link :"/admin/",
     },
     {
       path_icon:"BsClipboardDataFill",
@@ -39,11 +39,16 @@ const AdminLayout = () => {
       path_link :"/admin/view_students",
     },
     
-    // {
-    //   path_icon:"BsSliders2",
-    //   path_name:"Setting",
-    //   path_link :"/admin/teacher-dash/setting",
-    // },
+    {
+      path_icon:"BsSliders2",
+      path_name:"My Validation",
+      path_link :"/admin/my-validation",
+    },
+    {
+      path_icon:"BsSliders2",
+      path_name:"My Check Post",
+      path_link :"/admin/my-check-post",
+    },
   ]
 
   return (
@@ -59,7 +64,7 @@ const AdminLayout = () => {
             <ul key={index} className=' '>
 
               <Link to={element.path_link}>
-                  <li  className={`w-full flex gap-2 justify-start items-center py-1 px-2 rounded-sm hover:bg-[#1aff00] hover:text-white 
+                  <li  className={`w-full flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-[#1aff00] hover:text-white 
                             ${path === element.path_link ? ' bg-[#1aff00] text-white ' : ''}`}
                   >
                    {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
@@ -71,11 +76,11 @@ const AdminLayout = () => {
 
         </div>
 
-        <div className='md:w-[80%] lg:h-screen w-full md:p-2 overflow-y-scroll scroll-smooth'>
+        <div className='md:w-[80%] lg:h-screen bg-[#ffffff] w-full md:p-2 overflow-y-scroll scroll-smooth'>
           <Routes>
             <Route path="/profile" element={<Profile/>} />
             <Route path="/post/:id" element={<PostDetails/>} />
-            <Route path="/all-post" element={<AllPost/>} />
+            <Route path="/" element={<AllPost/>} />
             <Route path="/host-post" element={<HostedPost/>} />
           </Routes>
         </div>

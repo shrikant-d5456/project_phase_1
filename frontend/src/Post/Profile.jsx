@@ -47,12 +47,12 @@ const Profile = () => {
 
   return (
     <>
-      <div className='w-11/12  h-screen m-auto'>
-        <p className=' text-2xl font-semibold my-4  pl-2 text-gray-800'>Your Post</p>
+      <div className='w-11/12 h-full m-auto'>
+        <p className=' text-2xl font-semibold my-4 pl-2 text-gray-800'>Your Post</p>
 
         <hr className=' border-[#00ff26] border-[1px]' />
 
-        <div className='lg:flex gap-8 w-full my-4'>
+        <div className='lg:flex w-full my-4'>
 
           <div className='lg:w-4/5 w-full justify-center items-center '>
             <div className='flex flex-wrap'>
@@ -61,6 +61,8 @@ const Profile = () => {
           </div>
 
           <div className='lg:w-1/5  '>
+          {user.username === "admin" ? 
+          <>
           <label htmlFor="inp" className=' text-sm font-semibold'>Enter Admin ID to Update Profile</label>
             <input
               type="text"
@@ -70,6 +72,9 @@ const Profile = () => {
               className=' w-full text-sm px-1 py-2 border-[1px] border-[#00ff26] outline-none'
               placeholder='Enter Admin ID'
             />
+          </>
+          :""}
+          
 
             {
               user.username === "admin" && AdminIDs.some((admin) => admin.id === checkId) ?
@@ -114,7 +119,7 @@ const Profile = () => {
           {user.username === "admin" ? "" :
             <div className='lg:w-1/5  '>
               <p className=' text-2xl font-semibold my-4 text-gray-800'>Your Profile</p>
-              <div className=' flex flex-col gap-2 text-sm border-[1px] border-green-500 p-4' >
+              <div className=' flex flex-col gap-2 text-sm border-[1px] border-[#00ff26] p-4' >
 
                 <input
                   type="text"

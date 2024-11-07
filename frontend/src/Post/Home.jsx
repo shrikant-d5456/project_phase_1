@@ -5,6 +5,9 @@ import Slider from '../components/Slider.jsx';
 import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
+import About from '../components/About.jsx';
+import Service from '../components/Service.jsx';
+import Contact from '../components/Contact.jsx';
 // import Navbar from '../components/Navbar.jsx';
 
 const Home = () => {
@@ -40,7 +43,15 @@ const Home = () => {
 
   return (
     <div className='w-full'>
-      <div className=' lg:px-20 px-4 my-8 rounded-2xl'>
+      <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none shadow-sm border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll'>
+      <Link to="/"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Home</li></Link>
+        <a href='#post'><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Post</li></a>
+        <a href="#about"> <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>About</li></a>
+        <a href="#service"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Service</li></a>
+       <a href="#contact"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Contact</li></a>
+        
+      </div>
+      <div className=' lg:px-20 my-8 '>
         <Slider />
       </div>
 
@@ -57,10 +68,11 @@ const Home = () => {
         }
       </div>
 
-      <div className=' w-full'>
-        <h1 className='text-2xl font-semibold text-gray-600 mt-20 mb-10 text-center'>Popular Topics </h1>
-        <div className='w-full flex flex-wrap justify-center items-center m-auto gap-4 '>
-          {posts.map((post, index) => (
+      <div id='post' className='lg:w-10/12 lg:p-0 px-4 m-auto justify-center items-center'>
+        <h1 className='text-2xl font-semibold text-gray-600 py-4 mt-4'>Popular Topics </h1>
+        <hr/>
+        <div className='w-full flex flex-wrap lg:justify-start justify-center items-center m-auto gap-4 py-6'>
+          {posts.slice(0, 4).map((post, index) => (
             <div key={post._id} className='lg:w-1/4'>
               <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
                 <PostCard key={post._id} post={post} />
@@ -69,6 +81,10 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <About/>
+
+      <Service/>
+      <Contact/>
 
     </div>
   );

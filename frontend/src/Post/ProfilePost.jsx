@@ -27,7 +27,7 @@ const ProfilePost = () => {
     <>
       {userPosts.length > 0 ? (
         userPosts.map((post, index) => (
-          <Link key={index} to={`/posts/post/${post._id}`} className='lg:w-1/3 border-[1px] border-gray-200 bg-white p-4 shadow text-sm '>
+          <Link key={index} to={post.validator1 && post.validator2 &&post.validator3 &&post.validator4 &&post.validator5 ? `/posts/post/${post._id}`:`/posts/post/post-validatation/${post._id}`} className='lg:w-1/3 border-[1px] border-gray-200 bg-white p-4 shadow text-sm '>
           <div key={index} >
             <img className='w-full h-[150px]' src={post.img} alt="" />
             <h1 className='text-justify my-2 font-semibold text-gray-800'>{post.title}</h1>

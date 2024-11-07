@@ -28,11 +28,15 @@ const PostCard = ({ post }) => {
 
   return (
     <>
-      <div key={post._id} className='w-full overflow-hidden'>
-        {userType === "admin" ?
-          <button className='absolute m-4 cursor-auto bg-green-500 px-4 py-1 text-white font-semibold'
-          >{(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5)? "uploaded":"uploading.."}</button>
-          : ""}
+      <div key={post._id} className='w-full'>
+        {
+        userType === "admin" ?
+          <button className='absolute m-4 cursor-auto bg-[#1aff00] px-4 py-1 text-sm text-white font-semibold'
+          >
+          {(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5)? "uploaded":"uploading.."}</button>
+          : ""
+        }
+
         <Link key={post._id} to={user ? `/admin/post/${post._id}` : "/login"}>
           <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
             <div>
@@ -41,11 +45,11 @@ const PostCard = ({ post }) => {
 
             {userType === "admin" ?
               <div className='flex justify-end gap-[1px] mt-2'>
-                {post.validator1 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator2 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator3 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator4 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator5 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator1 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator2 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator3 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator4 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator5 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
               </div> : ""}
             {userType === "admin" ?
               <div className='flex justify-end gap-[1px]'>
@@ -62,7 +66,7 @@ const PostCard = ({ post }) => {
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
                 <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
               </span>
-              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,40 )}..<span className=' text-blue-400'>Read More</span></p>
+              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,30 )}..<span className=' text-blue-400'>Read More</span></p>
             </div>
 
 

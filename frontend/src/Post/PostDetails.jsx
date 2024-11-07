@@ -35,7 +35,7 @@ const PostDetails = () => {
     try {
       const response = await axios.delete(URL + `/auth/post/${postId.id}`);
       // console.log(response.data);
-      navigate('/');
+      navigate('/admin/');
     }
     catch (err) {
       console.log(err)
@@ -78,26 +78,26 @@ const PostDetails = () => {
             </div>
 
             <div>
-              <p className=' text-sm text-gray-800 font-extrabold bg-green-200 w-fit px-4 py-1 rounded-full my-4'>Provide by @{post.username}</p>
+              <p className=' text-sm font-extrabold bg-[#1aff00] text-white w-fit px-4 py-1 rounded-full my-4'>Provide by @{post.username}</p>
               <hr className='border-[1px] border-[#1aff00] mt-2' />
               <h1 className=' text-2xl font-bold text-gray-800 my-2'>{post.title}</h1>
               <hr className='border-[1px] border-[#1aff00]' />
               <div className='flex justify-start items-center gap-4 font-semibold  '>Tags :
                 {post.categories?.map((d, i) => (
-                  <p key={i} className='w-fit px-4 py-1 my-2 text-sm bg-green-100 rounded-full font-normal border-2 border-green-300'>{d}</p>
+                  <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-[#1aff00] text-white'>{d}</p>
                 ))}
               </div>
               <p className=' text-sm my-4 font-semibold'>Upload Date : <span className='font-light'>{(post.updatedAt)}</span></p>
               <p className=' text-sm text-gray-800 my-2 font-semibold'>Established Date : <span className='font-light'>{post.established}</span></p>
               <p className=' text-sm text-gray-800 my-4 font-semibold'>Place of Origine : <span className='font-light'>{(post.places)}</span></p>
               <p className=' text-sm text-gray-800 my-2 font-semibold'> Which Patient this medicine is harmful  : <span className='font-light'>{post.wpmh}</span></p>
-              <p className=' text-sm my-4 font-semibold'>Vitamin : <span className='font-light bg-green-400 px-4 py-1 uppercase '>{(post.vitamin)}</span></p>
+              <p className=' text-sm my-4 font-semibold'>Vitamin : <span className='font-light bg-[#1aff00] text-white px-4 py-1 uppercase '>{(post.vitamin)}</span></p>
 
               <hr />
               <p className=' font-medium text-base text-gray-800 my-2'>{post.desc}</p>
               <hr />
 
-              <div className='flex justify-start font-semibold my-2'>Ingredient              :
+              <div className='flex justify-start font-semibold my-2'>Ingredient:
                 <div>
                   {post.ingredient?.map((d, i) => (
                     <p key={i} className='w-fit flex gap-4 justify-center items-center px-2 pb-2 text-sm font-normal'><input type="checkbox" />{d}</p>
@@ -105,10 +105,18 @@ const PostDetails = () => {
                 </div>
               </div>
 
-              <div className='flex justify-start font-semibold my-2'>Steps           :
+              <div className='flex justify-start font-semibold my-2'>Steps:
                 <div>
                   {post.step?.map((d, i) => (
-                    <p key={i} className='w-fit flex gap-2 justify-center items-center px-2 pb-2 text-sm font-normal'> <span>{i + 1} : </span> {d}</p>
+                    <>
+                    <p key={i} className='w-fit flex gap-2 justify-start items-center px-2 pb-2 text-sm font-normal text-justify'>
+                       <span className=' bg-[#1aff00] w-fit text-white font-semibold p-2 rounded-full'>{i + 1} 
+                      </span> {d}
+                     
+                    </p>
+                     <hr className=' border-[1px] my-2 border-[#1aff00]' />
+                    </>
+                    
                   ))}
                 </div>
               </div>
