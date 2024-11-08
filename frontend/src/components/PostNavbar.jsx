@@ -4,7 +4,7 @@ import { URL } from '../url.js';
 import { useNavigate, Link } from 'react-router-dom'
 import { UserContext } from '../Utils/UserContext.jsx';
 import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX } from 'react-icons/bs';
-
+import logo from "../../assets/logo.jpeg"
 
 const PostNavbar = () => {
 
@@ -21,19 +21,22 @@ const PostNavbar = () => {
       navigate('/login');
     }
     catch (err) {
-      console.log("someting went wrongs")
+      alert("someting went wrongs");
     }
   }
 
   return (
     <header>
-      <div>
-        <div className=' bg-[#1aff00] text-white font-semibold text-center p-1 overflow-hidden'>
+      <div className='fixed top-0 z-50 w-full bg-white shadow-md '>
+        
+        <div className=' w-full bg-green text-white font-semibold text-center p-1 overflow-hidden'>
           <p className=' text-sm '>Welcome to Our Website!</p>
         </div>
 
         <div className='flex justify-between items-center p-4'>
-          <Link to="/"><div>Logo</div></Link>
+          <Link to="/">
+            <div className=' w-40'><img src={logo} alt="logo" />
+            </div></Link>
 
           <div className=' sticky  hidden lg:flex justify-center items-center border-[1px] border-gray-200 outline-none rounded-full px-4 py-2 shadow-sm'>
             <input
@@ -41,7 +44,6 @@ const PostNavbar = () => {
               type="text" />
             <i><BsSearch /></i>
           </div>
-
 
           <div className=' z-10 absolute top-11 right-14'>
             {menu &&
@@ -55,14 +57,14 @@ const PostNavbar = () => {
                     <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
                     <span className='flex gap-2 items-center hover:text-green-800 cursor-pointer'><BsBag />Cart</span>
 
-                    <Link to="/post-layout/profile">
+                    <Link to="/profile">
                       <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                         <BsPerson />
                         Profile
                       </span>
                     </Link>
 
-                    <Link to="/post-layout/createpost">
+                    <Link to="/createpost">
                       <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                         <BsFilePost />
                         Create
@@ -102,6 +104,8 @@ const PostNavbar = () => {
           </div>
         </div>
       </div>
+
+      <div className=' h-28'></div>
 
     </header>
   )

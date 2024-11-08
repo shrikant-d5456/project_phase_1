@@ -98,7 +98,7 @@ const Createpost = () => {
 
     return (
         <div className='flex flex-col gap-4 w-full h-full m-auto pb-8 mt-4'>
-            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#beffcd99] shadow-xl '>
+            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#ccffc199] shadow-xl '>
                 <h1 className=' text-2xl font-semibold my-2 text-gray-800'>Create Post</h1>
 
                 <input
@@ -168,13 +168,13 @@ const Createpost = () => {
                     />
                     <button
                         onClick={addIngredient}
-                        className='btn1 px-2'
+                        className=' bg-green text-white font-semibold px-2'
                     >
                     <BsPlusCircleFill />
                     </button>
                 </div>
                 
-                <div className='flex flex-wrap'>
+                <div className='flex gap-2 flex-wrap'>
                     {ingredients.map((c, index) => (
                         <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
                             <p className='w-fit'>{c}</p>
@@ -183,7 +183,7 @@ const Createpost = () => {
                     ))}
                 </div>
 
-                <hr className='border-[1px] border-[#1aff00]' />
+                <hr className='border-[1px] border-green-800' />
 
 
                 <div className='flex w-full'>
@@ -196,21 +196,21 @@ const Createpost = () => {
                     />
                     <button
                         onClick={addStep}
-                        className='btn1 px-2'
+                        className=' bg-green text-white font-semibold px-2'
                     >
                         <BsPlusCircleFill />
                     </button>
                 </div>
-                <div className='flex flex-wrap'>
+                <div className='flex flex-wrap items-center gap-2'>
                     {steps.map((c, index) => (
-                        <div key={index} className='flex gap-2 text-sm bg-[#1aff00] rounded-r-full  py-1 px-1 '>
-                            <p className='w-fit px-4'><span className=' text-white font-semibold'>step {index+1} : </span> {c}</p>
-                            <button onClick={() => deleteStep(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle /></button>
+                        <div key={index} className='flex gap-2 text-sm items-center bg-slate-200 rounded-r-full  py-1 px-2 shadow-xl'>
+                            <p className='w-fit px-4'><span className='font-semibold'>step {index+1} : </span> {c}</p>
+                            <button onClick={() => deleteStep(index)} className=' rounded-full text-white bg-red-600 h-7 w-7 flex justify-center items-center' ><BsXCircle /></button>
                         </div>
                     ))}
                 </div>
 
-                <hr className='border-[1px] border-[#1aff00]' />
+                <hr className='border-[1px] border-green-800' />
 
                 <div className='flex w-full'>
                     <input
@@ -222,12 +222,12 @@ const Createpost = () => {
                     />
                     <button
                         onClick={addCategory}
-                        className='btn1 px-2'
+                        className=' bg-green text-white font-semibold px-2'
                     >
                         <BsPlusCircleFill />
                     </button>
                 </div>
-                <div className='flex flex-wrap'>
+                <div className='flex gap-2 flex-wrap'>
                     {cats.map((c, index) => (
                         <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
                             <p className='w-fit'>{c}</p>
@@ -236,7 +236,7 @@ const Createpost = () => {
                     ))}
                 </div>
 
-                <hr className='border-[1px] border-[#1aff00]' />
+                <hr className='border-[1px] border-green-800' />
 
                 <textarea
                     value={desc}
@@ -248,7 +248,7 @@ const Createpost = () => {
                 />
                 {error && <p className=' text-red-500 animate-pulse text-sm'>{error}</p>}
 
-                <button onClick={uploadPost} className='btn1'>Upload Post</button>
+                <button onClick={uploadPost} className=' p-2 bg-green text-white font-semibold'>Upload Post</button>
             </div>
         </div>
     );

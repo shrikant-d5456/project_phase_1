@@ -57,15 +57,15 @@ const AdminLayout = () => {
       <div className='w-full flex text-gray-800'>
         
         
-        <div className='md:block hidden w-[300px] h-screen bg-color-blue-dark border-r-[1px] border-[#1aff00] text-sm font-semibold'>
+        <div className='md:block hidden w-[300px] h-screen bg-color-blue-dark border-r-[1px] border-green text-sm font-semibold'>
           
           {arr.map((element,index)=>
           (
             <ul key={index} className=' '>
 
               <Link to={element.path_link}>
-                  <li  className={`w-full flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-[#1aff00] hover:text-white 
-                            ${path === element.path_link ? ' bg-[#1aff00] text-white ' : ''}`}
+                  <li  className={`w-full flex gap-2 justify-start items-center py-2 px-4 rounded-sm
+                            ${path === element.path_link ? ' bg-green text-white ' : ''}`}
                   >
                    {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
                    {element.path_name}

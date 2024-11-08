@@ -51,11 +51,11 @@ const PostDetails = () => {
             <div className='flex justify-between items-center'>
               <div>
                 <div className='flex justify-end gap-[1px] m-2'>
-                  {post.validator1 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                  {post.validator2 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                  {post.validator3 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                  {post.validator4 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                  {post.validator5 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                  {post.validator1 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                  {post.validator2 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                  {post.validator3 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                  {post.validator4 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                  {post.validator5 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
                 </div>
                 <div className='flex justify-end gap-[1px]'>
                   {post.checked1 === true ? <div className='bg-yellow-400 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-500 rounded-sm w-6 h-2 my-[1px]' />}
@@ -67,7 +67,7 @@ const PostDetails = () => {
               </div>
               <div className='flex gap-4 justify-end my-4 mx-4'>
                 {/* <Link to={`/post/editpost/${post._id}`}><button className='btn1'>Edit</button></Link> */}
-                <button onClick={deletepost} className='btn1'>Delete</button>
+                <button onClick={deletepost} className=' bg-red-500 px-4 py-2 text-white font-semibold'>Delete</button>
               </div>
             </div>
             : ""}
@@ -78,20 +78,20 @@ const PostDetails = () => {
             </div>
 
             <div>
-              <p className=' text-sm font-extrabold bg-[#1aff00] text-white w-fit px-4 py-1 rounded-full my-4'>Provide by @{post.username}</p>
-              <hr className='border-[1px] border-[#1aff00] mt-2' />
+              <p className=' text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>Provide by @{post.username}</p>
+              <hr className='border-[1px] border-green mt-2' />
               <h1 className=' text-2xl font-bold text-gray-800 my-2'>{post.title}</h1>
-              <hr className='border-[1px] border-[#1aff00]' />
+              <hr className='border-[1px] border-green' />
               <div className='flex justify-start items-center gap-4 font-semibold  '>Tags :
                 {post.categories?.map((d, i) => (
-                  <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-[#1aff00] text-white'>{d}</p>
+                  <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-green text-white'>{d}</p>
                 ))}
               </div>
               <p className=' text-sm my-4 font-semibold'>Upload Date : <span className='font-light'>{(post.updatedAt)}</span></p>
               <p className=' text-sm text-gray-800 my-2 font-semibold'>Established Date : <span className='font-light'>{post.established}</span></p>
               <p className=' text-sm text-gray-800 my-4 font-semibold'>Place of Origine : <span className='font-light'>{(post.places)}</span></p>
               <p className=' text-sm text-gray-800 my-2 font-semibold'> Which Patient this medicine is harmful  : <span className='font-light'>{post.wpmh}</span></p>
-              <p className=' text-sm my-4 font-semibold'>Vitamin : <span className='font-light bg-[#1aff00] text-white px-4 py-1 uppercase '>{(post.vitamin)}</span></p>
+              <p className=' text-sm my-4 font-semibold'>Vitamin : <span className='font-light bg-green text-white px-4 py-1 uppercase '>{(post.vitamin)}</span></p>
 
               <hr />
               <p className=' font-medium text-base text-gray-800 my-2'>{post.desc}</p>
@@ -110,11 +110,11 @@ const PostDetails = () => {
                   {post.step?.map((d, i) => (
                     <>
                     <p key={i} className='w-fit flex gap-2 justify-start items-center px-2 pb-2 text-sm font-normal text-justify'>
-                       <span className=' bg-[#1aff00] w-fit text-white font-semibold p-2 rounded-full'>{i + 1} 
+                       <span className=' bg-green w-fit text-white font-semibold p-2 rounded-full'>{i + 1} 
                       </span> {d}
                      
                     </p>
-                     <hr className=' border-[1px] my-2 border-[#1aff00]' />
+                     <hr className=' border-[1px] my-2 border-green' />
                     </>
                     
                   ))}
@@ -126,7 +126,7 @@ const PostDetails = () => {
           </div>
 
         </div>
-        <hr className='border-[1px] border-[#1aff00] mt-2' />
+        <hr className='border-[1px] border-green mt-2' />
         <Comment post={post} />
       </div>
     </>

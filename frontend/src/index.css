@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-green{
+  background-color:#275b21;
+}
+.text-green{
+  color:#275b21;
+}
+
 body{
   font-family: "Poppins", sans-serif;
   background-color: rgb(255, 255, 255);
@@ -13,35 +20,15 @@ body{
   background-size: 100% 100%;
 }
 
-.btn{
-  padding: 2px 8px;
-  color: aliceblue;
-  font-weight: 400;
-  font-size: medium;
-}
-
 .inp{
   border-radius: 2px;
   font-size: small;
   color: rgb(78, 78, 78);
   padding: 5px 10px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(240, 240, 240);
   outline: none;
-  
 }
 
-.awssld__bullets {
-  display: none;
-}
-
-.btn1{
-  background-color: #1aff00;
-  font-weight:500;
-  border-radius: 2px;
-  border: 2px solid rgb(0, 255, 0);
-  padding: 4px 20px;
-  color: rgba(255, 255, 255, 0.808);
-}
 
 .anime {
   background-size: 400%;

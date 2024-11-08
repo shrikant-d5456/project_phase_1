@@ -49,7 +49,7 @@ const Login = () => {
         className="transition-all"
         preventScroll={false}
       >
-        <div className="flex relative w-full h-screen justify-center items-center text-center bg-[#0cff0c53] shadow-2xl">
+        <div className="flex relative w-full h-screen justify-center items-center text-center bg-[#ffe2b937]">
           <button
             className="absolute text-2xl w-[45px] h-[45px] z-10 top-20 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl"
             onClick={CloseEventCall}
@@ -88,7 +88,7 @@ const Login = () => {
               <button
                 type="submit"
                 onClick={handleLogin}
-                className="btn1 hover:bg-green-400 hover:text-white transition-all"
+                className="bg-green py-1 rounded-2xl hover:bg-green-800 text-white font-semibold transition-all"
               >
                 Log In
               </button>

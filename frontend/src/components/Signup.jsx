@@ -51,14 +51,14 @@ const Signup = () => {
         className="transition-all"
         preventScroll={false}
       >
-        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[#0cff0c53] shadow-2xl'>
+        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[#ffe2b937] '>
 
-          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-20 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl'
+          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-20 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full '
             onClick={CloseEventCall}
           ><BsXCircleFill />
           </button>
 
-          <div className=' lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8 p-4 shadow-xl rounded-tl-3xl rounded-br-3xl   loginbgimg'>
+          <div className=' lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8 p-4  rounded-tl-3xl rounded-br-3xl   loginbgimg'>
 
             <div className='lg:block hidden w-3/5'>
             </div>
@@ -105,7 +105,9 @@ const Signup = () => {
               <button
                 type='submit'
                 onClick={handlereg}
-                className='btn1 hover:bg-green-400 hover:text-white transition-all'>
+                 className="bg-green py-1 rounded-2xl hover:bg-green-800 text-white font-semibold transition-all"
+                >
+                
                 Sign Up
               </button>
 

@@ -31,7 +31,7 @@ const PostCard = ({ post }) => {
       <div key={post._id} className='w-full'>
         {
         userType === "admin" ?
-          <button className='absolute m-4 cursor-auto bg-[#1aff00] px-4 py-1 text-sm text-white font-semibold'
+          <button className='absolute m-4 cursor-auto bg-green px-4 py-1 text-sm text-white font-semibold'
           >
           {(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5)? "uploaded":"uploading.."}</button>
           : ""
@@ -45,11 +45,11 @@ const PostCard = ({ post }) => {
 
             {userType === "admin" ?
               <div className='flex justify-end gap-[1px] mt-2'>
-                {post.validator1 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator2 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator3 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator4 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
-                {post.validator5 === true ? <div className='bg-[#1aff00] rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator1 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator2 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator3 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator4 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator5 === true ? <div className='bg-green rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
               </div> : ""}
             {userType === "admin" ?
               <div className='flex justify-end gap-[1px]'>

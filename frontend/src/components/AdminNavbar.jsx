@@ -69,21 +69,21 @@ const AdminNavbar = () => {
     return (
         <header>
 
-            <div className=' bg-[#1aff00] text-white font-semibold text-center p-1 overflow-hidden'>
+            <div className=' bg-green text-white font-semibold text-center p-1 overflow-hidden'>
                 <p className=' text-sm '>Welcome! {user?.username}</p>
             </div>
 
-            <div className='flex justify-between items-center px-4 border-b-[1px] border-[#1aff00]'>
+            <div className='flex justify-between items-center px-4 border-b-[1px] border-green'>
                 <Link to="/admin"><div>Logo</div></Link>
-                <div className='md:hidden block z-10 absolute top-14 right-14 bg-white w-fit bg-color-blue-dark border-r-[1px] border-[#1aff00] text-sm font-semibold'>
+                <div className='md:hidden block z-10 absolute top-14 right-14 bg-white w-fit bg-color-blue-dark border-r-[1px] border-green text-sm font-semibold'>
 
                     {user && menu && arr.map((element, index) =>
                     (
                         <ul key={index}>
 
                             <Link to={element.path_link}>
-                                <li className={`w-full flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-[#1aff00] hover:text-white 
-                                ${path === element.path_link ? ' bg-[#1aff00] text-white ' : ''}`}
+                                <li className={`w-full flex gap-2 justify-start items-center py-2 px-4 rounded-sm 
+                                ${path === element.path_link ? ' bg-green text-white ' : ''}`}
                                 onClick={()=>setmenu(!menu)}
                                 >
                                     {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
@@ -96,17 +96,17 @@ const AdminNavbar = () => {
                         <>
                             {user ?
                                 <>
-                                <span className='flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-[#1aff00] hover:text-white cursor-pointer'
+                                <span className='flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-green hover:text-white cursor-pointer'
                                     onClick={() => navigate("/admin/profile") || setmenu(!menu)}
                                 ><BsPersonAdd />Profile
                                 </span>
-                                <span className='flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-[#1aff00] hover:text-white cursor-pointer'
+                                <span className='flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-green hover:text-white cursor-pointer'
                                     onClick={() => handlelogout}
                                 ><BsPersonAdd />Logout
                                 </span>
                                 </>
                                 :
-                                <span className='flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-[#1aff00] hover:text-white cursor-pointer'
+                                <span className='flex gap-2 justify-start items-center py-2 px-4 rounded-sm hover:bg-green hover:text-white cursor-pointer'
                                     m
                                 >
                                     <BsPersonAdd />Login
