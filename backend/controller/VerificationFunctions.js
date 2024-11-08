@@ -130,7 +130,6 @@ export const getAllData = async (req, res) => {
     }
 };
 
-
 export const onlyHostedData = async (req, res) => {
     try {
         const postsData = await Posts.find();
@@ -146,6 +145,216 @@ export const onlyHostedData = async (req, res) => {
             res.status(200).send({ msg: "Data hosted", data: hostData });
         } else {
             res.status(400).send({ msg: "No valid data to host" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator1_checking = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+             !post.checked1
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator1_checked_post = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+            post.checked1
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator2_checking = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+             !post.checked2
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator2_checked_post = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+            post.checked2
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator3_checking = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+             !post.checked3
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator3_checked_post = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+            post.checked3
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator4_checking = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+             !post.checked4
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator4_checked_post = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+            post.checked4
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator5_checking = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+             !post.checked5
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+export const validator5_checked_post = async (req, res) => {
+    try {
+        const postsData = await Posts.find();
+
+        // Check if all posts meet the validation criteria
+        const validPosts = postsData.filter(post => 
+            post.checked5
+        );
+
+        if (validPosts.length > 0) {
+            const checkData = validPosts;
+            res.status(200).send({ msg: "You check this data", data: checkData });
+        } else {
+            res.status(400).send({ msg: "No valid data to check" });
         }
 
     } catch (err) {
