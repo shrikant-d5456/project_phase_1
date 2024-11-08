@@ -32,7 +32,7 @@ body{
 
 .anime {
   background-size: 400%;
-  background-image: linear-gradient(to right, #d8d8d800 10%, #d8d8d800 20%, #d8d8d800 30%, #00000000 40%, hsl(48, 100%, 50%) 50%, #d8d8d800 60%, #d8d8d800 70%, #d8d8d800 80%, #d8d8d800 90%, #cfcfcf00 100%);
+  background-image: linear-gradient(to right, #d8d8d800 10%, #d8d8d800 20%, #d8d8d800 30%, #00000000 40%, hsl(48, 100%, 72%) 50%, #d8d8d800 60%, #d8d8d800 70%, #d8d8d800 80%, #d8d8d800 90%, #cfcfcf00 100%);
   animation: shimmer 5s linear infinite;
 }
 

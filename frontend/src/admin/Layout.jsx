@@ -6,6 +6,8 @@ import HostedPost from './HostedPost';
 import Profile from '../Post/Profile';
 import AdminNavbar from '../components/AdminNavbar'
 import PostDetails from '../Post/PostDetails';
+import MyPostChecking from './MyPostChecking';
+import MyCheckedPost from './MyCheckedPost';
 const AdminLayout = () => {
 
   const path = useLocation().pathname;
@@ -33,21 +35,16 @@ const AdminLayout = () => {
       path_name:"Hosted Post",
       path_link :"/admin/host-post",
     },
-    {
-      path_icon:"BsPersonVcardFill",
-      path_name:"Checked Post",
-      path_link :"/admin/view_students",
-    },
     
     {
       path_icon:"BsSliders2",
-      path_name:"My Validation",
-      path_link :"/admin/my-validation",
+      path_name:"My Checking Post",
+      path_link :"/admin/my-checking-post",
     },
     {
       path_icon:"BsSliders2",
-      path_name:"My Check Post",
-      path_link :"/admin/my-check-post",
+      path_name:"My Checked Post",
+      path_link :"/admin/my-checked-post",
     },
   ]
 
@@ -82,6 +79,9 @@ const AdminLayout = () => {
             <Route path="/post/:id" element={<PostDetails/>} />
             <Route path="/" element={<AllPost/>} />
             <Route path="/host-post" element={<HostedPost/>} />
+            <Route path="/my-checking-post" element={<MyPostChecking/>} />
+            <Route path="/my-checked-post" element={<MyCheckedPost/>} />
+
           </Routes>
         </div>
       </div>

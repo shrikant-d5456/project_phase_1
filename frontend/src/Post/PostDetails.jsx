@@ -6,11 +6,14 @@ import { UserContext } from '../Utils/UserContext';
 import Comment from './Comment';
 // import Navbar from '../components/Navbar';
 import { BsYoutube } from 'react-icons/bs';
+import AdminIDs from "../AdminIDs";
 
 const PostDetails = () => {
 
   const [post, setposts] = useState([]);
   const navigate = useNavigate();
+  const [valid,setValid] = useState(false);
+  const [check,setCheck] = useState(false);
 
   const { user } = useContext(UserContext)
 
@@ -47,7 +50,7 @@ const PostDetails = () => {
       <div className='lg:w-10/12 lg:p-1 p-2 m-auto' >
         <div key={post._id} className='w-full bg-transparent text-black '>
 
-          {user.id === "672073f37ce8725e95585f79" ?
+          {user.id === AdminIDs[0].id ?
             <div className='flex justify-between items-center'>
               <div>
                 <div className='flex justify-end gap-[1px] m-2'>
@@ -123,6 +126,36 @@ const PostDetails = () => {
 
             </div>
             <p className=' flex items-center text-sm text-gray-800 mt-4 font-semibold '>video link : <a target='_blank' href={post.video_link} className='flex w-fit justify-center items-center ml-2 gap-2 bg-red-500 px-4 py-1 rounded-full text-white'><BsYoutube />See Video</a> </p>
+          </div>
+
+            {/* aaaaaaaaaa */}
+
+          
+          <div className=' w-full p-4 border-2 lg:flex flex-row my-4 bg-black text-white gap-2'>
+            <div className='md:w-2/3 w-full bg-black text-white'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium reiciendis quia adipisci expedita cumque obcaecati eligendi quibusdam aut necessitatibus architecto.
+            </div>
+            <div className='md:w-1/3 w-full flex flex-col justify-center items-center gap-2 bg-black text-white'>
+              
+              <div className='flex justify-center items-center gap-2 w-full'>
+                <button
+                onClick={()=>setValid(true)}
+                className={`${valid ? "bg-green-700 border-2 border-white m-1" : "bg-green-300"}  rounded-full px-4 py-1 font-semibold text-white w-full `}
+                >{valid ? "Yes! ✓":"Yes"}
+                </button>
+                <button
+                onClick={()=>setValid(false)}
+                className={`${valid ? "bg-red-400" : "bg-red-700 border-2 border-white m-1"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                >{valid ?"No" : "No ✓"}
+                </button>
+              </div>
+              <button 
+              onClick={()=>setCheck(!check)}
+              className={`${check ? "bg-yellow-700 border-2 border-white" : "bg-yellow-200"}  rounded-full px-4 py-1 font-semibold text-white w-full`}
+              >
+              {check ? "Checked! ✓":"Check"}
+              </button>
+            </div>
           </div>
 
         </div>
