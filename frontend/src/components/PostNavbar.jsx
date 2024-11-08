@@ -77,7 +77,7 @@ const PostNavbar = () => {
           </div>
 
           <div>
-            <button className='lg:hidden block bg-white text-xl shadow-xl p-2 rounded-md border-[1px] border-gray-200' onClick={() => setmenu(!menu)}>{menu ? <BsX /> : <BsList />}</button>
+            <button className='lg:hidden block bg-white text-xl  p-2 ' onClick={() => setmenu(!menu)}>{menu ? <BsX /> : <BsList />}</button>
             <div className=' lg:flex hidden py-2 px-8 gap-8 '>
               {!user &&
                 <span className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer' onClick={() => navigate("/login")}><BsPersonAdd />Login</span>
