@@ -3,7 +3,7 @@ import {BsGoogle,BsFacebook,BsTwitterX,BsInstagram,BsYoutube} from 'react-icons/
 
 function Footer() {
     return (
-        <div className='w-screen text-sm'>
+        <div className='w-screen text-sm border-t-2'>
             <footer className="lg:flex w-screen  bg-[#ffffff]">
 
                 <div className="lg:w-2/5 p-4 m-auto ">

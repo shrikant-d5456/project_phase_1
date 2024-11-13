@@ -44,11 +44,11 @@ const Home = () => {
   return (
     <div className='w-full'>
       <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll shadow-md'>
-      <Link to="/"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Home</li></Link>
-        <a href='#post'><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Post</li></a>
-        <a href="#about"> <li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>About</li></a>
-        <a href="#service"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Service</li></a>
-       <a href="#contact"><li className='hover:text-green-800 lg:tracking-widest lg:uppercase'>Contact</li></a>
+      <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Home</li></Link>
+        <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></a>
+        <a href="#about"> <li className='hover:text-green lg:tracking-widest lg:uppercase'>About</li></a>
+        <a href="#service"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></a>
+       <a href="#contact"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Contact</li></a>
         
       </div>
       <div className=' lg:px-14 my-8 '>
@@ -58,11 +58,11 @@ const Home = () => {
       <div className=' lg:w-10/12 w-full m-auto flex gap-20 px-4 overflow-x-scroll'>
         {
           [...Array(10)].map(() => (
-            <div className=' w-full flex justify-center items-center flex-col hover:text-green-800 cursor-pointer mt-4'>
+            <div className=' w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
               <img
-                className=' h-[100px] w-[100px] lg:h-[100px] lg:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all'
+                className=' h-[100px] w-[100px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all'
                 src="https://krishnaayurved.com/cdn/shop/collections/Category_banner-05_720x.jpg?v=1661885544" alt="img" />
-              <p>shop/collections</p>
+              <p className=' text-sm'>shop/collections</p>
             </div>
           ))
         }
@@ -80,6 +80,7 @@ const Home = () => {
             </div>
           ))}
         </div>
+        <div><button className='flex float-right bg-green px-4 py-1 text-white'>See More ⫸</button></div>
       </div>
       <About/>
 

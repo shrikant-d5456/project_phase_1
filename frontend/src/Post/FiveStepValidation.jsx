@@ -12,7 +12,7 @@ const FiveStepValidation = () => {
           const resp = await axios.get(URL + `/auth/post/${postId.id}`);
           console.log(resp.data.data)
           setposts(resp.data.data);
-          console.log(user.id + "hello" + post.userId)
+        //   console.log(user.id + "hello" + post.userId)
         } catch (err) {
           console.log(err)
         }
@@ -20,7 +20,7 @@ const FiveStepValidation = () => {
     
       useEffect(() => {
         getPost();
-      }, [postId])
+      })
 
     const a1 = false;
 
