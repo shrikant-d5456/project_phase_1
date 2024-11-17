@@ -8,7 +8,9 @@ import postRouter from "./routes/Post.js"
 import commentRouter from "./routes/Comment.js"
 import medicineRoutes from "./routes/Verification.js";
 import adminRoutes from "./routes/Admin.js";
+// import uploadRouter from "./routes/Upload.js"; 
 
+import fileRoutes from "./routes/fileRoutes.js"
 
 const app = express();
 
@@ -22,6 +24,9 @@ app.use("/auth/comment", commentRouter);
 
 app.use("/auth/api/post", medicineRoutes);
 app.use("/auth/api", adminRoutes);
+
+
+app.use("/api/files", fileRoutes);
 
 
 
