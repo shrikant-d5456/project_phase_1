@@ -5,9 +5,11 @@ import Createpost from './Createpost'
 import EditPost from './EditPost'
 import Profile from './Profile'
 import Home from './Home'
+import Footer from '../components/Footer'
 import PostNavbar from '../components/PostNavbar'
 import ProtectedRoute from '../Utils/ProtectedRoute'
 import FiveStepValidation from "./FiveStepValidation"
+import Practioners from './Practioners'
 const Layout = () => {
   return (
     <>
@@ -21,9 +23,12 @@ const Layout = () => {
           <Route path='/createpost' element={<Createpost />} />
           <Route path='/post/editpost/:id' element={<EditPost />} />
           <Route path='/profile' element={<Profile />} />
+         
         </Route>
 
+        <Route path='/practitioner' element={<Practioners/>} />
       </Routes>
+      <Footer />
     </>
   )
 }

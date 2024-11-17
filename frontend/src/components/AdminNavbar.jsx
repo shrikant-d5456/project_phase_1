@@ -73,7 +73,7 @@ const AdminNavbar = () => {
                 <p className=' text-sm '>Welcome! {user?.username}</p>
             </div>
 
-            <div className='flex justify-between items-center px-4 border-b-[1px] border-green'>
+            <div className='flex justify-between items-center px-4 border-b-[1px] border-gray-200'>
                 <Link to="/admin"><div>Logo</div></Link>
                 <div className='md:hidden block z-10 absolute top-14 right-14 bg-white w-fit bg-color-blue-dark border-r-[1px] border-green text-sm font-semibold'>
 

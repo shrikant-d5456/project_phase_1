@@ -10,7 +10,9 @@
 .text-green{
   color:#275b21;
 }
-
+.border-green{
+  border-color:#275b21;
+}
 body{
   font-family: "Poppins", sans-serif;
   background-color: rgb(255, 255, 255);

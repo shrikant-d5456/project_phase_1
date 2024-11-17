@@ -40,9 +40,8 @@ function Footer() {
                     <hr />
                 </div>
             </footer>
-            <div className=" bg-black p-2 text-center font-semibold text-white ">
-                Designed & 👩🏻‍💻 by Developer
-                <p className='text-sm my-4'>© All Rights Reserved {new Date().getFullYear()} </p>
+            <div className=" p-2 text-center font-semibold ">
+                <p className='text-sm my-4'>Designed &👩🏻‍💻by Developer | © All Rights Reserved {new Date().getFullYear()} </p>
             </div>
         </div>
     )

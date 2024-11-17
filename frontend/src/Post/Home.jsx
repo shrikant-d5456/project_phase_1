@@ -5,10 +5,8 @@ import Slider from '../components/Slider.jsx';
 import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
-import About from '../components/About.jsx';
 import Service from '../components/Service.jsx';
-import Contact from '../components/Contact.jsx';
-// import Navbar from '../components/Navbar.jsx';
+
 
 const Home = () => {
   const [posts, setposts] = useState([]);
@@ -46,9 +44,9 @@ const Home = () => {
       <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll shadow-md'>
       <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Home</li></Link>
         <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></a>
-        <a href="#about"> <li className='hover:text-green lg:tracking-widest lg:uppercase'>About</li></a>
+        <a > <li className='hover:text-green lg:tracking-widest lg:uppercase'>Plant Information</li></a>
+        <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Practioner's</li></Link>
         <a href="#service"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></a>
-       <a href="#contact"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Contact</li></a>
         
       </div>
       <div className=' lg:px-14 my-8 '>
@@ -82,11 +80,7 @@ const Home = () => {
         </div>
         <div><button className='flex float-right bg-green px-4 py-1 text-white'>See More ⫸</button></div>
       </div>
-      <About/>
-
       <Service/>
-      <Contact/>
-
     </div>
   );
 };

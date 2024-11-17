@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, Routes, Link , useLocation} from 'react-router-dom';
-import { BsBank, BsClipboardDataFill, BsDatabaseFillAdd, BsFileEarmarkArrowUpFill, BsPersonVcardFill, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
+import { Route, Routes, Link, useLocation } from 'react-router-dom';
+import { BsBank, BsClipboardDataFill,BsTree, BsDatabaseFillAdd,BsPersonCheck,BsPersonGear, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
 import AllPost from './AllPost';
 import HostedPost from './HostedPost';
 import Profile from '../Post/Profile';
@@ -8,6 +8,8 @@ import AdminNavbar from '../components/AdminNavbar'
 import PostDetails from '../Post/PostDetails';
 import MyPostChecking from './MyPostChecking';
 import MyCheckedPost from './MyCheckedPost';
+import Pdf from './AddPdf';
+import PlantInfo from './AddPlantInfo';
 const AdminLayout = () => {
 
   const path = useLocation().pathname;
@@ -16,72 +18,88 @@ const AdminLayout = () => {
   const icons = {
     BsClipboardDataFill: BsClipboardDataFill,
     BsDatabaseFillAdd: BsDatabaseFillAdd,
-    BsFileEarmarkArrowUpFill: BsFileEarmarkArrowUpFill,
-    BsPersonVcardFill: BsPersonVcardFill,
     BsSliders2: BsSliders2,
     BsBank: BsBank,
-    BsGrid1X2Fill:BsGrid1X2Fill,
-    
+    BsGrid1X2Fill: BsGrid1X2Fill,
+    BsTree:BsTree,
+    BsPersonCheck:BsPersonCheck,
+    BsPersonGear:BsPersonGear,
+
   };
 
   const arr = [
     {
-      path_icon:"BsGrid1X2Fill",
-      path_name:"All Post",
-      path_link :"/admin/",
+      path_icon: "BsGrid1X2Fill",
+      path_name: "All Post",
+      path_link: "/admin/",
     },
     {
-      path_icon:"BsClipboardDataFill",
-      path_name:"Hosted Post",
-      path_link :"/admin/host-post",
+      path_icon: "BsClipboardDataFill",
+      path_name: "Hosted Post",
+      path_link: "/admin/host-post",
     },
-    
+
     {
-      path_icon:"BsSliders2",
-      path_name:"My Checking Post",
-      path_link :"/admin/my-checking-post",
+      path_icon: "BsPersonGear",
+      path_name: "My Checking Post",
+      path_link: "/admin/my-checking-post",
     },
     {
-      path_icon:"BsSliders2",
-      path_name:"My Checked Post",
-      path_link :"/admin/my-checked-post",
+      path_icon: "BsPersonCheck",
+      path_name: "My Checked Post",
+      path_link: "/admin/my-checked-post",
+    },
+    {
+      path_icon: "BsBank",
+      path_name: "Practionr's",
+      path_link: "/admin/practioner",
+    },
+    {
+      path_icon: "BsTree",
+      path_name: "Plant Information",
+      path_link: "/admin/plant-info",
     },
   ]
 
   return (
     <>
-    <AdminNavbar/>
+      <AdminNavbar />
       <div className='w-full flex text-gray-800'>
-        
-        
-        <div className='md:block hidden w-[300px] h-screen bg-color-blue-dark border-r-[1px] border-green text-sm font-semibold'>
-          
-          {arr.map((element,index)=>
-          (
-            <ul key={index} className=' '>
 
-              <Link to={element.path_link}>
-                  <li  className={`w-full flex gap-2 justify-start items-center py-2 px-4 rounded-sm
-                            ${path === element.path_link ? ' bg-green text-white ' : ''}`}
+
+        <div className='md:flex hidden w-[80px]  h-screen bg-green text-sm font-semibold flex-col justify-center rounded-tr-3xl'>
+          <div className='flex flex-col items-center text-white justify-center'>
+            {arr.map((element, index) =>
+            (
+
+              <ul key={index} className=' '>
+                <Link to={element.path_link}>
+                  <li
+                    className={`w-full flex gap-2 justify-start items-center py-4 text-3xl
+                  ${path === element.path_link ? ' bg-green border-2 p-4 rounded-2xl transition-[all,500ms]' : ''}`}
+                    title={element.path_name}
                   >
-                   {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
-                   {element.path_name}
-                  </li>
-              </Link>
-          </ul>
-          ))}          
+                    {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
 
+                  </li>
+                </Link>
+              </ul>
+
+
+            ))}
+          </div>
         </div>
 
-        <div className='md:w-[80%] lg:h-screen bg-[#ffffff] w-full md:p-2 overflow-y-scroll scroll-smooth'>
+        <div className='md:w-[95%] lg:h-screen bg-[#ffffff] w-full md:p-2 overflow-y-scroll scroll-smooth'>
           <Routes>
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/post/:id" element={<PostDetails/>} />
-            <Route path="/" element={<AllPost/>} />
-            <Route path="/host-post" element={<HostedPost/>} />
-            <Route path="/my-checking-post" element={<MyPostChecking/>} />
-            <Route path="/my-checked-post" element={<MyCheckedPost/>} />
-
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/post/:id" element={<PostDetails />} />
+            <Route path="/" element={<AllPost />} />
+            <Route path="/host-post" element={<HostedPost />} />
+            <Route path="/my-checking-post" element={<MyPostChecking />} />
+            <Route path="/my-checked-post" element={<MyCheckedPost />} />
+            <Route path="/practioner" element={<Pdf />} />
+            <Route path="/plant-info" element={<PlantInfo />} />
           </Routes>
         </div>
       </div>

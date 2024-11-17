@@ -25,7 +25,7 @@ const Login = () => {
       setModalIsOpen(false);
 
       if (AdminIDs.some((admin) => admin.id === resp.data.id)) {
-        navigate("/admin");
+        navigate("/admin/");
       } else {
         navigate("/");
       }

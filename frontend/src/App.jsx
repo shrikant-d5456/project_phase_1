@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { UserContextProvider } from './Utils/UserContext';
-import Footer from './components/Footer';
 import Login from "./components/Login";
 import Signup from './components/Signup';
 import AdminLayout from './admin/Layout';
@@ -24,7 +23,7 @@ const App = () => {
 
         </Routes>
         
-        <Footer />
+       
       </div>
 
     </UserContextProvider>
