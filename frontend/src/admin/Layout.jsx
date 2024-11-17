@@ -74,14 +74,18 @@ const AdminLayout = () => {
 
               <ul key={index} className=' '>
                 <Link to={element.path_link}>
-                  <li
-                    className={`w-full flex gap-2 justify-start items-center py-4 text-3xl
-                  ${path === element.path_link ? ' bg-green border-2 p-4 rounded-2xl transition-[all,500ms]' : ''}`}
-                    title={element.path_name}
-                  >
-                    {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
+                <li
+  className={`relative w-full flex gap-2 justify-start items-center py-4 text-3xl
+    ${path === element.path_link ? 'bg-green border-2 p-4 rounded-2xl transition-[all,500ms]' : ''}`}
+>
+  {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
 
-                  </li>
+  {/* Tooltip */}
+  <span className="tooltip-text">
+    {element.path_name}
+  </span>
+</li>
+
                 </Link>
               </ul>
 
