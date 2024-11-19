@@ -6,7 +6,7 @@ const FileUpload = () => {
     const [file, setFile] = useState(null);
     const [files, setFiles] = useState([]);
     const [category, setCategory] = useState('All'); // State to manage the selected category
-    const [fileCategory, setFileCategory] = useState('1st Year'); // Default category for uploading files
+    const [fileCategory, setFileCategory] = useState('All'); // Default category for uploading files
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -116,6 +116,7 @@ const FileUpload = () => {
                         onChange={handleFileCategoryChange}
                         className="border rounded-md px-4 py-2 mt-2"
                     >
+                    <option value="All">All</option>
                         <option value="1st Year">1st Year</option>
                         <option value="2nd Year">2nd Year</option>
                         <option value="3rd Year">3rd Year</option>
@@ -157,19 +158,19 @@ const FileUpload = () => {
                                 <div className="flex space-x-2">
                                     <button
                                         onClick={() => handleOpenPDF(file.filename)}
-                                        className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                                        className="bg-blue-500 text-white px-4 py-1"
                                     >
                                         Open PDF
                                     </button>
                                     <button
                                         onClick={() => handleDownload(file.filename)}
-                                        className="bg-green-500 text-white px-4 py-2 rounded-md"
+                                        className="bg-green-500 text-white px-4 py-1"
                                     >
                                         Download
                                     </button>
                                     <button
                                         onClick={() => handleDelete(file._id)}
-                                        className="bg-red-500 text-white px-4 py-2 rounded-md"
+                                        className="bg-red-500 text-white px-4 py-1"
                                     >
                                         Delete
                                     </button>

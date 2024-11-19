@@ -11,6 +11,9 @@ const PostDetails = () => {
   const [post, setPost] = useState({});
   const [valid, setValid] = useState(false);
   const [check, setCheck] = useState(false);
+  const [admin, setAdmin] = useState("");
+  const [validator, setValidator] = useState("");
+  const [checked, setChecked] = useState("");
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const postId = useParams();
@@ -26,14 +29,44 @@ const PostDetails = () => {
 
   useEffect(() => {
     getPost();
-  }, [postId]);
-
-  useEffect(() => {
-    if (post) {
+    if (post && user.id === AdminIDs[1].id) {
       setValid(post.validator1 || false);
       setCheck(post.checked1 || false);
+      setAdmin("admin1");
+      setValidator("validator1");
+      setChecked("checked1");
     }
-  }, [post]);
+    if (post && user.id === AdminIDs[2].id) {
+      setValid(post.validator2 || false);
+      setCheck(post.checked2 || false);
+      setAdmin("admin2");
+      setValidator("validator2");
+      setChecked("checked2");
+    }
+    if (post && user.id === AdminIDs[3].id) {
+      setValid(post.validator3 || false);
+      setCheck(post.checked3 || false);
+      setAdmin("admin3");
+      setValidator("validator3");
+      setChecked("checked3");
+    }
+    if (post && user.id === AdminIDs[4].id) {
+      setValid(post.validator4 || false);
+      setCheck(post.checked4 || false);
+      setAdmin("admin4");
+      setValidator("validator4");
+      setChecked("checked4");
+    }
+    if (post && user.id === AdminIDs[5].id) {
+      setValid(post.validator5 || false);
+      setCheck(post.checked5 || false);
+      setAdmin("admin5");
+      setValidator("validator5");
+      setChecked("checked5");
+    }
+  });
+
+  
 
   const deletePost = async () => {
     try {
@@ -44,10 +77,10 @@ const PostDetails = () => {
     }
   };
 
-  const validateBy1 = async (isValid) => {
+  const validateBy = async (isValid) => {
     try {
-      await axios.put(`${URL}/auth/api/post/admin1/${postId.id}`, {
-        validator1: isValid ? "true" : "false",
+      await axios.put(`${URL}/auth/api/post/${admin}/${postId.id}`, {
+        [`${validator}`]: isValid ? "true" : "false",
       });
       setValid(isValid);
     } catch (err) {
@@ -55,10 +88,10 @@ const PostDetails = () => {
     }
   };
 
-  const checkedBy1 = async (checkStatus) => {
+  const checkedBy = async (checkStatus) => {
     try {
-      await axios.put(`${URL}/auth/api/post/admin1/${postId.id}`, {
-        checked1: checkStatus ? "true" : "false",
+      await axios.put(`${URL}/auth/api/post/${admin}/${postId.id}`, {
+        [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);
       alert("Thank you for validation");
@@ -147,35 +180,38 @@ const PostDetails = () => {
           </div>
 
           {
-            user.id === AdminIDs[1].id && 
+            (user.id === AdminIDs[1].id || user.id === AdminIDs[2].id || user.id === AdminIDs[3].id 
+              || user.id === AdminIDs[4].id || user.id === AdminIDs[5].id
+             )
+            &&
             <div className='w-full p-4 border-2 lg:flex flex-row my-4 bg-black text-white gap-2'>
-            <div className='md:w-2/3 w-full bg-black text-white'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium reiciendis quia adipisci expedita cumque obcaecati eligendi quibusdam aut necessitatibus architecto.
-            </div>
-            <div className='md:w-1/3 w-full flex flex-col justify-center items-center gap-2 bg-black text-white'>
-              <div className='flex justify-center items-center gap-2 w-full'>
+              <div className='md:w-2/3 w-full bg-black text-white'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium reiciendis quia adipisci expedita cumque obcaecati eligendi quibusdam aut necessitatibus architecto.
+              </div>
+              <div className='md:w-1/3 w-full flex flex-col justify-center items-center gap-2 bg-black text-white'>
+                <div className='flex justify-center items-center gap-2 w-full'>
+                  <button
+                    onClick={() => validateBy(true)}
+                    className={`${valid ? "bg-green-700 border-2 border-white m-1" : "bg-green-300"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                  >
+                    {valid ? "Yes! ✓" : "Yes"}
+                  </button>
+                  <button
+                    onClick={() => validateBy(false)}
+                    className={`${valid ? "bg-red-400" : "bg-red-700 border-2 border-white m-1"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                  >
+                    {valid ? "No" : "No ✓"}
+                  </button>
+                </div>
+
                 <button
-                  onClick={() => validateBy1(true)}
-                  className={`${valid ? "bg-green-700 border-2 border-white m-1" : "bg-green-300"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                  onClick={() => checkedBy(!check)}
+                  className={`${check ? "bg-yellow-700 border-2 border-white" : "bg-yellow-400"} rounded-full px-4 py-1 font-semibold text-white w-full`}
                 >
-                  {valid ? "Yes! ✓" : "Yes"}
-                </button>
-                <button
-                  onClick={() => validateBy1(false)}
-                  className={`${valid ? "bg-red-400" : "bg-red-700 border-2 border-white m-1"} rounded-full px-4 py-1 font-semibold text-white w-full`}
-                >
-                  {valid ? "No" : "No ✓"}
+                  {check ? "Checked! ✓" : "Check & Close"}
                 </button>
               </div>
-
-              <button
-                onClick={() => checkedBy1(!check)}
-                className={`${check ? "bg-yellow-700 border-2 border-white" : "bg-yellow-400"} rounded-full px-4 py-1 font-semibold text-white w-full`}
-              >
-                {check ? "Checked! ✓" : "Check & Close"}
-              </button>
             </div>
-          </div>
           }
 
         </div>

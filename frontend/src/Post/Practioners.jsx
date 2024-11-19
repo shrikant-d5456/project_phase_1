@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { URL } from '../url';
 import { BsFiletypePdf } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Practioners = () => {
     const [file, setFile] = useState(null);
@@ -66,18 +67,28 @@ const Practioners = () => {
     };
 
     return (
+        <>
+ 
+        <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll shadow-md'>
+      <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Home</li></Link>
+        <a href='/#post'><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></a>
+        <a > <li className='hover:text-green lg:tracking-widest lg:uppercase'>Plant Information</li></a>
+        <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Practioner's</li></Link>
+        <a href="/#service"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></a>
+        
+      </div>
         <div className="flex my-4 items-center justify-center flex-col w-full flex-wrap">
             <h1 className="text-2xl font-semibold my-2">Files</h1>
             <hr className="my-4 border-2" />
 
             {/* Category Buttons */}
-            <div className="flex space-x-4 mb-6">
+            <div className="flex mb-6">
                 {['All', '1st Year', '2nd Year', '3rd Year', '4th Year'].map(cat => (
                     <button
                         key={cat}
                         onClick={() => setCategory(cat)}
-                        className={`px-4 py-2 rounded-md ${
-                            category === cat ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+                        className={`px-4 py-1 border-[1px] border-gray-100 ${
+                            category === cat ? 'bg-green-500 text-white transition-all' : 'bg-gray-200 text-gray-700'
                         }`}
                     >
                         {cat}
@@ -102,13 +113,13 @@ const Practioners = () => {
                             <div className="flex space-x-2 my-2 text-sm">
                                 <button
                                     onClick={() => handleOpenPDF(file.filename)}
-                                    className="bg-blue-500 text-white px-4 py-1 rounded-md"
+                                    className="bg-green-500 text-white px-4 py-1 "
                                 >
                                     Open
                                 </button>
                                 <button
                                     onClick={() => handleDownload(file.filename)}
-                                    className="bg-green-500 text-white px-4 py-1 rounded-md"
+                                    className=" border-[1px] border-green-500  px-4 py-1 "
                                 >
                                     Download
                                 </button>
@@ -120,6 +131,7 @@ const Practioners = () => {
                 <p>No files found for {category}.</p>
             )}
         </div>
+        </>
     );
 };
 
