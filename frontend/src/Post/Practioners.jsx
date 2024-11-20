@@ -71,10 +71,10 @@ const Practioners = () => {
  
         <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll shadow-md'>
       <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Home</li></Link>
-        <a href='/#post'><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></a>
+        <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></a>
         <a > <li className='hover:text-green lg:tracking-widest lg:uppercase'>Plant Information</li></a>
         <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Practioner's</li></Link>
-        <a href="/#service"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></a>
+        <a href="#service"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></a>
         
       </div>
         <div className="flex my-4 items-center justify-center flex-col w-full flex-wrap">

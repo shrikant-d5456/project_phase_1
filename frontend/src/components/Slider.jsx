@@ -12,7 +12,7 @@ const slider = () => {
     cancelOnInteraction={false} // should stop playing on user interaction
     interval={5000}
     bullets={true}
-    className=' z-0 w-full lg:h-[700px] h-[250px] lg:rounded-2xl overflow-hidden'
+    className=' z-0 w-full lg:h-[700px] md:h-[500px] h-[250px] lg:rounded-2xl overflow-hidden'
   >
           <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/diabic-care-landscape-1920-x1040-672c43407bfcd.webp?v=1730954644'/></div>
           <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/she-care-landscape-1920-x-1040-672c43400f985.webp?v=1730954644'/></div>

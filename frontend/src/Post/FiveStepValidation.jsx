@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { BsCheckCircleFill, BsSearch } from "react-icons/bs"
 import { useParams } from 'react-router-dom';
+import {URL} from "../url"
+import axios from 'axios';
 
 const FiveStepValidation = () => {
 
@@ -9,7 +11,7 @@ const FiveStepValidation = () => {
 
     const getPost = async () => {
         try {
-          const resp = await axios.get(URL + `/auth/post/${postId.id}`);
+          const resp = await axios.get(URL+`/auth/post/${postId.id}`);
           console.log(resp.data.data)
           setposts(resp.data.data);
         //   console.log(user.id + "hello" + post.userId)
@@ -20,43 +22,40 @@ const FiveStepValidation = () => {
     
       useEffect(() => {
         getPost();
-      })
-
-    const a1 = false;
-
+      },[postId])
     const researcher = [
         {
             step: 1,
-            display: post.validator1,
-            loading: !post.validator1,
+            display: post?.validator1 || false,
+            loading: !post?.validator1,
             img: "https://static.vecteezy.com/system/resources/previews/015/414/017/non_2x/woman-scientist-chemical-researcher-with-microscope-atom-a-molecule-of-organic-substance-a-fragment-of-a-dna-chain-experiment-concept-illustration-vector.jpg",
             Reserch: "Resercher 1",
         },
         {
             step: 2,
-            display: post.validator2,
-            loading: !post.validator2,
+            display: post?.validator2 || false,
+            loading: !post?.validator2,
             img: "https://static.vecteezy.com/system/resources/previews/015/414/017/non_2x/woman-scientist-chemical-researcher-with-microscope-atom-a-molecule-of-organic-substance-a-fragment-of-a-dna-chain-experiment-concept-illustration-vector.jpg",
             Reserch: "Resercher 2",
         },
         {
             step: 3,
-            display: post.validator3,
-            loading: !post.validator3,
+            display: post?.validator3 || false,
+            loading: !post?.validator3,
             img: "https://static.vecteezy.com/system/resources/previews/015/414/017/non_2x/woman-scientist-chemical-researcher-with-microscope-atom-a-molecule-of-organic-substance-a-fragment-of-a-dna-chain-experiment-concept-illustration-vector.jpg",
             Reserch: "Resercher 3",
         },
         {
             step: 4,
-            display: post.validator4,
-            loading: !post.validator4,
+            display: post?.validator4 || false,
+            loading: !post?.validator4,
             img: "https://static.vecteezy.com/system/resources/previews/015/414/017/non_2x/woman-scientist-chemical-researcher-with-microscope-atom-a-molecule-of-organic-substance-a-fragment-of-a-dna-chain-experiment-concept-illustration-vector.jpg",
             Reserch: "Resercher 4",
         },
         {
             step: 5,
-            display: post.validator5,
-            loading: !post.validator5,
+            display: post?.validator5 || false,
+            loading: !post?.validator5,
             img: "https://static.vecteezy.com/system/resources/previews/015/414/017/non_2x/woman-scientist-chemical-researcher-with-microscope-atom-a-molecule-of-organic-substance-a-fragment-of-a-dna-chain-experiment-concept-illustration-vector.jpg",
             Reserch: "Resercher 5",
         },

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { URL } from '../url.js';
-import {Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Modal from "react-modal";
-import Home from '../Post/Home.jsx';
-import {BsXCircleFill } from 'react-icons/bs';
+import { BsXCircleFill } from 'react-icons/bs';
 
 
 const Signup = () => {
@@ -29,7 +28,7 @@ const Signup = () => {
       setPassword(resp.data.password);
       setErr(false);
       navigate('/login');
-    }catch (err) {
+    } catch (err) {
       console.log(err)
       setErr(true)
     }
@@ -44,14 +43,13 @@ const Signup = () => {
 
   return (
     <>
-      <Home />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className="transition-all"
         preventScroll={false}
       >
-        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[#ffe2b937] '>
+        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[conic-gradient(var(--tw-gradient-stops))] from-[#fef08a] via-[#84cc16] to-[#275b21]'>
 
           <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-20 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full '
             onClick={CloseEventCall}
@@ -67,8 +65,11 @@ const Signup = () => {
               className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#fff9] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
             >
 
-              <p className='font-bold text-xl text-center text-gray-800'>Unlock<br/>Maximum Saving</p>
-              <p className=' text-sm text-center text-gray-500'>Unlock Great Healt</p>
+              <p className='font-bold text-xl text-center text-gray-800'>Unlock<br />Maximum Savings</p>
+              <p className="text-md text-center text-green font-bold">
+                Welcome to Sign In Page
+              </p>
+
 
               <input
                 type="text"
@@ -95,7 +96,7 @@ const Signup = () => {
               />
 
               <input
-                type="number"
+                type="tel"
                 value={phoneNo}
                 onChange={(e) => setPhoneNo(e.target.value)}
                 placeholder='Enter PhoneNo'
@@ -105,15 +106,15 @@ const Signup = () => {
               <button
                 type='submit'
                 onClick={handlereg}
-                 className="bg-green py-1 rounded-2xl hover:bg-green-800 text-white font-semibold transition-all"
-                >
-                
+                className="bg-green py-1 rounded-2xl hover:bg-green-800 text-white font-semibold transition-all"
+              >
+
                 Sign Up
               </button>
 
               <p>
-                You alredy signup then
-                <Link to="/login" className="text-blue-500 text-sm underline">
+                You already SignUp!
+                <Link to="/login" className="text-blue-500 text-sm underline px-1">
                   Login
                 </Link>
               </p>
