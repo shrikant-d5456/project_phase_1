@@ -3,7 +3,7 @@ import axios from 'axios'
 import { URL } from '../url.js';
 import { useNavigate, Link } from 'react-router-dom'
 import { UserContext } from '../Utils/UserContext.jsx';
-import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX } from 'react-icons/bs';
+import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX, BsHeart, BsBagHeartFill } from 'react-icons/bs';
 import logo from "../../assets/logo.jpeg"
 
 const PostNavbar = () => {
@@ -24,6 +24,29 @@ const PostNavbar = () => {
       alert("someting went wrongs");
     }
   }
+  const [search, setSearch] = useState('');
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = async (e) => {
+    const keyword = e.target.value;
+    setSearch(keyword);
+
+    if (keyword.length === 0) {
+      setPosts([]);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(URL + `/auth/post/search`, { search: keyword });
+      setPosts(response.data.data); 
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <header>
@@ -38,12 +61,18 @@ const PostNavbar = () => {
             <div className=' w-40'><img src={logo} alt="logo" />
             </div></Link>
 
+          
           <div className=' sticky  hidden lg:flex justify-center items-center border-[1px] border-gray-200 outline-none rounded-full px-4 py-2 shadow-sm'>
             <input
               className='outline-none'
-              type="text" />
+              type="text"
+              value={search}
+              onChange={handleSearch}
+              placeholder="Search posts.."/>
             <i><BsSearch /></i>
           </div>
+
+
 
           <div className=' z-10 absolute top-11 right-14'>
             {menu &&
@@ -89,7 +118,7 @@ const PostNavbar = () => {
                       <BsPerson />
                       Profile
                     </span>
-                  </Link>
+                  </Link>                
 
                   <Link to="/createpost">
                     <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
@@ -97,7 +126,13 @@ const PostNavbar = () => {
                       Create
                     </span>
                   </Link>
-                  <span className='flex gap-2 items-center hover:text-green-800 cursor-pointer'><BsBag />Cart</span>
+                  <Link to="/save-post">
+                      <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
+                        <BsBagHeartFill />
+                        Like
+                      </span>
+                    </Link>
+
                   <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
                 </>}
             </div>
@@ -106,6 +141,17 @@ const PostNavbar = () => {
       </div>
 
       <div className=' h-28'></div>
+      {/* Loading Indicator */}
+      {loading && <p>Loading...</p>}
+
+      {/* Display Posts */}
+      <div className="post-list">
+        {posts.length > 0 ? (
+          posts.map(post => <PostCard key={post._id} post={post} />)
+        ) : (
+          !loading && <p>No posts found.</p>
+        )}
+      </div>
 
     </header>
   )

@@ -17,6 +17,8 @@ const PostCard = ({ post }) => {
   }
 
 
+  
+  
   // const hostPost = async () => {
   //   try {
   //     const resp = await axios.post(`${URL}/auth/api/post/admin/postData/${post._id}`);
@@ -45,7 +47,7 @@ const PostCard = ({ post }) => {
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
                 <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
               </span>
-              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,40 )}..<span className=' text-blue-400'>Read More</span></p>
+              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,35 )}..<span className=' text-blue-400'>Read More</span></p>
             </div>
 
 

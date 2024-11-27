@@ -47,6 +47,7 @@ const Profile = () => {
 
   return (
     <>
+    
       <div className='w-11/12 h-full m-auto'>
         <p className=' text-2xl font-semibold my-4 pl-2 text-gray-800'>Your Post</p>
 
@@ -104,7 +105,7 @@ const Profile = () => {
                       className='inp'
                     />
 
-                    <button onClick={setUser} className='btn1'>Update</button>
+                    <button onClick={setUser} className='bg-green text-white'>Update</button>
 
                   </div>
                 </>

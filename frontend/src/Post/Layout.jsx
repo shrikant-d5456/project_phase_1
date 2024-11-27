@@ -10,6 +10,8 @@ import PostNavbar from '../components/PostNavbar'
 import ProtectedRoute from '../Utils/ProtectedRoute'
 import FiveStepValidation from "./FiveStepValidation"
 import Practioners from './Practioners'
+import PostSection from './PostSection'
+import SavePost from './SavePost'
 const Layout = () => {
   return (
     <>
@@ -23,10 +25,13 @@ const Layout = () => {
           <Route path='/createpost' element={<Createpost />} />
           <Route path='/post/editpost/:id' element={<EditPost />} />
           <Route path='/profile' element={<Profile />} />
-         
+          <Route path='/practitioner' element={<Practioners/>} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/post' element={<PostSection/>}/>
+          <Route path='/save-post' element={<SavePost/>}/>
         </Route>
 
-        <Route path='/practitioner' element={<Practioners/>} />
+        
       </Routes>
       <Footer />
     </>
