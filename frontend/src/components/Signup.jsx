@@ -4,6 +4,7 @@ import { URL } from '../url.js';
 import { Link, useNavigate } from 'react-router-dom'
 import Modal from "react-modal";
 import { BsXCircleFill } from 'react-icons/bs';
+import Home from '../Post/Home.jsx';
 
 
 const Signup = () => {
@@ -43,26 +44,27 @@ const Signup = () => {
 
   return (
     <>
+    <Home/>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className="transition-all"
         preventScroll={false}
       >
-        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[conic-gradient(var(--tw-gradient-stops))] from-[#fef08a] via-[#84cc16] to-[#275b21]'>
+        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-white/10'>
 
-          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-20 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full '
+          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 lg:top-20 md:top-20 top-16  pl-[10px] border-[1px] text-white bg-gray-800 rounded-full '
             onClick={CloseEventCall}
           ><BsXCircleFill />
           </button>
 
-          <div className=' lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8 p-4  rounded-tl-3xl rounded-br-3xl   loginbgimg'>
+          <div className=' lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8  rounded-tl-3xl rounded-br-3xl   loginbgimg'>
 
             <div className='lg:block hidden w-3/5'>
             </div>
 
             <div
-              className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#fff9] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
+              className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#ffffff57] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
             >
 
               <p className='font-bold text-xl text-center text-gray-800'>Unlock<br />Maximum Savings</p>

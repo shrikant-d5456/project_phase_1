@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { URL } from '../url';
 import { UserContext } from '../Utils/UserContext';
 import Comment from './Comment';
-import { BsYoutube } from 'react-icons/bs';
+import { BsBookmarkHeart, BsBookmarkHeartFill, BsHeart, BsYoutube } from 'react-icons/bs';
 import AdminIDs from "../AdminIDs";
 
 const PostDetails = () => {
@@ -18,6 +18,8 @@ const PostDetails = () => {
   const { user } = useContext(UserContext);
   const postId = useParams();
 
+  const [save,setSave]= useState(false);
+  
   const getPost = async () => {
     try {
       const resp = await axios.get(`${URL}/auth/post/${postId.id}`);
@@ -134,6 +136,19 @@ const PostDetails = () => {
 
           <div className='w-full m-auto p-2'>
             <div><img className='w-full lg:h-[550px] h-[250px]' src={post.img} alt="Post" /></div>
+
+            <div className='flex justify-end text-3xl font-bold my-2 mr-4'> 
+            {save ? <button onClick={()=>setSave(!save)} className=' text-red-500' >
+              <BsBookmarkHeartFill/>
+            </button>
+            :
+            <button onClick={()=>setSave(!save)}>
+                <BsBookmarkHeart/>
+            </button>
+            }
+            
+            </div>
+
             <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>Provided by @{post.username}</p>
             <h1 className='text-2xl font-bold text-gray-800 my-2'>{post.title}</h1>
             <div className='flex justify-start items-center gap-4 font-semibold'>Tags:

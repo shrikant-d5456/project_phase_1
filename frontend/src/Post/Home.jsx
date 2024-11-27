@@ -78,7 +78,11 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <div><button className='flex float-right bg-green px-4 py-1 text-white'>See More ⫸</button></div>
+        <div>
+          <Link to="/post">
+          <button className='flex float-right bg-green px-4 py-1 text-white'>See More ⫸</button>
+          </Link>
+          </div>
       </div>
       <Service/>
     </div>
