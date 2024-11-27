@@ -18,13 +18,14 @@ app.use(express.json());
 app.use(cors({origin:"http://localhost:5173"}));
 
 app.use("/auth/api", authRouter);
-app.use("/auth/user", userRouter);
+app.use("/auth/user", userRouter)
+;
 app.use("/auth/post", postRouter);
+
 app.use("/auth/comment", commentRouter);
 
 app.use("/auth/api/post", medicineRoutes);
 app.use("/auth/api", adminRoutes);
-
 
 app.use("/api/files", fileRoutes);
 

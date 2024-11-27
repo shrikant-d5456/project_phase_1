@@ -93,6 +93,19 @@ const PostSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
+    savedBy: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User', // Reference to the User model
+        },
+    ],    
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User', // Reference to the User model for likes
+        },
+    ],
+    
 }, { timestamps: true });
 
 export const Posts = mongoose.model("Post", PostSchema);

@@ -1,5 +1,5 @@
 import { Posts } from '../models/Post.js';
-
+import { User } from '../models/User.js';
 // Create a new post
 export const createPost = async (req, res) => {
     try {
@@ -66,7 +66,9 @@ export const getPost = async (req, res) => {
 
 // Search posts by title
 export const getSearchPost = async (req, res) => {
-    const { search } = req.query;
+    const { search } = req.body;
+
+    console.log("Request Body:", req.body); // Log the incoming body for debugging
 
     if (!search) {
         return res.status(400).json({ message: "Search query is required" });
@@ -74,16 +76,17 @@ export const getSearchPost = async (req, res) => {
 
     try {
         const searchFilter = {
-            title: { $regex: search, $options: "i" } 
+            title: { $regex: search, $options: "i" }
         };
 
         const getPosts = await Posts.find(searchFilter);
         res.status(200).json({ count: getPosts.length, data: getPosts });
     } catch (err) {
-        console.error(err); // Log the error for debugging
+        console.error("Error:", err);
         res.status(500).json({ message: "An error occurred while searching posts" });
     }
 };
+
 
 // Get all posts of a user
 export const getUserPost = async (req, res) => {
@@ -103,5 +106,64 @@ export const getAllPosts = async (req, res) => {
     } catch (err) {
         console.log(err)
         res.status(500).json(err);
+    }
+};
+
+
+export const savePost = async (req, res) => {
+    const { userId, postId } = req.body;
+
+    console.log(req.body);
+
+    // Check if required fields are present
+    if (!userId || !postId) {
+        return res.status(400).json({ msg: "User ID and Post ID are required." });
+    }
+
+    try {
+        // Check if the user exists
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ msg: "User not found." });
+        }
+
+        // Check if the post exists
+        const post = await Posts.findById(postId);
+        if (!post) {
+            return res.status(404).json({ msg: "Post not found." });
+        }
+
+        // Add the post to the user's savedPosts if not already added
+        if (!user.savedPosts.includes(postId)) {
+            user.savedPosts.push(postId);
+            await user.save();
+            return res.status(200).json({ msg: "Post saved successfully.", savedPosts: user.savedPosts });
+        } else {
+            return res.status(400).json({ msg: "Post already saved." });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ msg: "Internal server error.", error: error.message });
+    }
+};
+
+
+
+// Get Saved Posts
+export const getSavedPosts = async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const user = await User.findById(userId).populate('savedPosts'); // Ensure 'savedPosts' is populated if it references posts.
+
+        console.log(user);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        res.status(200).json({ savedPosts: user.savedPosts });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error.', error: error.message });
     }
 };
