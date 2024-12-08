@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const PlantInfo = () => {
-  return (
-    <div>
-      PlantInfo
-      PlantInfo
-    </div>
-  )
-}
+  return <div>PlantInfo PlantInfo</div>;
+};
 
-export default PlantInfo
+export default PlantInfo;
