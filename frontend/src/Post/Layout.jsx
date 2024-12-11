@@ -12,6 +12,7 @@ import FiveStepValidation from "./FiveStepValidation"
 import Practioners from './Practioners'
 import PostSection from './PostSection'
 import SavePost from './SavePost'
+import Quize from '../components/Quize'
 const Layout = () => {
   return (
     <>
@@ -30,6 +31,8 @@ const Layout = () => {
           <Route path='/post' element={<PostSection/>}/>
           <Route path='/save-post' element={<SavePost/>}/>
         </Route>
+        <Route path='/quize' element={<Quize/>}/>
+        
 
         
       </Routes>

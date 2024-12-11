@@ -144,14 +144,14 @@ const PostNavbar = () => {
       {/* Loading Indicator */}
       {loading && <p>Loading...</p>}
 
-      {/* Display Posts */}
+      {/* Display Posts
       <div className="post-list">
         {posts.length > 0 ? (
           posts.map(post => <PostCard key={post._id} post={post} />)
         ) : (
           !loading && <p>No posts found.</p>
         )}
-      </div>
+      </div> */}
 
     </header>
   )
