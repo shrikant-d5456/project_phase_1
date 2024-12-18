@@ -1,15 +1,15 @@
 import React from "react";
-import { allergy } from "../AllergiesData";
+import { diseases } from "../DiseasesData";
 
-const Allergies = () => {
-  console.log(allergy);
+const Diseases = () => {
+  console.log(diseases);
   return (
     <>
-      {allergy.map((item, index) => (
+      {diseases.map((item, index) => (
         <div className="flex flex-col gap-2 w-10/12 m-auto">
           <div className=" w-full md:flex gap-2">
-            <div className=" md:w-2/3 w-full border-[1px] border-gray-100 p-4 text-white rounded-xl shadow-md bg-gradient-to-r from-teal-400 to-lime-500">
-              <p className=" font-bold my-1"> Name of Allergies </p>
+            <div className=" md:w-2/3 w-full border-[1px] border-gray-100 p-4 text-white rounded-xl shadow-md bg-gradient-to-r from-indigo-400 to-cyan-400">
+              <p className=" font-bold my-1"> Name of Disease </p>
               {item.name}
               <hr className=" my-2" /> <p className=" font-bold mb-1">About</p>
               <p>{item.description}</p>
@@ -30,7 +30,7 @@ const Allergies = () => {
             <p>
               <p className=" font-bold my-2">Symptoms</p>
               {item.symptoms.map((item) => (
-                <p className=" bg-green-200 p-2 rounded-full my-1 text-center">
+                <p className=" bg-blue-200 p-2 rounded-full my-1 text-center">
                   {item}
                 </p>
               ))}
@@ -38,7 +38,7 @@ const Allergies = () => {
             </p>
             <p>
               <p className=" font-bold my-2">Home Remedies</p>
-              {item.home_remedies.map((item, index) => (
+              {item.remedies.map((item, index) => (
                 <p>
                   {index + 1} : {item}
                 </p>
@@ -52,4 +52,4 @@ const Allergies = () => {
   );
 };
 
-export default Allergies;
+export default Diseases;

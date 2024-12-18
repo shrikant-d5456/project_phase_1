@@ -13,6 +13,7 @@ import Practioners from "./Practioners";
 import PostSection from "./PostSection";
 import SavePost from "./SavePost";
 import Allergies from "../components/Allergies";
+import Diseases from "../components/Diseases";
 const Layout = () => {
   return (
     <>
@@ -34,8 +35,9 @@ const Layout = () => {
           <Route path="/post" element={<PostSection />} />
           <Route path="/save-post" element={<SavePost />} />
           <Route path="/allergies" element={<Allergies />} />
+          <Route path="/diseases" element={<Diseases />} />
+          
         </Route>
-        
       </Routes>
       <Footer />
     </>

@@ -76,6 +76,11 @@ const Home = () => {
             Allergies
           </li>
         </Link>
+        <Link to="/diseases">
+          <li className="hover:text-green lg:tracking-widest lg:uppercase">
+            Diseases
+          </li>
+        </Link>
       </div>
       <div className=" lg:px-14 my-8 ">
         <Slider />
