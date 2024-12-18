@@ -1,39 +1,18 @@
-import React, { useState } from 'react'
-import {Link} from "react-router-dom"
+import React, { useState } from 'react';
+import {Link} from "react-router-dom";
+import {Questions} from "../Data/Question"
 
 const Quize = () => {
-    const ele = [
-        {
-            id: 1,
-            q: "What is the capital of France?",
-            op1: "Berlin",
-            op2: "Madrid",
-            op3: "Paris",
-            op4: "Rome",
-            ans: "op3",
-            exp: "Paris is the capital city of France."
-        },
-        {
-            id: 2,
-            q: "What is the capital of France?",
-            op1: "Berlin",
-            op2: "Madrid",
-            op3: "Paris",
-            op4: "Rome",
-            ans: "op4",
-            exp: "Paris is the capital city of France."
-        },
-    ]
 
     return (
-        <div className='sm:w-10/12 w-full m-auto h-screen sm:p-8 p-4'>
-            <div className='flex gap-4 mb-4'>
+        <div className='sm:w-10/12 w-full m-auto h-full sm:p-8 p-4'>
+            <div className=' flex gap-4 mb-4'>
             <Link to='/practitioner'><p className=' font-bold text-xl my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Files</p></Link>
             <p className=' font-bold text-xl my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Quiz</p>        
             </div>
 
-            {ele.map((ele, ind) => (
-                <div className=' flex flex-col mb-8'>
+            {Questions.map((ele, ind) => (
+                <div className='bg-white flex flex-col mb-8'>
                     <QuizeSection ele={ele} ind={ind} />
                 </div>
             ))}

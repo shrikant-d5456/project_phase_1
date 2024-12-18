@@ -15,10 +15,12 @@
 }
 body{
   font-family: "Poppins", sans-serif;
-  background-color: rgb(255, 255, 255);
+  
+  background: rgb(236, 255, 231);
   /* background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0="); */
   background-repeat: no-repeat;
   background-attachment: fixed;
+  
   background-size: 100% 100%;
 }
 
@@ -121,4 +123,48 @@ li {
 li:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
+}
+
+
+
+
+
+.magic {
+  /* Initial styles */
+}
+
+.vanish {
+  -webkit-animation-name: vanishOut;
+  animation-name: vanishOut;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+@-webkit-keyframes vanishOut {
+  0% {
+    opacity: 1;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: scale(1, 1);
+    -webkit-filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: scale(2, 2);
+    -webkit-filter: blur(20px);
+  }
+}
+
+@keyframes vanishOut {
+  0% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+    transform: scale(1, 1);
+    -webkit-filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    transform: scale(2, 2);
+    -webkit-filter: blur(20px);
+  }
 }

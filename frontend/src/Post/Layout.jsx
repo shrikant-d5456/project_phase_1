@@ -13,6 +13,8 @@ import Practioners from './Practioners'
 import PostSection from './PostSection'
 import SavePost from './SavePost'
 import Quize from '../components/Quize'
+import Diseases from '../components/Diseases'
+import Allergies from '../components/Allergies'
 const Layout = () => {
   return (
     <>
@@ -26,12 +28,15 @@ const Layout = () => {
           <Route path='/createpost' element={<Createpost />} />
           <Route path='/post/editpost/:id' element={<EditPost />} />
           <Route path='/profile' element={<Profile />} />
-          <Route path='/practitioner' element={<Practioners/>} />
+          
           <Route path='/profile' element={<Profile />} />
           <Route path='/post' element={<PostSection/>}/>
           <Route path='/save-post' element={<SavePost/>}/>
         </Route>
+        <Route path='/practitioner' element={<Practioners/>} />
         <Route path='/quize' element={<Quize/>}/>
+        <Route path='/diseases' element={<Diseases />} />
+        <Route path='/allergies' element={<Allergies />} />
         
 
         

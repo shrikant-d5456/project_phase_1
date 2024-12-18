@@ -69,15 +69,6 @@ const Practioners = () => {
     return (
         <main>
 
-            <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll shadow-md'>
-                <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Home</li></Link>
-                <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></Link>
-                <Link to="/"> <li className='hover:text-green lg:tracking-widest lg:uppercase'>Plant Information</li></Link>
-                <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Practioner's</li></Link>
-                <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></Link>
-
-            </div>
-
             <div className="sm:flex w-full">
                 <div className=' sm:w-[300px]'>
                     <h1 className="lg:tracking-widest lg:uppercase bg-green text-white py-2 px-4 font-semibold">Files</h1>

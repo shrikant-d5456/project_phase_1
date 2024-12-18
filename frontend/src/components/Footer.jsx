@@ -3,8 +3,8 @@ import {BsGoogle,BsFacebook,BsTwitterX,BsInstagram,BsYoutube} from 'react-icons/
 
 function Footer() {
     return (
-        <div className='w-screen text-sm border-t-2'>
-            <footer className="lg:flex w-screen  bg-[#ffffff]">
+        <div className='w-screen text-sm border-t-2  bg-white'>
+            <footer className="lg:flex w-screen ">
 
                 <div className="lg:w-2/5 p-4 m-auto ">
                     <h1 className="text-2xl font-bold ml-4 mb-4"> Developer {`</>`} </h1><hr className='border-green' /> 

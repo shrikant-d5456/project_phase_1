@@ -41,22 +41,24 @@ const Home = () => {
 
   return (
     <div className='w-full'>
-      <div className='flex lg:justify-center justify-between lg:px-0 px-4 items-center p-2 text-[#284525] lg:gap-20 gap-4 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-scroll shadow-md'>
-      <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Home</li></Link>
-        <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase'>Post</li></a>
-        <a > <li className='hover:text-green lg:tracking-widest lg:uppercase'>Plant Information</li></a>
-        <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Practioner's</li></Link>
-        <a href="#service"><li className='hover:text-green lg:tracking-widest lg:uppercase'>Service</li></a>
+      <div className=' w-full bg-white flex lg:justify-center justify-between lg:px-0 px-4 items-center py-4 text-[#284525] lg:gap-20 gap-10 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-x-scroll  shadow-md'>
+      <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Home</li></Link>
+        <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Post</li></a>
+        <a > <li className='hover:text-green lg:tracking-widest lg:uppercase w-full whitespace-nowrap'>Plant Information</li></a>
+        <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Practioner's</li></Link>
+        <Link to="/diseases"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Diseases</li></Link>
+        <Link to="/allergies"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Allergies</li></Link>
+        <a href="#service"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Service</li></a>
         
       </div>
       <div className=' lg:px-14 my-8 '>
         <Slider />
       </div>
 
-      <div className=' lg:w-10/12 w-full m-auto flex gap-20 px-4 overflow-x-scroll'>
+      <div className=' bg-white md:w-11/12 w-full m-auto flex gap-10 p-4 overflow-x-scroll rounded-full'>
         {
           [...Array(10)].map(() => (
-            <div className=' w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
+            <div className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
               <img
                 className=' h-[100px] w-[100px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all'
                 src="https://krishnaayurved.com/cdn/shop/collections/Category_banner-05_720x.jpg?v=1661885544" alt="img" />

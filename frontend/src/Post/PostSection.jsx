@@ -25,7 +25,7 @@ const PostSection = () => {
 
   return (
     <div>
-      <div className='w-full flex flex-wrap lg:justify-start justify-center items-center m-auto '>
+      <div className=' w-full sm:w-10/12  flex flex-wrap lg:justify-start justify-center items-center m-auto '>
         {posts.map((post, index) => (
          <div key={index} className='lg:w-1/4'>
               <PostCard key={post._id} post={post} />
