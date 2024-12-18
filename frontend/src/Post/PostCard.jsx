@@ -1,8 +1,15 @@
 import React, { useContext, useEffect } from 'react'
+<<<<<<< HEAD:frontend/src/Post/PostCard.jsx
 import { UserContext } from '../Utils/UserContext.jsx';
 import { Link } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
+=======
+import { UserContext } from '../Context/UserContext.jsx';
+import { Link } from 'react-router-dom';
+
+const Hearder = ({ post }) => {
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9:frontend/src/pages/PostCard.jsx
 
   const { user } = useContext(UserContext);
   // console.log(user);
@@ -17,8 +24,11 @@ const PostCard = ({ post }) => {
   }
 
 
+<<<<<<< HEAD:frontend/src/Post/PostCard.jsx
   
   
+=======
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9:frontend/src/pages/PostCard.jsx
   // const hostPost = async () => {
   //   try {
   //     const resp = await axios.post(`${URL}/auth/api/post/admin/postData/${post._id}`);
@@ -38,16 +48,45 @@ const PostCard = ({ post }) => {
         <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
           <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
             <div>
+<<<<<<< HEAD:frontend/src/Post/PostCard.jsx
               <img className='w-full h-[150px]' src={post.img} alt="" />
             </div>
 
             <div>
               <h1 className='font-medium my-1'>{post.title.substring(0, 30)}..</h1>
+=======
+              <img className='w-full h-[200px]' src={post.img} alt="" />
+            </div>
+
+            {userType === "admin" ?
+              <div className='flex justify-end gap-[1px] mt-2'>
+                {post.validator1 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator2 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator3 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator4 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.validator5 === true ? <div className='bg-green-600 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-600 rounded-sm w-6 h-2 my-[1px]' />}
+              </div> : ""}
+            {userType === "admin" ?
+              <div className='flex justify-end gap-[1px]'>
+                {post.checked1 === true ? <div className='bg-yellow-400 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-500 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.checked2 === true ? <div className='bg-yellow-400 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-500 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.checked3 === true ? <div className='bg-yellow-400 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-500 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.checked4 === true ? <div className='bg-yellow-400 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-500 rounded-sm w-6 h-2 my-[1px]' />}
+                {post.checked5 === true ? <div className='bg-yellow-400 rounded-sm w-6 h-2 my-[1px]' /> : <div className='bg-red-500 rounded-sm w-6 h-2 my-[1px]' />}
+              </div> : ""}
+
+            <div>
+              <h1 className='font-medium my-1'>{post.title}</h1>
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9:frontend/src/pages/PostCard.jsx
               <span>
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
                 <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
               </span>
+<<<<<<< HEAD:frontend/src/Post/PostCard.jsx
               <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,35 )}..<span className=' text-blue-400'>Read More</span></p>
+=======
+              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0, 95)}..<span className=' text-blue-400'>Read More</span></p>
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9:frontend/src/pages/PostCard.jsx
             </div>
 
 
@@ -59,4 +98,8 @@ const PostCard = ({ post }) => {
   )
 }
 
+<<<<<<< HEAD:frontend/src/Post/PostCard.jsx
 export default PostCard
+=======
+export default Hearder
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9:frontend/src/pages/PostCard.jsx

@@ -16,10 +16,24 @@
 body{
   font-family: "Poppins", sans-serif;
   background-color: rgb(255, 255, 255);
+<<<<<<< HEAD
   /* background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0="); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+=======
+  background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0=");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.btn{
+  padding: 2px 8px;
+  color: aliceblue;
+  font-weight: 400;
+  font-size: medium;
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9
 }
 
 .inp{
@@ -27,10 +41,30 @@ body{
   font-size: small;
   color: rgb(78, 78, 78);
   padding: 5px 10px;
+<<<<<<< HEAD
   border: 1px solid rgb(240, 240, 240);
+=======
+  border: 1px solid rgb(255, 255, 255);
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9
   outline: none;
+  
 }
 
+<<<<<<< HEAD
+=======
+.awssld__bullets {
+  display: none;
+}
+
+.btn1{
+  background-color: #1aff00;
+  font-weight:500;
+  border-radius: 2px;
+  border: 2px solid rgb(0, 255, 0);
+  padding: 4px 20px;
+  color: rgba(255, 255, 255, 0.808);
+}
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9
 
 .anime {
   background-size: 400%;
@@ -94,6 +128,7 @@ body{
     transform: translate(-10px, -10px);
   }
 }
+<<<<<<< HEAD
     
 li {
   position: relative;
@@ -122,3 +157,6 @@ li:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
 }
+=======
+    
+>>>>>>> e5ee7ca266caf53a12b75b0fabda994dcfacb0b9
