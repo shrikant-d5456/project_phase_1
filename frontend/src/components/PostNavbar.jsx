@@ -53,7 +53,7 @@ const PostNavbar = () => {
       <div className='fixed top-0 z-50 w-full bg-white shadow-md '>
         
         <div className=' w-full bg-green text-white font-semibold text-center p-1 overflow-hidden'>
-          <p className=' text-sm '>Welcome to Our Website!</p>
+          <p className=' text-sm '>Welcome to AayurMedGuide!</p>
         </div>
 
         <div className='flex justify-between items-center p-4'>
