@@ -30,9 +30,10 @@ const Layout = () => {
           <Route path='/profile' element={<Profile />} />
           
           <Route path='/profile' element={<Profile />} />
-          <Route path='/post' element={<PostSection/>}/>
+          
           <Route path='/save-post' element={<SavePost/>}/>
         </Route>
+        <Route path='/post' element={<PostSection/>}/>
         <Route path='/practitioner' element={<Practioners/>} />
         <Route path='/quize' element={<Quize/>}/>
         <Route path='/diseases' element={<Diseases />} />

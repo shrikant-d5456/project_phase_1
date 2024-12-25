@@ -16,23 +16,28 @@
 body{
   font-family: "Poppins", sans-serif;
   
-  background: rgb(236, 255, 231);
+  background: #ecffe7;
   /* background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0="); */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
   background-size: 100% 100%;
 }
 
 .inp{
-  border-radius: 2px;
-  font-size: small;
-  color: rgb(78, 78, 78);
-  padding: 5px 10px;
-  border: 1px solid rgb(240, 240, 240);
-  outline: none;
+  @apply text-sm rounded-3xl text-gray-800  border-[1px] border-green-800  px-8 py-2;
 }
 
+
+.header-section{
+  @apply w-full py-8 flex flex-col justify-center items-center;
+}
+
+.heading{
+  @apply text-4xl font-extrabold text-green-800 text-center my-2;
+}
+.sub-heading{
+  @apply w-8/12 text-center;
+}
 
 .anime {
   background-size: 400%;

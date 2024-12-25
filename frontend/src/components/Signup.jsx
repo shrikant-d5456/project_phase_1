@@ -4,7 +4,6 @@ import { URL } from '../url.js';
 import { Link, useNavigate } from 'react-router-dom'
 import Modal from "react-modal";
 import { BsXCircleFill } from 'react-icons/bs';
-import Home from '../Post/Home.jsx';
 
 
 const Signup = () => {
@@ -44,14 +43,14 @@ const Signup = () => {
 
   return (
     <>
-    <Home/>
+   
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className="transition-all"
         preventScroll={false}
       >
-        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-white/10'>
+        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[#bcffa9]'>
 
           <button className=' absolute text-2xl w-[45px] h-[45px] z-10 lg:top-20 md:top-20 top-16  pl-[10px] border-[1px] text-white bg-gray-800 rounded-full '
             onClick={CloseEventCall}
@@ -64,7 +63,7 @@ const Signup = () => {
             </div>
 
             <div
-              className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#ffffff57] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
+              className=' lg:w-2/5 w-full flex flex-col gap-4  bg-white sm:bg-[#ffffff99] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
             >
 
               <p className='font-bold text-xl text-center text-gray-800'>Unlock<br />Maximum Savings</p>
@@ -78,7 +77,7 @@ const Signup = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder='Enter Username'
-                className='inp'
+                className='inp '
               />
 
               <input
@@ -86,7 +85,7 @@ const Signup = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='Enter Email'
-                className='inp'
+                className='inp '
               />
 
               <input
@@ -94,7 +93,7 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder='Enter Password'
-                className='inp'
+                className=' inp'
               />
 
               <input
@@ -102,7 +101,7 @@ const Signup = () => {
                 value={phoneNo}
                 onChange={(e) => setPhoneNo(e.target.value)}
                 placeholder='Enter PhoneNo'
-                className='inp'
+                className='inp '
               />
 
               <button
@@ -116,7 +115,7 @@ const Signup = () => {
 
               <p>
                 You already SignUp!
-                <Link to="/login" className="text-blue-500 text-sm underline px-1">
+                <Link to="/login" className="text-blue-500 uppercase font-semibold text-sm underline px-1">
                   Login
                 </Link>
               </p>

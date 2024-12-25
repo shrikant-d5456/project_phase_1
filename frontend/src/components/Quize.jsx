@@ -7,12 +7,12 @@ const Quize = () => {
     return (
         <div className='sm:w-10/12 w-full m-auto h-full sm:p-8 p-4'>
             <div className=' flex gap-4 mb-4'>
-            <Link to='/practitioner'><p className=' font-bold text-xl my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Files</p></Link>
-            <p className=' font-bold text-xl my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Quiz</p>        
+            <Link to='/practitioner'><p className=' font-bold text-md my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Files</p></Link>
+            <p className=' font-bold text-md my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Quiz</p>        
             </div>
 
             {Questions.map((ele, ind) => (
-                <div className='bg-white flex flex-col mb-8'>
+                <div className='bg-white flex flex-col mb-8 rounded-xl'>
                     <QuizeSection ele={ele} ind={ind} />
                 </div>
             ))}
@@ -33,7 +33,7 @@ const QuizeSection = ({ ele, ind }) => {
 
     return (
 
-        <div key={ind} className=' border-[1px] border-r-gray-50 shadow-xl sm:p-8 rounded-xl'>
+        <div key={ind} className=' border-[1px] border-r-gray-50 shadow-xl sm:p-8 p-4 rounded-xl'>
             <p className=' mb-2 text-base'><span className=' font-semibold'>Question {ind + 1}</span> : {ele.q}</p>
 
 

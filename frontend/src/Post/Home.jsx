@@ -6,6 +6,9 @@ import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
 import Service from '../components/Service.jsx';
+import Experts from '../components/Experts.jsx';
+import DiscoverAayurveda from '../components/DiscoverAayurveda.jsx';
+import PlayStoreApp from '../components/PlayStoreApp.jsx';
 
 
 const Home = () => {
@@ -38,6 +41,46 @@ const Home = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+   const array = [
+    {
+      img:"https://krishnaayurved.com/cdn/shop/collections/Category_banner-05_720x.jpg?v=1661885544",
+      data:"skin"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.gc2-7BZLD26q_AfqHv5nEAHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      data:"cought"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.1pkpHr3YhGV_cg5z8qLs9gHaF7?w=213&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      data:"fever "
+    },
+    {
+      img:"https://krishnaayurved.com/cdn/shop/collections/Category_banner-04_720x.jpg?v=1622649044",
+      data:"diabetes"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.g5YKFyJEATTRznzMy2ePjAHaEK?pid=ImgDet&w=184&h=103&c=7&dpr=1.3",
+      data:"hair"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.O6JTVqCZTJcfoMZ7hxyk-gHaG0?pid=ImgDet&w=184&h=169&c=7&dpr=1.3",
+      data:"diet"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.MSymyyfWMPd684YKtqL2DAHaFh?w=218&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      data:"immunity wellness"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.UmOeNQHori0DJrQLDdB2pgHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      data:"pain reliever"
+    },
+    {
+      img:"https://th.bing.com/th/id/OIP.OSYk3IFC-C2FO9QZjF3bHwHaLH?w=120&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+      data:"juices"
+    },
+
+
+  ]
 
   return (
     <div className='w-full'>
@@ -55,15 +98,17 @@ const Home = () => {
         <Slider />
       </div>
 
-      <div className=' bg-white md:w-11/12 w-full m-auto flex gap-10 p-4 overflow-x-scroll rounded-full'>
+      <div className=' bg-white md:w-11/12 w-full m-auto flex gap-10 p-2 overflow-x-scroll rounded-full'>
         {
-          [...Array(10)].map(() => (
-            <div className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
+          array.map((item) => (
+            <Link to={`post/${item.data}`}>
+            <div key={item} className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
               <img
-                className=' h-[100px] w-[100px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all'
-                src="https://krishnaayurved.com/cdn/shop/collections/Category_banner-05_720x.jpg?v=1661885544" alt="img" />
-              <p className=' text-sm'>shop/collections</p>
+                className=' h-[80px] w-[80px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all object-cover'
+                src={item.img} alt="img" />
+              <p className=' text-sm'>{item.data}</p>
             </div>
+            </Link>
           ))
         }
       </div>
@@ -86,7 +131,10 @@ const Home = () => {
           </Link>
           </div>
       </div>
+      <DiscoverAayurveda/>
       <Service/>
+      <Experts/>
+      <PlayStoreApp/>
     </div>
   );
 };

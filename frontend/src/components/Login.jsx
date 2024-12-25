@@ -6,7 +6,6 @@ import { UserContext } from '../Utils/UserContext.jsx';
 import { BsXCircleFill } from 'react-icons/bs';
 import Modal from "react-modal";
 import AdminIDs from '../AdminIDs.jsx';
-import Home from "../Post/Home.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,14 +41,14 @@ const Login = () => {
 
   return (
     <>
-    <Home/>
+   
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={CloseEventCall}
         className="transition-all"
         preventScroll={false}
       >
-        <div className="flex w-full h-screen justify-center items-center text-center bg-white/10">
+        <div className="flex w-full h-screen justify-center items-center text-center bg-[#bcffa9]">
           <button
             className="absolute text-2xl w-[45px] h-[45px] z-10 lg:top-20 md:top-20 top-16 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl"
             onClick={CloseEventCall}
@@ -60,7 +59,7 @@ const Login = () => {
           <div className="lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8  shadow-xl rounded-tl-3xl rounded-br-3xl loginbgimg">
             <div className="lg:block hidden w-3/5"></div>
 
-            <div className="lg:w-2/5 w-full flex flex-col gap-4 bg-[#ffffff57] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner">
+            <div className="lg:w-2/5 w-full flex flex-col gap-4 bg-white sm:bg-[#ffffff99] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner">
               <p className="font-bold text-xl text-center text-gray-800">
                 Unlock <br /> Maximum Savings
               </p>
@@ -95,7 +94,7 @@ const Login = () => {
 
               <p>
                 You Don't have an account?
-                <Link to="/signup" className="text-blue-500 text-sm underline px-1">
+                <Link to="/signup" className="text-blue-500 uppercase font-semibold text-sm underline px-1">
                   SignUp
                 </Link>
               </p>

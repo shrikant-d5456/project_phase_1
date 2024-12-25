@@ -17,7 +17,7 @@ const PostCard = ({ post }) => {
   }
 
 
-  
+  const updatedAtDate = new Date(post.updatedAt);
   
   // const hostPost = async () => {
   //   try {
@@ -45,7 +45,8 @@ const PostCard = ({ post }) => {
               <h1 className='font-medium my-1'>{post.title.substring(0, 30)}..</h1>
               <span>
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
-                <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
+                
+                <p className=' text-[10px] text-gray-00 my-1'>{(updatedAtDate).toLocaleString()}</p>
               </span>
               <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,35 )}..<span className=' text-blue-400'>Read More</span></p>
             </div>

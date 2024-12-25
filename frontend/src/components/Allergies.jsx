@@ -45,6 +45,7 @@ const Allergies = () => {
   return (
 
     <section className="relative">
+     
       {magic && <Magic/>}
       <div className=" fixed top-1 bg-white py-4 mt-24 w-full flex flex-wrap gap-2 justify-center my-4">
 

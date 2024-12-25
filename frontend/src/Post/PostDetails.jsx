@@ -105,7 +105,7 @@ const PostDetails = () => {
 
   return (
     <>
-      <div className='lg:w-10/12 lg:p-1 p-2 m-auto'>
+      <div className='lg:w-10/12 lg:p-4 p-2  m-auto bg-white '>
         <div key={post._id} className='w-full bg-transparent text-black '>
 
           {user?.id === AdminIDs[0]?.id &&
@@ -149,22 +149,22 @@ const PostDetails = () => {
             
             </div>
 
-            <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>Provided by @{post.username}</p>
+            <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>Published by @{post.username}</p>
             <h1 className='text-2xl font-bold text-gray-800 my-2'>{post.title}</h1>
-            <div className='flex justify-start items-center gap-4 font-semibold'>Tags:
+            <div className='flex justify-start items-center gap-4 font-semibold'>Tags :
               {post.categories?.map((d, i) => (
                 <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-green text-white'>{d}</p>
               ))}
             </div>
-            <p className='text-sm my-4 font-semibold'>Upload Date: <span className='font-light'>{post.updatedAt}</span></p>
-            <p className='text-sm text-gray-800 my-2 font-semibold'>Place of Origin: <span className='font-light'>{post.places}</span></p>
-            <p className='text-sm text-gray-800 my-2 font-semibold'>Harmful for: <span className='font-light'>{post.wpmh}</span></p>
+            <p className='text-sm my-4 font-semibold'>Upload Date : <span className='font-light'>{post.updatedAt}</span></p>
+            <p className='text-sm text-gray-800 my-2 font-semibold'>Place of Origin : <span className='font-light'>{post.places}</span></p>
+            <p className='text-sm text-gray-800 my-2 font-semibold'>Harmful for : <span className=' text-red-800 font-semibold'>{post.wpmh}</span></p>
 
             <hr />
-            <p className='font-medium text-base text-gray-800 my-2'>{post.desc}</p>
+            <p className='font-medium text-base text-gray-800 my-4 text-justify '>{post.desc}</p>
             <hr />
 
-            <div className='flex justify-start font-semibold my-2'>Ingredients:
+            <div className='flex justify-start font-semibold my-2'>Ingredients :
               <div>
                 {post.ingredient?.map((d, i) => (
                   <p key={i} className='w-fit flex gap-4 justify-center items-center px-2 pb-2 text-sm font-normal'>
@@ -175,11 +175,12 @@ const PostDetails = () => {
             </div>
 
             <div className='flex justify-start font-semibold my-2'>Steps:
-              <div>
+              <br />
+              <div >
                 {post.step?.map((d, i) => (
                   <>
-                    <p key={i} className='w-fit flex gap-2 justify-start items-center px-2 pb-2 text-sm font-normal text-justify'>
-                      <span className='bg-green w-fit text-white font-semibold p-2 rounded-full'>{i + 1}</span> {d}
+                    <p key={i} className='w-fit flex gap-2 justify-start items-start px-2 pb-2 text-sm font-normal text-justify'>
+                      <span className='bg-green text-sm text-white font-semibold lg:w-10 lg:h-10  rounded-full flex justify-center items-center'>{i + 1}</span> {d}
                     </p>
                     <hr className='border-[1px] my-2 border-green' />
                   </>
@@ -187,11 +188,14 @@ const PostDetails = () => {
               </div>
             </div>
 
-            <p className='flex items-center text-sm text-gray-800 mt-4 font-semibold'>Video link:
-              <a target='_blank' rel="noopener noreferrer" href={post.video_link} className='flex w-fit justify-center items-center ml-2 gap-2 bg-red-500 px-4 py-1 rounded-full text-white'>
+            {
+              post?.video_link && 
+              <p className='flex items-center text-sm text-gray-800 mt-4 font-semibold'>Video link:
+              <a target='_blank' rel="noopener noreferrer" href={post?.video_link} className='flex w-fit justify-center items-center ml-2 gap-2 bg-red-500 px-4 py-1 rounded-full text-white'>
                 <BsYoutube /> See Video
               </a>
             </p>
+            }
           </div>
 
           {
