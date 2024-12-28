@@ -15,7 +15,13 @@ const UserSchema = mongoose.Schema(
         password: {
             type: String,
             required: true
-        }
+        },
+        savedPosts: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Post', // Reference to the Post model
+            },
+        ],
     },
     { timestamps: true }
 );

@@ -1,8 +1,18 @@
 import express from 'express'; 
-import { createPost,deletePost,getAllPosts,getPost,getSearchPost,getUserPost,updatePost} from '../controller/Post.js';
+import { 
+    createPost,
+    deletePost,
+    getAllPosts,
+    getPost,
+    getSearchPost,
+    getUserPost,
+    updatePost,
+    getSavedPosts,
+    savePost
+} from '../controller/Post.js';
 
 const router = express.Router();
-
+// router.get('/user/getsavepost',getSavedPosts);
 // Create post
 router.post('/:id', createPost);
 
@@ -22,6 +32,10 @@ router.get('/user/:userId', getUserPost);
 router.get('/', getAllPosts);
 
 // Search posts
-// router.get('/', getSearchPost);
+router.post('/search', getSearchPost);
+
+router.post('/user/savepost', savePost);
+
+router.get('/user/:userId/getsavedposts',getSavedPosts);
 
 export default router;

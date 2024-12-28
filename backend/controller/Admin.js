@@ -129,4 +129,8 @@ export const getAllAdmin = async (req, res) => {
             error: err.message
         });
     }
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 7b0c85063715e2ce6a98b30ded675395b737bff0
