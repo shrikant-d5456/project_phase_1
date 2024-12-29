@@ -8,7 +8,7 @@ import { BsPlusCircleFill, BsXCircle } from 'react-icons/bs';
 
 const Createpost = () => {
     const { user } = useContext(UserContext);
-    console.log("User ID:", user?.id, "Username:", user?.username);
+    // console.log("User ID:", user?.id, "Username:", user?.username);
 
     const usenavigate = useNavigate();
     const ingredientFocus = useRef(0);
@@ -85,7 +85,7 @@ const Createpost = () => {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log(resp.data);
+                // console.log(resp.data);
                 alert("your post is uploadded");
                 usenavigate("/");
             }

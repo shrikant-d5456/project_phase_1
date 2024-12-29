@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
 import { BsXCircleFill } from 'react-icons/bs';
 import Modal from "react-modal";
-import AdminIDs from '../AdminIDs.jsx';
+import AdminIDs from '../Utils/AdminIDs.jsx';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ const Login = () => {
     try {
       const resp = await axios.post(`${URL}/auth/api/login`, { email, password });
       setUser(resp.data);
-      console.log("Login successful");
+      // console.log("Login successful");
       setErr(false);
       setModalIsOpen(false);
 
@@ -29,7 +29,7 @@ const Login = () => {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setErr(true);
     }
   };

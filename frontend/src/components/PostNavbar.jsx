@@ -15,7 +15,7 @@ const PostNavbar = () => {
   const handlelogout = async () => {
     try {
       const resp = await axios.post(URL + "/auth/api/logout")
-      console.log(resp.data);
+      // console.log(resp.data);
       setUser(null);
       setmenu(false)
       navigate('/login');

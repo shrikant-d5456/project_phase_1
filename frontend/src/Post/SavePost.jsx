@@ -14,7 +14,7 @@ const SavePost = () => {
     try {
       const resp = await axios.get(`${URL}/auth/user/${user.id}`);
       setSavePosts(resp.data.data.savedPosts || []);
-      console.log('Saved posts:', resp.data.data.savedPosts);
+      // console.log('Saved posts:', resp.data.data.savedPosts);
     } catch (err) {
       console.error('Error fetching saved posts:', err);
     }
@@ -24,7 +24,7 @@ const SavePost = () => {
     try {
       const resp = await axios.get(`${URL}/auth/post`);
       setPosts(resp.data.data || []);
-      console.log('Posts:', resp.data.data);
+      // console.log('Posts:', resp.data.data);
     } catch (err) {
       console.error('Error fetching posts:', err);
     }
@@ -43,7 +43,7 @@ const SavePost = () => {
     if (posts.length > 0 && saveposts.length > 0) {
       const matched = posts.filter((post) => saveposts.includes(post._id));
       setMatchedPosts(matched);
-      console.log('Matched posts:', matched);
+      // console.log('Matched posts:', matched);
     }
   }, [posts, saveposts]);
 

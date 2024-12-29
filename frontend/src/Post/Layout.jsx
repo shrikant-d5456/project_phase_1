@@ -12,9 +12,9 @@ import FiveStepValidation from "./FiveStepValidation"
 import Practioners from './Practioners'
 import PostSection from './PostSection'
 import SavePost from './SavePost'
-import Quize from '../components/Quize'
-import Diseases from '../components/Diseases'
-import Allergies from '../components/Allergies'
+import Quize from '../pages/Quize'
+import Diseases from '../pages/Quize'
+import Allergies from '../pages/Quize'
 const Layout = () => {
   return (
     <>

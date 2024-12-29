@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { URL } from '../url';
-import { UserContext } from '../Utils/UserContext';
-import ProfilePost from './ProfilePost';
-import AdminIDs from '../AdminIDs';
+import { URL } from '../url.js';
+import { UserContext } from '../Utils/UserContext.jsx';
+import ProfilePost from './ProfilePost.jsx';
+import AdminIDs from '../Utils/AdminIDs.jsx';
 // import Navbar from '../components/Navbar';
 
 const Profile = () => {
@@ -35,7 +35,7 @@ const Profile = () => {
         password
       });
       setData(resp.data.data);
-      console.log("updated ")
+      // console.log("updated ")
     } catch (err) {
       console.log(err);
     }

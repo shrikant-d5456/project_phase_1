@@ -46,8 +46,8 @@ const DiscoverAayurveda = () => {
 
         <div className=' sm:w-1/3 w-full h-fit grid md:grid-cols-1  justify-center items-center gap-1 '>
           {
-            array.map((item) => (
-              <div className='sm:flex flex flex-col sm:flex-row-reverse justify-center items-center gap-2 w-full py-4 '>
+            array.map((item,ind) => (
+              <div  key={ind} className='sm:flex flex flex-col sm:flex-row-reverse justify-center items-center gap-2 w-full py-4 '>
                 <span className='flex  w-fit'>
                   <img src={item.img} alt='img'
                     className=' w-10 '
@@ -75,8 +75,8 @@ const DiscoverAayurveda = () => {
 
         <div className=' sm:w-1/3 w-full h-fit grid md:grid-cols-1  justify-center items-center gap-1 '>
           {
-            array.map((item) => (
-              <div className='sm:flex flex flex-col sm:flex-row justify-center items-center gap-2 w-full py-4 '>
+            array.map((item, ind) => (
+              <div key={ind} className='sm:flex flex flex-col sm:flex-row justify-center items-center gap-2 w-full py-4 '>
                 <span className='flex  w-fit'>
                   <img src={item.img} alt='img'
                     className=' w-10 '

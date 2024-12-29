@@ -318,5 +318,3 @@ export const allergy = [
     },
   ];
   
-  // Log the sample data
-  console.log(allergy);

@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { URL } from '../url';
-import { UserContext } from '../Utils/UserContext';
-import Comment from './Comment';
+import { URL } from '../url.js';
+import { UserContext } from '../Utils/UserContext.jsx';
+import Comment from './Comment.jsx';
 import { BsBookmarkHeart, BsBookmarkHeartFill, BsHeart, BsYoutube } from 'react-icons/bs';
-import AdminIDs from "../AdminIDs";
+import AdminIDs from "../Utils/AdminIDs.jsx";
 
 const PostDetails = () => {
   const [post, setPost] = useState({});

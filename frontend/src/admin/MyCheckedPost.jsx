@@ -4,7 +4,7 @@ import { URL } from '../url.js';
 // import { Link } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
 import AdminPostCard from './AdminPostCard.jsx';
-import AdminIDs from '../AdminIDs.jsx';
+import AdminIDs from '../Utils/AdminIDs.jsx';
 
 const MyCheckedPost = () => {
 

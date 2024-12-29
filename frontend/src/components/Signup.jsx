@@ -21,7 +21,7 @@ const Signup = () => {
   const handlereg = async () => {
     try {
       const resp = await axios.post(URL + "/auth/api/sign", { username, email, password });
-      console.log("signup :" + resp.data);
+      // console.log("signup :" + resp.data);
 
       setUsername(resp.data.username);
       setEmail(resp.data.email);
@@ -39,7 +39,7 @@ const Signup = () => {
     navigate("/");
   }
 
-  console.log(username, email, password);
+  // console.log(username, email, password);
 
   return (
     <>

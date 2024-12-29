@@ -5,10 +5,10 @@ import Slider from '../components/Slider.jsx';
 import { URL } from '../url.js';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
-import Service from '../components/Service.jsx';
-import Experts from '../components/Experts.jsx';
-import DiscoverAayurveda from '../components/DiscoverAayurveda.jsx';
-import PlayStoreApp from '../components/PlayStoreApp.jsx';
+import Service from '../pages/Service.jsx';
+import Experts from '../pages/Experts.jsx';
+import DiscoverAayurveda from '../pages/DiscoverAayurveda.jsx';
+import PlayStoreApp from '../pages/PlayStoreApp.jsx';
 
 
 const Home = () => {
@@ -20,9 +20,8 @@ const Home = () => {
   const getposts = async () => {
     try {
       const resp = await axios.get(`${URL}/auth/api/post/hostData`);
-      console.log("aaaaaaaaaa : "+resp.data);
       setposts(resp.data.data);
-      // console.log("aaaaaaaaaaaa : "+resp.data.data);
+      
     } catch (err) {
       setError(err.msg);
     } finally {
@@ -87,7 +86,7 @@ const Home = () => {
       <div className=' w-full bg-white flex lg:justify-center justify-between lg:px-0 px-4 items-center py-4 text-[#284525] lg:gap-20 gap-10 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-x-scroll  shadow-md'>
       <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Home</li></Link>
         <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Post</li></a>
-        <a > <li className='hover:text-green lg:tracking-widest lg:uppercase w-full whitespace-nowrap'>Plant Information</li></a>
+        <a href='#'> <li className='hover:text-green lg:tracking-widest lg:uppercase w-full whitespace-nowrap'>Plant Information</li></a>
         <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Practioner's</li></Link>
         <Link to="/diseases"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Diseases</li></Link>
         <Link to="/allergies"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Allergies</li></Link>
@@ -100,9 +99,9 @@ const Home = () => {
 
       <div className=' bg-white md:w-11/12 w-full m-auto flex gap-10 p-2 overflow-x-scroll rounded-full'>
         {
-          array.map((item) => (
-            <Link to={`post/${item.data}`}>
-            <div key={item} className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
+          array.map((item, ind) => (
+            <Link key={ind} to={`post/${item.data}`}>
+            <div className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
               <img
                 className=' h-[80px] w-[80px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all object-cover'
                 src={item.img} alt="img" />

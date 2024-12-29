@@ -1,12 +1,11 @@
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../Utils/UserContext.jsx';
 import { Link } from 'react-router-dom';
-import AdminIDs from '../AdminIDs.jsx';
+import AdminIDs from '../Utils/AdminIDs.jsx';
 
 const PostCard = ({ post }) => {
 
   const { user } = useContext(UserContext);
-  // console.log(user);
 
   let userType;
 
@@ -17,15 +16,6 @@ const PostCard = ({ post }) => {
     userType="";
   }
 
-
-  // const hostPost = async () => {
-  //   try {
-  //     const resp = await axios.post(`${URL}/auth/api/post/admin/postData/${post._id}`);
-  //     console.log(resp.msg);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   return (
     <>

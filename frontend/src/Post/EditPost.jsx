@@ -48,7 +48,7 @@ const EditPost = () => {
         try {
             const updatedPost = { title, img, desc, categories: cats };
             const resp = await axios.put(`${URL}/auth/post/${postId}`, updatedPost);
-            console.log(resp);
+            // console.log(resp);
             navigate('/');
         } catch (err) {
             console.log(err);

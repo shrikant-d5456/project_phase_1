@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { allergy } from "../Data/Allergies";
 import { BsSearch } from "react-icons/bs";
-import Magic from "./Magic";
+import Magic from "../components/Magic";
 
 
 const Allergies = () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DiseasesData } from "../Data/Diseases";
 import { BsSearch } from "react-icons/bs";
-import Magic from "./Magic";
+import Magic from "../components/Magic";
 
 const Diseases = () => {
   const [category, setCategory] = useState("all");

@@ -38,8 +38,8 @@ const Experts = () => {
 
       <div className=" w-full sm:flex justify-center items-center gap-8 ">
        {
-        array.map((item)=>(
-          <div className=" hover:scale-110 bg-[#FFF7E2] rounded-3xl overflow-hidden flex flex-col justify-center items-center mb-8 shadow-xl transition-all cursor-pointer">
+        array.map((item, ind)=>(
+          <div key={ind}  className=" hover:scale-110 bg-[#FFF7E2] rounded-3xl overflow-hidden flex flex-col justify-center items-center mb-8 shadow-xl transition-all cursor-pointer">
           <div className=" relative overflow-hidden top-6 gap-2">
             <img src={item.img} alt="img" 
              className="rounded-full w-32 h-32 object-cover"
