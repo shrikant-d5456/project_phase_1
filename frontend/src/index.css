@@ -15,31 +15,6 @@
 }
 body{
   font-family: "Poppins", sans-serif;
-<<<<<<< HEAD
-  background-color: rgb(255, 255, 255);
-  background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0=");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-
-.btn{
-  padding: 2px 8px;
-  color: aliceblue;
-  font-weight: 400;
-  font-size: medium;
-}
-
-.inp{
-  border-radius: 2px;
-  font-size: small;
-  color: rgb(78, 78, 78);
-  padding: 5px 10px;
-  border: 1px solid rgb(255, 255, 255);
-  outline: none;
-  
-=======
-  
   background: #ecffe7;
   /* background-image: url("https://media.istockphoto.com/id/1410929268/photo/green-background.jpg?s=612x612&w=0&k=20&c=JtZ3lhjJoRF5CCqBwYwUa0D5XFoeKzlPK6RQ-yFA7F0="); */
   background-repeat: no-repeat;
@@ -49,7 +24,6 @@ body{
 
 .inp{
   @apply text-sm rounded-3xl text-gray-800  border-[1px] border-green-800  px-8 py-2;
->>>>>>> 7b0c85063715e2ce6a98b30ded675395b737bff0
 }
 
 
@@ -57,21 +31,11 @@ body{
   @apply w-full py-8 flex flex-col justify-center items-center;
 }
 
-<<<<<<< HEAD
-.btn1{
-  background-color: #1aff00;
-  font-weight:500;
-  border-radius: 2px;
-  border: 2px solid rgb(0, 255, 0);
-  padding: 4px 20px;
-  color: rgba(255, 255, 255, 0.808);
-=======
 .heading{
   @apply text-4xl font-extrabold text-green-800 text-center my-2;
 }
 .sub-heading{
   @apply w-8/12 text-center;
->>>>>>> 7b0c85063715e2ce6a98b30ded675395b737bff0
 }
 
 .anime {
@@ -136,9 +100,6 @@ body{
     transform: translate(-10px, -10px);
   }
 }
-<<<<<<< HEAD
-    
-=======
     
 li {
   position: relative;
@@ -211,4 +172,3 @@ li:hover .tooltip-text {
     -webkit-filter: blur(20px);
   }
 }
->>>>>>> 7b0c85063715e2ce6a98b30ded675395b737bff0

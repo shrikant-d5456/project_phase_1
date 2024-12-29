@@ -15,6 +15,7 @@ import SavePost from './SavePost'
 import Quize from '../components/Quize'
 import Diseases from '../components/Diseases'
 import Allergies from '../components/Allergies'
+import MedicinalPlants from '../components/MedicinalPlants'
 const Layout = () => {
   return (
     <>
@@ -38,6 +39,7 @@ const Layout = () => {
         <Route path='/quize' element={<Quize/>}/>
         <Route path='/diseases' element={<Diseases />} />
         <Route path='/allergies' element={<Allergies />} />
+        <Route path='/medicinalplants' element={<MedicinalPlants />} />
         
 
         

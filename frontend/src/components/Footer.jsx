@@ -1,18 +1,6 @@
 import React from 'react';
 import {BsGoogle,BsFacebook,BsTwitterX,BsInstagram,BsYoutube} from 'react-icons/bs';
 
-<<<<<<< HEAD
-const Footer = () => {
-  return (
-    <div className='w-full bg-[#1aff00] text-white bottom-1'>
-      <p className=' text-center'> Footer</p>
-    </div>
-  )
-}
-
-export default Footer
-
-=======
 function Footer() {
     return (
         <div className='w-screen text-sm border-t-2  bg-white'>
@@ -60,4 +48,3 @@ function Footer() {
 }
 
 export default Footer
->>>>>>> 7b0c85063715e2ce6a98b30ded675395b737bff0
