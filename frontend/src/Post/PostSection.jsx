@@ -5,14 +5,18 @@ import { URL } from '../url.js';
 import { UserContext } from '../Utils/UserContext.jsx';
 import { BsSearch } from 'react-icons/bs';
 import Magic from '../components/Magic.jsx';
+import Select from '../components/Select.jsx';
 
-const PostSection = () => {
+const PostSection = ({ send }) => {
   const [posts, setPosts] = useState([]);
   const [filters, setFilters] = useState([]);
-  const [tag, settag] = useState("All");
-  const { user } = useContext(UserContext);
+  const [tag, settag] = useState(send || 'All');
   const [magic, setMagic] = useState(false);
   const [input, setInput] = useState("");
+
+  const tags = ['All', 'skin', 'cough', 'fever', 'diabetes', 'hair', 'diet', 'immunity', 'pain', 'juices'];
+  const ingredient = ['All', 'Turmeric', 'Neem', 'Triphala', 'Ala', 'Herbal Tea', 'Honey'];
+  const places = ['All', 'india', 'mumbai'];
 
   const getPosts = async () => {
     try {
@@ -54,27 +58,26 @@ const PostSection = () => {
     );
     setFilters(filteredPosts);
 
-      setTimeout(() => {
-        setMagic(false);
-      }, 2000);
-      setMagic(true);
-    };
+    setTimeout(() => {
+      setMagic(false);
+    }, 2000);
+    setMagic(true);
+  };
 
-  const tags = ['All', 'immunity', 'weight loss','cough',''];
-  const ingredient = ['All', 'Turmeric', 'Neem', 'Triphala', 'Ala', 'Herbal Tea', 'Honey'];
-  const places = ['All', 'india', 'mumbai'];
+
 
   return (
     <div className='sm:flex '>
       <div className='sm:w-64 w-full sm:h-screen flex-col sm:flex-row  p-4 bg-white'>
 
         <div className=' py-4 border-b-2 border-green flex'>
-          <input
-            type="text"
-            placeholder="Search post .."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+          <Select
+            options={tags}
             className="border-[1px] text-sm border-gray-300 px-4 py-2  outline-none"
+            placeholder="Search by tags.."
+            inp={input}
+            setInp={setInput}
+            width={200} //width length 100 200 250 300 400
           />
           <button
             onClick={handleSearch}
@@ -88,8 +91,9 @@ const PostSection = () => {
           <p className=' font-semibold text-sm mb-2'>Filter By Tags</p>
           <div className='flex flex-wrap gap-2 justify-start items-start m-auto'>
             {
-              tags.map((item) => (
+              tags.map((item, ind) => (
                 <button
+                  key={ind}
                   className={` text-sm font-semibold border-[1px] border-green rounded-full px-2 py-1 ${item === tag ? "bg-green text-white" : "text-green"}`}
                   onClick={() => onClickTag(item)}
                 >{item}</button>
@@ -102,8 +106,9 @@ const PostSection = () => {
           <p className=' font-semibold text-sm mb-2'>Filter By Ingredient</p>
           <div className='flex flex-wrap gap-2 justify-start items-start m-auto'>
             {
-              ingredient.map((item) => (
+              ingredient.map((item, ind) => (
                 <button
+                  key={ind}
                   className={` text-sm font-semibold border-[1px] border-green rounded-full px-2 py-1 ${item === tag ? "bg-green text-white" : "text-green"}`}
                   onClick={() => onClickTag(item)}
                 >{item}</button>
@@ -116,8 +121,9 @@ const PostSection = () => {
           <p className=' font-semibold text-sm mb-2'>Filter By Places</p>
           <div className='flex flex-wrap gap-2 justify-start items-start m-auto'>
             {
-              places.map((item) => (
+              places.map((item, ind) => (
                 <button
+                  key={ind}
                   className={` text-sm font-semibold border-[1px] border-green rounded-full px-2 py-1 ${item === tag ? "bg-green text-white" : "text-green"}`}
                   onClick={() => onClickTag(item)}
                 >{item}</button>
@@ -129,7 +135,7 @@ const PostSection = () => {
       </div>
 
       <div className='w-full sm:w-11/12 grid md:grid-cols-4 grid-cols-2 gap-2 justify-start  items-start px-4'>
-      {magic && <Magic/>}
+        {magic && <Magic />}
         {filters.map((post, index) => (
           <div key={index} >
             <PostCard key={post._id} post={post} />

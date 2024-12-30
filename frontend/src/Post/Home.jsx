@@ -47,7 +47,7 @@ const Home = () => {
     },
     {
       img:"https://th.bing.com/th/id/OIP.gc2-7BZLD26q_AfqHv5nEAHaE8?w=254&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-      data:"cought"
+      data:"cough"
     },
     {
       img:"https://th.bing.com/th/id/OIP.1pkpHr3YhGV_cg5z8qLs9gHaF7?w=213&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
@@ -67,11 +67,11 @@ const Home = () => {
     },
     {
       img:"https://th.bing.com/th/id/OIP.MSymyyfWMPd684YKtqL2DAHaFh?w=218&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-      data:"immunity wellness"
+      data:"immunity-wellness"
     },
     {
       img:"https://th.bing.com/th/id/OIP.UmOeNQHori0DJrQLDdB2pgHaE8?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-      data:"pain reliever"
+      data:"pain-reliever"
     },
     {
       img:"https://th.bing.com/th/id/OIP.OSYk3IFC-C2FO9QZjF3bHwHaLH?w=120&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
@@ -100,7 +100,7 @@ const Home = () => {
       <div className=' bg-white md:w-11/12 w-full m-auto flex gap-10 p-2 overflow-x-scroll rounded-full'>
         {
           array.map((item, ind) => (
-            <Link key={ind} to={`post/${item.data}`}>
+            <Link key={ind} to={`/${item.data}`}>
             <div className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
               <img
                 className=' h-[80px] w-[80px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all object-cover'

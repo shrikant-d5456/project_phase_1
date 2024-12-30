@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import PostDetails from './PostDetails'
 import Createpost from './Createpost'
 import EditPost from './EditPost'
@@ -15,6 +15,7 @@ import SavePost from './SavePost'
 import Quize from '../pages/Quize'
 import Diseases from '../pages/Quize'
 import Allergies from '../pages/Quize'
+import SearchParam from './SearchParam'
 const Layout = () => {
   return (
     <>
@@ -39,7 +40,9 @@ const Layout = () => {
         <Route path='/diseases' element={<Diseases />} />
         <Route path='/allergies' element={<Allergies />} />
         
-
+      
+          <Route path="/:param" element={<SearchParam/>} /> 
+        
         
       </Routes>
       <Footer />

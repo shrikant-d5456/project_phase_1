@@ -4,6 +4,7 @@ import { URL } from '../url';
 import { UserContext } from '../Utils/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { BsPlusCircleFill, BsXCircle } from 'react-icons/bs';
+import Select from '../components/Select';
 // import Navbar from '../components/Navbar';
 
 const Createpost = () => {
@@ -95,10 +96,12 @@ const Createpost = () => {
             }
         }
     };
+    const tags = ['All', 'skin', 'cough', 'fever', 'diabetes', 'hair', 'diet', 'immunity-wellness', 'pain-reliever', 'juices'];
+
 
     return (
         <div className='flex flex-col gap-4 w-full h-full m-auto pb-8 mt-4'>
-            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#ccffc199] shadow-xl '>
+            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#ccffc199] shadow-xl  border-4 border-white'>
                 <h1 className=' text-2xl font-semibold my-2 text-gray-800'>Create Post</h1>
 
                 <input
@@ -170,10 +173,10 @@ const Createpost = () => {
                         onClick={addIngredient}
                         className=' bg-green text-white font-semibold px-2'
                     >
-                    <BsPlusCircleFill />
+                        <BsPlusCircleFill />
                     </button>
                 </div>
-                
+
                 <div className='flex gap-2 flex-wrap'>
                     {ingredients.map((c, index) => (
                         <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
@@ -204,7 +207,7 @@ const Createpost = () => {
                 <div className='flex flex-wrap items-center gap-2'>
                     {steps.map((c, index) => (
                         <div key={index} className='flex gap-2 text-sm items-center bg-slate-200 rounded-r-full  py-1 px-2 shadow-xl'>
-                            <p className='w-fit px-4'><span className='font-semibold'>step {index+1} : </span> {c}</p>
+                            <p className='w-fit px-4'><span className='font-semibold'>step {index + 1} : </span> {c}</p>
                             <button onClick={() => deleteStep(index)} className=' rounded-full text-white bg-red-600 h-7 w-7 flex justify-center items-center' ><BsXCircle /></button>
                         </div>
                     ))}
@@ -213,12 +216,13 @@ const Createpost = () => {
                 <hr className='border-[1px] border-green-800' />
 
                 <div className='flex w-full'>
-                    <input
-                        value={cat}
-                        onChange={(e) => setCat(e.target.value)}
-                        type="text"
-                        placeholder='Enter category'
-                        className='inp w-full'
+                    <Select
+                        options={tags}
+                        className="border-[1px] text-sm border-gray-300 px-4 py-2  outline-none"
+                        placeholder="Add tags.."
+                        inp={cat}
+                        setInp={setCat}
+                        width={400} //width length 100 200 250 300 400
                     />
                     <button
                         onClick={addCategory}
