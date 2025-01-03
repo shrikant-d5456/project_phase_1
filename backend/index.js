@@ -18,9 +18,14 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: "https://project-phase-1-psi.vercel.app",
-    methods: ["POST", "GET", "DELETE", "PUT"]
+    origin: "https://project-phase-1-psi.vercel.app", // Allow your frontend origin
+    methods: ["POST", "GET", "DELETE", "PUT", "OPTIONS"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Headers allowed
+    credentials: true // Allow cookies or authorization headers
 }));
+
+// Handle preflight (OPTIONS) requests
+app.options('*', cors());
 // Example route
 app.get('/', (req, res) => {
     res.send('CORS-enabled server is running!');
