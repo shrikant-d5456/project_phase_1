@@ -18,7 +18,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin:["https://project-phase-1-psi.vercel.app"],
+    origin:"https://project-phase-1-psi.vercel.app",
     methods:["POST","GET","DELETE","PUT"],
 }));
 
