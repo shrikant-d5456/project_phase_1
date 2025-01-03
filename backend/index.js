@@ -18,9 +18,13 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin:"https://project-phase-1-psi.vercel.app",
-    methods:["POST","GET","DELETE","PUT"],
+    origin: "https://project-phase-1-psi.vercel.app",
+    methods: ["POST", "GET", "DELETE", "PUT"]
 }));
+// Example route
+app.get('/', (req, res) => {
+    res.send('CORS-enabled server is running!');
+});
 
 app.use("/auth/api", authRouter);
 app.use("/auth/user", userRouter)
