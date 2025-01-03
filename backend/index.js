@@ -15,8 +15,10 @@ import fileRoutes from "./routes/fileRoutes.js"
 const app = express();
 
 app.use(express.json());
+
+
 app.use(cors({
-    origin:["http://localhost:5173"],
+    origin:["https://project-phase-1-psi.vercel.app"],
     methods:["POST","GET","DELETE","PUT"],
 }));
 
