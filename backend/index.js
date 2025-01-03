@@ -15,7 +15,10 @@ import fileRoutes from "./routes/fileRoutes.js"
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin:"http://localhost:5173"}));
+app.use(cors({
+    origin:"http://localhost:5173",
+    methods:["POST","GET","DELETE","PUT"],
+}));
 
 app.use("/auth/api", authRouter);
 app.use("/auth/user", userRouter)
