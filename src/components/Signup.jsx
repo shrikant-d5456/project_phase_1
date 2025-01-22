@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { URL } from '../url.js';
-import {Link, useNavigate } from 'react-router-dom'
+ 
+import { Link, useNavigate } from 'react-router-dom'
 import Modal from "react-modal";
-import Home from './Home.jsx';
-import {BsXCircleFill } from 'react-icons/bs';
+import { BsXCircleFill } from 'react-icons/bs';
 
 
 const Signup = () => {
@@ -14,22 +13,22 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [err, setErr] = useState(false);
-  const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [closeModal, setcloseModal] = useState(false);
+  const navigate = useNavigate();
+
 
   const handlereg = async () => {
     try {
       const resp = await axios.post(URL + "/auth/api/sign", { username, email, password });
-      console.log("signup :" + resp.data)
+      // console.log("signup :" + resp.data);
 
-      setUsername(resp.data.username)
-      setEmail(resp.data.email)
-      setPassword(resp.data.password)
-      setErr(false)
-      navigate('/login')
-    }
-    catch (err) {
+      setUsername(resp.data.username);
+      setEmail(resp.data.email);
+      setPassword(resp.data.password);
+      setErr(false);
+      navigate('/login');
+    } catch (err) {
       console.log(err)
       setErr(true)
     }
@@ -40,44 +39,45 @@ const Signup = () => {
     navigate("/");
   }
 
-  console.log(username, email, password);
+  // console.log(username, email, password);
 
   return (
     <>
-      <Home />
-
+   
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className="transition-all"
         preventScroll={false}
       >
-        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-[#0cff0c53] shadow-2xl'>
+        <div className=' fixed flex w-full h-full justify-center  items-center text-center bg-white sm:bg-[#bcffa9]'>
 
-          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 top-24 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl'
+          <button className=' absolute text-2xl w-[45px] h-[45px] z-10 lg:top-20 md:top-20 top-16  pl-[10px] sm:border-[1px] text-white bg-gray-800 rounded-full '
             onClick={CloseEventCall}
           ><BsXCircleFill />
           </button>
 
-          <div className=' lg:w-8/12 w-full flex gap-4 text-start h-[550px] lg:p-8 p-4 shadow-xl rounded-tl-3xl rounded-br-3xl   loginbgimg'>
+          <div className=' lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8  rounded-tl-3xl rounded-br-3xl loginbgimg'>
 
             <div className='lg:block hidden w-3/5'>
             </div>
 
             <div
-              className=' lg:w-2/5 w-full flex flex-col gap-4 bg-[#fff9] backdrop-blur rounded-tl-3xl rounded-br-3xl p-4 shadow-inner'
+              className=' lg:w-2/5 w-full flex flex-col gap-4  bg-white sm:bg-[#ffffff99] backdrop-blur rounded-tl-3xl border-none rounded-br-3xl p-4 sm:shadow-inner'
             >
 
-              <p className='font-bold text-xl text-center text-gray-800'>Unlock  <br /> Maximum Saving</p>
+              <p className='font-bold text-xl text-center text-gray-800'>Unlock<br />Maximum Savings</p>
+              <p className="text-md text-center text-green font-bold">
+                Welcome to Sign In Page
+              </p>
 
-              <p className=' text-sm text-center text-gray-500'>Unlock Great Healt</p>
 
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder='Enter Username'
-                className='inp'
+                className='inp '
               />
 
               <input
@@ -85,7 +85,7 @@ const Signup = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder='Enter Email'
-                className='inp'
+                className='inp '
               />
 
               <input
@@ -93,35 +93,29 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder='Enter Password'
-                className='inp'
+                className=' inp'
               />
 
               <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder='Confirm Password'
-                className='inp'
-              />
-
-              <input
-                type="number"
+                type="tel"
                 value={phoneNo}
                 onChange={(e) => setPhoneNo(e.target.value)}
                 placeholder='Enter PhoneNo'
-                className='inp'
+                className='inp '
               />
 
               <button
                 type='submit'
                 onClick={handlereg}
-                className='btn1 hover:bg-green-400 hover:text-white transition-all'>
-                Log In
+                className="bg-green py-1 rounded-2xl hover:bg-green-800 text-white font-semibold transition-all"
+              >
+
+                Sign Up
               </button>
 
               <p>
-                You alredy signup then
-                <Link to="/login" className="text-blue-500 text-sm underline">
+                You already SignUp!
+                <Link to="/login" className="text-blue-500 uppercase font-semibold text-sm underline px-1">
                   Login
                 </Link>
               </p>

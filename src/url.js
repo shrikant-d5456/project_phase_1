@@ -1,1 +1,2 @@
-export const URL = "http://127.0.0.1:8000" //backend
+export const URL = "http://localhost:8000" //backend
+// export const URL = "project-phase-1api.vercel.app";

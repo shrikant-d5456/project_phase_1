@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { URL } from '../url';
-import { UserContext } from '../Context/UserContext';
+import { UserContext } from '../Utils/UserContext';
 import axios from 'axios';
 import { BsBoxArrowInUpLeft, BsPencilSquare, BsSend, BsSendCheckFill, BsTrash3Fill } from "react-icons/bs";
 
@@ -24,7 +24,7 @@ const Comment = ({ post }) => {
   const sendComment = async () => {
     try {
       if (comment.trim() !== "") {
-        await axios.post(`${URL}/auth/comment/create`, {
+        await axios.post(`${ import.meta.env.VITE__BACKEND_URL}/auth/comment/create`, {
           comment,
           author: user.username,
           postId,
@@ -34,8 +34,7 @@ const Comment = ({ post }) => {
         getComment();
         setError(false)
       }
-      else
-      {
+      else {
         setError(true)
       }
     } catch (err) {
@@ -46,7 +45,7 @@ const Comment = ({ post }) => {
 
   const getComment = async () => {
     try {
-      const resp = await axios.get(`${URL}/auth/comment/post/${postId}`);
+      const resp = await axios.get(`${ import.meta.env.VITE__BACKEND_URL}/auth/comment/post/${postId}`);
       setData(Array.isArray(resp.data.data) ? resp.data.data : []);
     } catch (err) {
       console.log(err);
@@ -55,7 +54,7 @@ const Comment = ({ post }) => {
 
   const deleteComment = async (commentId) => {
     try {
-      await axios.delete(`${URL}/auth/comment/${commentId}`);
+      await axios.delete(`${ import.meta.env.VITE__BACKEND_URL}/auth/comment/${commentId}`);
       getComment();
     } catch (err) {
       console.log(err);
@@ -65,13 +64,12 @@ const Comment = ({ post }) => {
   const updateComment = async () => {
     try {
       if (comment.trim() !== "") {
-        await axios.put(`${URL}/auth/comment/${editComment._id}`, {
+        await axios.put(`${ import.meta.env.VITE__BACKEND_URL}/auth/comment/${editComment._id}`, {
           comment,
           author: user.username,
           postId,
           userId,
         });
-
         setEditComment(null);
         setComment("");
         getComment();
@@ -97,7 +95,7 @@ const Comment = ({ post }) => {
   };
 
   return (
-    <div>
+    <div className=' my-4'>
       <p className='text-xl font-semibold my-4'>Comments</p>
       {err && <p className=' bg-yellow-200 w-full font-semibold rounded-sm text-gray-800 p-2 my-2'>error while analysing</p>}
       <div className='flex w-full p-2 border justify-between items-center border-gray-400'>
@@ -105,39 +103,36 @@ const Comment = ({ post }) => {
           type="text"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className='outline-none w-full'
+          className='outline-none w-full bg-transparent'
           placeholder='Enter Comment..'
         />
-        {editComment ? (
-          <>
-          <button onClick={updateComment}><BsSendCheckFill/></button>
-          </>
-          
-        ) : (
-          <button onClick={sendComment}><BsSend/></button>
-        )}
+        {editComment ? 
+        <button onClick={updateComment}><BsSendCheckFill /></button>
+        :
+        <button onClick={sendComment}><BsSend /></button>
+        }
       </div>
 
       {Array.isArray(data) && data.map((element) => (
         element.postId === post._id && (
-          <div key={element._id} className='bg-sky-100 px-4 py-1 rounded-sm my-4'>
+          <div key={element._id} className=' bg-slate-200 px-4 py-1 rounded-sm my-4'>
             <div className='flex justify-end items-center my-2'>
               {user.username === element.author ?
-              <>
-              <button onClick={() => startEditing(element)} className='btn1'>
-              <BsPencilSquare/>
-              </button>
-              <button onClick={() => deleteComment(element._id)} className='btn1'>
-              <BsTrash3Fill/>                
-              </button>
-              </> : ""}
-              
+                <>
+                  <button onClick={() => startEditing(element)} className='btn1'>
+                    <BsPencilSquare />
+                  </button>
+                  <button onClick={() => deleteComment(element._id)} className='btn1'>
+                    <BsTrash3Fill />
+                  </button>
+                </> : ""}
+
             </div>
             <div className='flex justify-between items-center'>
               <p>@{element.author}</p>
               <p className=' text-sm text-gray-400'>{new Date(element.createdAt).toLocaleString()}</p>
             </div>
-            <p className='bg-white p-2 rounded-sm my-2'>
+            <p className='p-2 rounded-sm my-2'>
               {element.comment}
             </p>
           </div>
