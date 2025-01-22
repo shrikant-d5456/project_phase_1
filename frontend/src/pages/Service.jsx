@@ -39,7 +39,7 @@ const Service = () => {
         <div className=' sm:w-10/12 w-full sm:flex flex-wrap gap-2 items-center justify-center'>
           {
            array.map((item, ind)=>(
-            <div key={ind} className=' bg-white  sm:w-1/5 h-[250px] m-8 sm:m-1 border-t-2 border-green-800 rounded-3xl p-8 flex flex-col justify-center items-center shadow-xl'>
+            <div key={ind} className=' bg-white  sm:w-1/5 h-[250px] m-4 sm:m-1 border-t-2 border-green-800 rounded-3xl p-8 flex flex-col justify-center items-center shadow-xl'>
             <p className=' bg-green-100 w-10 h-10 rounded-full flex justify-center items-center '><span>{item.id}</span></p>
             <p className=' font-bold text-green-800 text-xl text-nowrap my-2'>{item.heading}</p>
             <p className=' text-center text-sm'>{item.subHeading}</p>

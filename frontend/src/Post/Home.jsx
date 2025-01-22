@@ -97,15 +97,15 @@ const Home = () => {
         <Slider />
       </div>
 
-      <div className=' bg-white md:w-11/12 w-full m-auto flex gap-10 p-2 overflow-x-scroll rounded-full'>
+      <div className=' bg-white md:w-11/12 w-full m-auto my-4 flex gap-10 p-2 overflow-x-scroll sm:rounded-full'>
         {
           array.map((item, ind) => (
             <Link key={ind} to={`/${item.data}`}>
-            <div className=' ml-10 w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
+            <div className=' ml-10 mr-2  w-full flex justify-center items-center flex-col hover:text-green cursor-pointer mt-4'>
               <img
                 className=' h-[80px] w-[80px] lg:h-[100px] lg:w-[100px] md:h-[100px] md:w-[100px] rounded-full shadow-none mb-4 hover:scale-110 hover:shadow-xl transition-all object-cover'
                 src={item.img} alt="img" />
-              <p className=' text-sm'>{item.data}</p>
+              <p className=' text-sm text-center'>{item.data}</p>
             </div>
             </Link>
           ))

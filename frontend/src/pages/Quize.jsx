@@ -1,107 +1,108 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
-import {Questions} from "../Data/Question"
+import { Link } from "react-router-dom";
+import { Questions } from "../Data/Question";
 
-const Quize = () => {
-
+const Quiz = () => {
     return (
         <div className='sm:w-10/12 w-full m-auto h-full sm:p-8 p-4'>
-            <div className=' flex gap-4 mb-4'>
-            <Link to='/practitioner'><p className=' font-bold text-md my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Files</p></Link>
-            <p className=' font-bold text-md my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Quiz</p>        
+            <div className='flex gap-4 mb-4'>
+                <Link to='/practitioner'><p className='font-bold text-md my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Files</p></Link>
+                <p className='font-bold text-md my-2 bg-white px-8 py-2 shadow-md w-fit rounded-full'>Quiz</p>
             </div>
 
             {Questions.map((ele, ind) => (
-                <div className='bg-white flex flex-col mb-8 rounded-xl'>
-                    <QuizeSection ele={ele} ind={ind} />
+                <div className='bg-white flex flex-col mb-8 rounded-xl' key={ind}>
+                    <QuizSection ele={ele} ind={ind} />
                 </div>
             ))}
         </div>
-    )
+    );
 }
 
-export default Quize
+export default Quiz;
 
-const QuizeSection = ({ ele, ind }) => {
+const QuizSection = ({ ele, ind }) => {
+    const [selectedAnswer, setSelectedAnswer] = useState('');
+    const [showExplanation, setShowExplanation] = useState(false);
 
-    const [ans1, setAns1] = useState(false);
-    const [ans2, setAns2] = useState(false);
-    const [ans3, setAns3] = useState(false);
-    const [ans4, setAns4] = useState(false);
+    const handleAnswerChange = (answer) => {
+        setSelectedAnswer(answer);
+    };
 
-    const [exp, setExp] = useState(false);
+    const checkAnswerClass = (option) => {
+        if (!selectedAnswer) return '';
+        return ele.ans === option ? 'bg-green-200' : 'bg-gray-100';
+    };
 
     return (
+        <div className='border-[1px] border-r-gray-50 shadow-xl sm:p-8 p-4 rounded-xl'>
+            <p className='mb-2 sm:text-base text-sm'>
+                <span className='font-semibold'>Question {ind + 1}</span>: {ele.q}
+            </p>
 
-        <div key={ind} className=' border-[1px] border-r-gray-50 shadow-xl sm:p-8 p-4 rounded-xl'>
-            <p className=' mb-2 text-base'><span className=' font-semibold'>Question {ind + 1}</span> : {ele.q}</p>
-
-
-            <div className='flex gap-2 justify-between my-2 '>
-                <div className={` border-[1px] border-r-gray-50 shadow-sm ${ele.ans === ans1 ? " bg-green-200" : ans1 === false ? "" : "bg-red-200"} w-1/2 py-2 px-4 flex gap-2 rounded-full`}>
+            <div className='sm:flex sm:gap-2 justify-between sm:my-2'>
+                <div className={`sm:border-[1px] border-r-gray-50 sm:shadow-sm ${checkAnswerClass('op1')} sm:w-1/2 py-2 px-4 flex gap-2 sm:rounded-full`}>
                     <input
-                        type="checkbox"
-                        onChange={(e) => setAns1("op1")}
-                        name={ele.op1}
-                        value={ele.op1}
-                        id={ele.op1}
+                        type="radio"
+                        onChange={() => handleAnswerChange('op1')}
+                        name={`question-${ind}`}
+                        value="op1"
+                        id={`op1-${ind}`}
                     />
-                    <label htmlFor={ele.op1}>{ele.op1}</label>
+                    <label htmlFor={`op1-${ind}`}>{ele.op1}</label>
                 </div>
 
-                <div className={`   border-[1px] border-r-gray-50 shadow-sm ${ele.ans === ans2 ? " bg-green-200" : ans2 === false ? "" : "bg-red-200"} w-1/2 py-2 px-4 flex gap-2 rounded-full  `}>
+                <div className={`sm:border-[1px] border-r-gray-50 sm:shadow-sm ${checkAnswerClass('op2')} sm:w-1/2 py-2 px-4 flex gap-2 sm:rounded-full`}>
                     <input
-                        type="checkbox"
-                        onChange={(e) => setAns2("op2")}
-                        name={ele.op2}
-                        value={ele.op2}
-                        id={ele.op2}
+                        type="radio"
+                        onChange={() => handleAnswerChange('op2')}
+                        name={`question-${ind}`}
+                        value="op2"
+                        id={`op2-${ind}`}
                     />
-                    <label htmlFor={ele.op2}>{ele.op2}</label>
+                    <label htmlFor={`op2-${ind}`}>{ele.op2}</label>
                 </div>
             </div>
 
-            <div className='flex gap-2 justify-between items-center'>
-                <div className={` border-[1px] border-r-gray-50 shadow-sm ${ele.ans === ans3 ? " bg-green-200" : ans3 === false ? "" : "bg-red-200"} w-1/2 py-2 px-4 flex gap-2 rounded-full `}>
+            <div className='sm:flex sm:gap-2 justify-between sm:my-2'>
+                <div className={`sm:border-[1px] border-r-gray-50 sm:shadow-sm ${checkAnswerClass('op3')} sm:w-1/2 py-2 px-4 flex gap-2 sm:rounded-full`}>
                     <input
-                        type="checkbox"
-                        onChange={(e) => setAns3("op3")}
-                        name={ele.op3}
-                        value={ele.op3}
-                        id={ele.op3}
+                        type="radio"
+                        onChange={() => handleAnswerChange('op3')}
+                        name={`question-${ind}`}
+                        value="op3"
+                        id={`op3-${ind}`}
                     />
-                    <label htmlFor={ele.op3}>{ele.op3}</label>
+                    <label htmlFor={`op3-${ind}`}>{ele.op3}</label>
                 </div>
 
-                <div className={`  border-[1px] border-r-gray-50 shadow-sm ${ele.ans === ans4 ? " bg-green-200" : ans4 === false ? "" : "bg-red-200"} w-1/2 py-2 px-4 flex gap-2 rounded-full  `}>
+                <div className={`sm:border-[1px] border-r-gray-50 sm:shadow-sm ${checkAnswerClass('op4')} sm:w-1/2 py-2 px-4 flex gap-2 sm:rounded-full`}>
                     <input
-                        type="checkbox"
-                        onChange={(e) => setAns4("op4")}
-                        name={ele.op4}
-                        value={ele.op4}
-                        id={ele.op4}
+                        type="radio"
+                        onChange={() => handleAnswerChange('op4')}
+                        name={`question-${ind}`}
+                        value="op4"
+                        id={`op4-${ind}`}
                     />
-                    <label htmlFor={ele.op4}>{ele.op4}</label>
+                    <label htmlFor={`op4-${ind}`}>{ele.op4}</label>
                 </div>
-
             </div>
-            {
-                (ans1 || ans2 || ans3 || ans4)
-                &&
-                <button className=' font-bold py-1 px-2 mt-2 text-green underline text-white'
-                    onClick={() => setExp(!exp)}
-                >Explanation</button>
-            }
             
-            {
-            exp &&
-                <p className=' text-green-700 px-2'>
-                    <hr className=' my-2 ' />
+            {selectedAnswer && (
+                <button
+                    className='font-bold py-1 px-2 mt-2 text-green-700 underline'
+                    onClick={() => setShowExplanation(!showExplanation)}
+                >
+                    Explanation
+                </button>
+            )}
+            
+            {showExplanation && (
+                <p className='text-green-700 px-2'>
+                    <hr className='my-2' />
                     {ele.exp}
                 </p>
-            }
-           
+            )}
         </div>
-
-    )
+    );
 }

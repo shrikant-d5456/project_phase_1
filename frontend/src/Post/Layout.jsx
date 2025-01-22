@@ -21,6 +21,7 @@ const Layout = () => {
     <>
       <PostNavbar />
       <Routes>
+      
         <Route path='/' element={<Home />} />
 
         <Route element={<ProtectedRoute />}>

@@ -70,7 +70,7 @@ const Practioners = () => {
         <main>
 
             <div className="sm:flex w-full">
-                <div className=' sm:w-[300px] h-[90vh] bg-white text-sm'>
+                <div className=' sm:w-[300px] sm:h-[90vh] bg-white text-sm'>
                     <h1 className="lg:tracking-widest lg:uppercase bg-green text-white py-2 px-4 font-semibold">Files</h1>
                     {/* Category Buttons */}
                     <div className="flex sm:flex-col sm:mb-6 md:m-0">

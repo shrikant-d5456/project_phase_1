@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { allergy } from "../Data/Allergies";
-import { BsSearch } from "react-icons/bs";
+import { BsArrowDown, BsSearch, BsX } from "react-icons/bs";
 import Magic from "../components/Magic";
 
 
@@ -9,6 +9,8 @@ const Allergies = () => {
   const [input, setInput] = useState("");
   const [filteredAllergies, setFilteredAllergies] = useState(allergy);
   const [magic, setMagic] = useState(false);
+
+   const [showOption, setShowOption] = useState(true);
 
 
   const symptoms = ["Hives", "Rash", "difficulty breathing", "Stomach cramps", "swelling"];
@@ -45,34 +47,49 @@ const Allergies = () => {
   return (
 
     <section className="relative">
-     
-      {magic && <Magic/>}
-      <div className=" fixed top-1 bg-white py-4 mt-24 w-full flex flex-wrap gap-2 justify-center my-4">
 
-        {symptoms.map((item, index) => (
-          <button
-            key={index}
-            className={`border-[1px] border-green rounded-full px-4 py-1 ${item === category ? "bg-green text-white" : "text-green"
-              }`}
-            onClick={() => setCategory(item)}
-          >
-            {item}
-          </button>
-        ))}
-        <input
-          type="text"
-          placeholder="Search allergies"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="border-[1px] text-sm border-gray-300 px-4 py-2 rounded-full"
-        />
+      {magic && <Magic />}
+      <div className=" fixed top-0 bg-white w-full py-4 mt-24 ">
+
+        {showOption &&
+          <div className="w-full flex flex-wrap gap-2 justify-center">
+            {symptoms.map((item, index) => (
+              <button
+                key={index}
+                className={`border-[1px] border-green rounded-full px-4 py-1 ${item === category ? "bg-green text-white" : "text-green"
+                  }`}
+                onClick={() => setCategory(item)}
+              >
+                {item}
+              </button>
+            ))}
+            <div>
+              <input
+                type="text"
+                placeholder="Search Diseases"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                className="border-[1px] w-fit text-sm border-gray-300 px-4 py-2 rounded-full"
+              />
+              <button
+                onClick={handleSearch}
+                className="bg-green text-white p-3 rounded-full "
+              >
+                <BsSearch />
+              </button>
+            </div>
+          </div>
+        }
+
         <button
-          onClick={handleSearch}
-          className="bg-green text-white p-3 rounded-full "
-        >
-          <BsSearch />
+          onClick={() => setShowOption(!showOption)}
+          className=" fixed right-1 mt-2 z-50 bg-white p-2  text-xl ">
+          {showOption ? <BsX /> : <BsArrowDown />}
         </button>
+
+
       </div>
+
 
       <div className=" mt-24">
 
@@ -87,7 +104,7 @@ const Allergies = () => {
         )}
 
         {filteredAllergies.map((item, index) => (
-          <div key={index} className="flex flex-col gap-2 w-10/12 m-auto transition-all">
+          <div key={index} className="flex flex-col gap-2 sm:w-10/12 m-auto px-2 transition-all">
             <div className="w-full flex-row-reverse sm:flex-row flex gap-2 ">
               <div className="md:w-2/3 w-full border-[1px] border-gray-100 p-4 text-white rounded-3xl shadow-md  bg-gradient-to-r from-green-800 to-green-500">
 
