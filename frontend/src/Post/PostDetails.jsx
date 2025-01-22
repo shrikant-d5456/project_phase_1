@@ -22,7 +22,7 @@ const PostDetails = () => {
   
   const getPost = async () => {
     try {
-      const resp = await axios.get(`${URL}/auth/post/${postId.id}`);
+      const resp = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/post/${postId.id}`);
       setPost(resp.data.data);
     } catch (err) {
       console.log(err);
@@ -72,7 +72,7 @@ const PostDetails = () => {
 
   const deletePost = async () => {
     try {
-      await axios.delete(`${URL}/auth/post/${postId.id}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND}/auth/post/${postId.id}`);
       navigate('/admin/');
     } catch (err) {
       console.log(err);
@@ -81,7 +81,7 @@ const PostDetails = () => {
 
   const validateBy = async (isValid) => {
     try {
-      await axios.put(`${URL}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`${import.meta.env.VITE_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
         [`${validator}`]: isValid ? "true" : "false",
       });
       setValid(isValid);
@@ -92,7 +92,7 @@ const PostDetails = () => {
 
   const checkedBy = async (checkStatus) => {
     try {
-      await axios.put(`${URL}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`${import.meta.env.VITE_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
         [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);

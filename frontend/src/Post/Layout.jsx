@@ -13,8 +13,8 @@ import Practioners from './Practioners'
 import PostSection from './PostSection'
 import SavePost from './SavePost'
 import Quize from '../pages/Quize'
-import Diseases from '../pages/Quize'
-import Allergies from '../pages/Quize'
+import Diseases from '../pages/Diseases'
+import Allergies from '../pages/Allergies'
 import SearchParam from './SearchParam'
 const Layout = () => {
   return (

@@ -81,7 +81,7 @@ const Createpost = () => {
                     step: steps,
                     video_link,
                 };
-                const resp = await axios.post(`${URL}/auth/post/create`, payload, {
+                const resp = await axios.post(`${import.meta.env.VITE_BACKEND}/auth/post/create`, payload, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

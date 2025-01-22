@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
   
   // const hostPost = async () => {
   //   try {
-  //     const resp = await axios.post(`${URL}/auth/api/post/admin/postData/${post._id}`);
+  //     const resp = await axios.post(`${import.meta.env.VITE_BACKEND}/auth/api/post/admin/postData/${post._id}`);
   //     console.log(resp.msg);
   //   } catch (err) {
   //     console.log(err);

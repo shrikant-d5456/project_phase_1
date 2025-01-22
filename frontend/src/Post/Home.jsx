@@ -19,7 +19,7 @@ const Home = () => {
 
   const getposts = async () => {
     try {
-      const resp = await axios.get(`${URL}/auth/api/post/hostData`);
+      const resp = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/api/post/hostData`);
       setposts(resp.data.data);
       
     } catch (err) {
