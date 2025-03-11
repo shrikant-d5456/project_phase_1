@@ -19,10 +19,10 @@ const PostCard = ({ post }) => {
 
   return (
     <>
-      <div key={post._id} className='w-full'>
+      <div key={post._id} className='w-full relative'>
         {
         userType === "admin" ?
-          <button className='absolute m-4 cursor-auto bg-green px-4 py-1 text-sm text-white font-semibold'
+          <button className='absolute top-1 m-4 cursor-auto bg-green px-4 py-1 text-sm text-white font-semibold'
           >
           {(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5)? "uploaded":"uploading.."}</button>
           : ""

@@ -56,7 +56,7 @@ const Createpost = () => {
         setStep("");
     };
     const deleteStep = (i) => {
-        setIngredients(steps.filter((_, index) => index !== i));
+        setSteps(steps.filter((_, index) => index !== i));
     };
 
     const uploadPost = async () => {
@@ -81,7 +81,7 @@ const Createpost = () => {
                     step: steps,
                     video_link,
                 };
-                const resp = await axios.post(`${import.meta.env.VITE_BACKEND}/auth/post/create`, payload, {
+                const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post/create`, payload, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

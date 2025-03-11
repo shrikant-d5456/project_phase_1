@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
-import { BsBank, BsClipboardDataFill,BsTree, BsDatabaseFillAdd,BsPersonCheck,BsPersonGear, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
+import { BsBank, BsClipboardDataFill, BsTree, BsDatabaseFillAdd, BsPersonCheck, BsPersonGear, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
 import AllPost from './AllPost';
 import HostedPost from './HostedPost';
 import Profile from '../Post/Profile';
@@ -21,9 +21,9 @@ const AdminLayout = () => {
     BsSliders2: BsSliders2,
     BsBank: BsBank,
     BsGrid1X2Fill: BsGrid1X2Fill,
-    BsTree:BsTree,
-    BsPersonCheck:BsPersonCheck,
-    BsPersonGear:BsPersonGear,
+    BsTree: BsTree,
+    BsPersonCheck: BsPersonCheck,
+    BsPersonGear: BsPersonGear,
 
   };
 
@@ -74,17 +74,17 @@ const AdminLayout = () => {
 
               <ul key={index} className=' '>
                 <Link to={element.path_link}>
-                <li
-  className={`relative w-full flex gap-2 justify-start items-center py-4 text-3xl
-    ${path === element.path_link ? 'bg-green border-2 p-4 rounded-2xl transition-[all,500ms]' : ''}`}
->
-  {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
+                  <li
+                    className={`relative w-full flex gap-2 justify-start items-center py-4 text-3xl
+                    ${path === element.path_link ? 'bg-green border-2 p-4 rounded-2xl transition-[all,500ms]' : ''}`}
+                  >
+                    {icons[element.path_icon] && React.createElement(icons[element.path_icon], { className: 'icon-class' })}
 
-  {/* Tooltip */}
-  <span className="tooltip-text">
-    {element.path_name}
-  </span>
-</li>
+                    {/* Tooltip */}
+                    <span className="tooltip-text">
+                      {element.path_name}
+                    </span>
+                  </li>
 
                 </Link>
               </ul>
@@ -94,7 +94,7 @@ const AdminLayout = () => {
           </div>
         </div>
 
-        <div className='md:w-[95%] lg:h-screen bg-[#ffffff] w-full md:p-2 overflow-y-scroll scroll-smooth'>
+        <div className='md:w-[95%] lg:h-screen  w-full md:p-2 overflow-y-scroll scroll-smooth'>
           <Routes>
             <Route path="/profile" element={<Profile />} />
             <Route path="/post/:id" element={<PostDetails />} />

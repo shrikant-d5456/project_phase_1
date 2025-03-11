@@ -16,7 +16,7 @@ const Profile = () => {
 
   const getUser = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/user/${user.id}`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/user/${user.id}`);
       const userData = resp.data.data;
       setData(userData);
       setUsername(userData.username);
@@ -29,15 +29,17 @@ const Profile = () => {
 
   const setUser = async () => {
     try {
-      const resp = await axios.put(`${import.meta.env.VITE_BACKEND}/auth/user/${user.id}`, {
+      const resp = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/user/${user.id}`, {
         username,
         email,
         password
       });
       setData(resp.data.data);
+      alert("user Updated")
       // console.log("updated ")
     } catch (err) {
       console.log(err);
+      alert("somting went wrong!!")
     }
   };
 
@@ -55,15 +57,17 @@ const Profile = () => {
 
         <div className='lg:flex w-full my-4'>
 
-          <div className='lg:w-4/5 w-full justify-center items-center '>
-            <div className='flex flex-wrap'>
+          <div className='lg:w-4/5 w-full justify-cent er items-center '>
+            <div className='flex flex-wrap p-4'>
               <ProfilePost />
             </div>
           </div>
 
-          <div className='lg:w-1/5  '>
+         
+          
           {user.username === "admin" ? 
-          <>
+         
+          <div className='lg:w-1/5'>
           <label htmlFor="inp" className=' text-sm font-semibold'>Enter Admin ID to Update Profile</label>
             <input
               type="text"
@@ -73,7 +77,7 @@ const Profile = () => {
               className=' w-full text-sm px-1 py-2 border-[1px] border-[#00ff26] outline-none'
               placeholder='Enter Admin ID'
             />
-          </>
+          </div>
           :""}
           
 
@@ -105,7 +109,7 @@ const Profile = () => {
                       className='inp'
                     />
 
-                    <button onClick={setUser} className='bg-green text-white'>Update</button>
+                    <button onClick={setUser} className=' bg-green-500 text-white'>Update</button>
 
                   </div>
                 </>
@@ -113,8 +117,7 @@ const Profile = () => {
                 :
                 ""
             }
-          </div>
-
+          
 
 
           {user.username === "admin" ? "" :
@@ -143,7 +146,7 @@ const Profile = () => {
                   className='inp'
                 />
 
-                <button onClick={setUser} className='btn1'>Update</button>
+                <button onClick={setUser} className=' bg-green-500 text-white py-2'>Update</button>
 
               </div>
             </div>

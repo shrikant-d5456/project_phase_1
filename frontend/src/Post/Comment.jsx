@@ -24,7 +24,7 @@ const Comment = ({ post }) => {
   const sendComment = async () => {
     try {
       if (comment.trim() !== "") {
-        await axios.post(`${import.meta.env.VITE_BACKEND}/auth/comment/create`, {
+        await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/comment/create`, {
           comment,
           author: user.username,
           postId,
@@ -45,7 +45,7 @@ const Comment = ({ post }) => {
 
   const getComment = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/comment/post/${postId}`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/comment/post/${postId}`);
       setData(Array.isArray(resp.data.data) ? resp.data.data : []);
     } catch (err) {
       console.log(err);
@@ -54,7 +54,7 @@ const Comment = ({ post }) => {
 
   const deleteComment = async (commentId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND}/auth/comment/${commentId}`);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/comment/${commentId}`);
       getComment();
     } catch (err) {
       console.log(err);
@@ -64,7 +64,7 @@ const Comment = ({ post }) => {
   const updateComment = async () => {
     try {
       if (comment.trim() !== "") {
-        await axios.put(`${import.meta.env.VITE_BACKEND}/auth/comment/${editComment._id}`, {
+        await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/comment/${editComment._id}`, {
           comment,
           author: user.username,
           postId,

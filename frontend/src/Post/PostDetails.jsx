@@ -22,7 +22,7 @@ const PostDetails = () => {
   
   const getPost = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/post/${postId.id}`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post/${postId.id}`);
       setPost(resp.data.data);
     } catch (err) {
       console.log(err);
@@ -72,7 +72,7 @@ const PostDetails = () => {
 
   const deletePost = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND}/auth/post/${postId.id}`);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post/${postId.id}`);
       navigate('/admin/');
     } catch (err) {
       console.log(err);
@@ -81,7 +81,7 @@ const PostDetails = () => {
 
   const validateBy = async (isValid) => {
     try {
-      await axios.put(`${import.meta.env.VITE_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
         [`${validator}`]: isValid ? "true" : "false",
       });
       setValid(isValid);
@@ -92,7 +92,7 @@ const PostDetails = () => {
 
   const checkedBy = async (checkStatus) => {
     try {
-      await axios.put(`${import.meta.env.VITE_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
         [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);
@@ -151,9 +151,9 @@ const PostDetails = () => {
 
             <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>Published by @{post.username}</p>
             <h1 className='text-2xl font-bold text-gray-800 my-2'>{post.title}</h1>
-            <div className='flex justify-start items-center gap-4 font-semibold'>Tags :
+            <div className='flex justify-start items-center gap-4 font-semibold'>Tags:
               {post.categories?.map((d, i) => (
-                <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-green text-white'>{d}</p>
+                <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-green text-white text-nowrap'>{d}</p>
               ))}
             </div>
             <p className='text-sm my-4 font-semibold'>Upload Date : <span className='font-light'>{post.updatedAt}</span></p>
@@ -205,7 +205,7 @@ const PostDetails = () => {
             &&
             <div className='w-full p-4 border-2 lg:flex flex-row my-4 bg-black text-white gap-2'>
               <div className='md:w-2/3 w-full bg-black text-white'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium reiciendis quia adipisci expedita cumque obcaecati eligendi quibusdam aut necessitatibus architecto.
+                Once you pick a choice from these options, you will still be able to change it later on!
               </div>
               <div className='md:w-1/3 w-full flex flex-col justify-center items-center gap-2 bg-black text-white'>
                 <div className='flex justify-center items-center gap-2 w-full'>

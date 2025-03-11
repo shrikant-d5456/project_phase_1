@@ -15,13 +15,13 @@ import SavePost from './SavePost'
 import Quize from '../pages/Quize'
 import Diseases from '../pages/Diseases'
 import Allergies from '../pages/Allergies'
-import SearchParam from './SearchParam'
+import MedicinalPlants from '../components/MedicinalPlants';
 const Layout = () => {
   return (
     <>
       <PostNavbar />
       <Routes>
-      
+
         <Route path='/' element={<Home />} />
 
         <Route element={<ProtectedRoute />}>
@@ -30,21 +30,16 @@ const Layout = () => {
           <Route path='/createpost' element={<Createpost />} />
           <Route path='/post/editpost/:id' element={<EditPost />} />
           <Route path='/profile' element={<Profile />} />
-          
-          <Route path='/profile' element={<Profile />} />
-          
-          <Route path='/save-post' element={<SavePost/>}/>
+          <Route path='/save-post' element={<SavePost />} />
         </Route>
-        <Route path='/post' element={<PostSection/>}/>
-        <Route path='/practitioner' element={<Practioners/>} />
-        <Route path='/quize' element={<Quize/>}/>
+
+        <Route path='/post' element={<PostSection />} />
+        <Route path='/practitioner' element={<Practioners />} />
+        <Route path='/quize' element={<Quize />} />
         <Route path='/diseases' element={<Diseases />} />
         <Route path='/allergies' element={<Allergies />} />
-        
-      
-          <Route path="/:param" element={<SearchParam/>} /> 
-        
-        
+        <Route path='/plant-informaion' element={<MedicinalPlants />} />
+
       </Routes>
       <Footer />
     </>

@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const resp = await axios.post(`${import.meta.env.VITE_BACKEND}/auth/api/login`, { email, password });
+      const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/login`, { email, password });
       setUser(resp.data);
       // console.log("Login successful");
       setErr(false);

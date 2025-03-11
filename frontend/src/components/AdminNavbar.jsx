@@ -5,6 +5,7 @@ import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { UserContext } from '../Utils/UserContext.jsx';
 import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX } from 'react-icons/bs';
 import { BsBank, BsClipboardDataFill, BsDatabaseFillAdd, BsFileEarmarkArrowUpFill, BsPersonVcardFill, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
+import logo from "../../assets/logo.jpeg";
 
 const AdminNavbar = () => {
 
@@ -73,8 +74,8 @@ const AdminNavbar = () => {
                 <p className=' text-sm '>Welcome! {user?.username}</p>
             </div>
 
-            <div className='flex justify-between items-center px-4 border-b-[1px] border-gray-200'>
-                <Link to="/admin"><div>Logo</div></Link>
+            <div className='flex justify-between items-center px-4 border-b-[1px] bg-white border-gray-200'>
+                <Link to="/admin"> <div className=' w-40 py-2'><img src={logo} alt="logo" /></div></Link>
                 <div className='md:hidden block z-10 absolute top-14 right-14 bg-white w-fit bg-color-blue-dark border-r-[1px] border-green text-sm font-semibold'>
 
                     {user && menu && arr.map((element, index) =>

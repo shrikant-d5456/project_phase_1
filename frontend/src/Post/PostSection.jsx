@@ -6,6 +6,7 @@ import { UserContext } from '../Utils/UserContext.jsx';
 import { BsSearch } from 'react-icons/bs';
 import Magic from '../components/Magic.jsx';
 import Select from '../components/Select.jsx';
+import { useParams } from 'react-router-dom';
 
 const PostSection = ({ send }) => {
   const [posts, setPosts] = useState([]);
@@ -13,14 +14,16 @@ const PostSection = ({ send }) => {
   const [tag, settag] = useState(send || 'All');
   const [magic, setMagic] = useState(false);
   const [input, setInput] = useState("");
+  const params  = useParams();
 
-  const tags = ['All', 'skin', 'cough', 'fever', 'diabetes', 'hair', 'diet', 'immunity', 'pain', 'juices'];
-  const ingredient = ['All', 'Turmeric', 'Neem', 'Triphala', 'Ala', 'Herbal Tea', 'Honey'];
-  const places = ['All', 'india', 'mumbai'];
+
+  const tags = ['All', 'skin', 'cough', 'diabetes', 'hair',  'immunity'];
+  const ingredient = ['All', 'Turmeric', 'Neem', 'Triphala', 'Ala',  'Honey'];
+  // const places = ['All', 'maharashtra', 'tamilnadu', 'rajasthan','gujrat','odisha','Himachal pradesh','manipur'];
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_BACKEND}/auth/api/post/hostData`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/hostData`);
       setPosts(resp.data.data);
       setFilters(resp.data.data); // Initialize filters with fetched posts
     } catch (err) {
@@ -30,6 +33,7 @@ const PostSection = ({ send }) => {
 
   useEffect(() => {
     getPosts();
+   
   }, []);
 
   const onClickTag = (ele) => {
@@ -42,7 +46,7 @@ const PostSection = ({ send }) => {
           item.title.toLowerCase() === ele.toLowerCase() ||
           item.ingredient.some(ingredient => ingredient.toLowerCase() === ele.toLowerCase()) ||
           item.desc.toLowerCase() === ele.toLowerCase() ||
-          item.categories.some(category => category.toLowerCase() === ele.toLowerCase())
+          item.categories.some(category => category.toLowerCase() === ele.toLowerCase()) 
       );
       setFilters(filteredPosts);
     };
@@ -62,7 +66,7 @@ const PostSection = ({ send }) => {
       setMagic(false);
     }, 2000);
     setMagic(true);
-  };
+  }; 
 
 
 
@@ -117,20 +121,7 @@ const PostSection = ({ send }) => {
           </div>
         </div>
 
-        <div className=' py-4 border-b-2 border-green'>
-          <p className=' font-semibold text-sm mb-2'>Filter By Places</p>
-          <div className='flex flex-wrap gap-2 justify-start items-start m-auto'>
-            {
-              places.map((item, ind) => (
-                <button
-                  key={ind}
-                  className={` text-sm font-semibold border-[1px] border-green rounded-full px-2 py-1 ${item === tag ? "bg-green text-white" : "text-green"}`}
-                  onClick={() => onClickTag(item)}
-                >{item}</button>
-              ))
-            }
-          </div>
-        </div>
+        
 
       </div>
 
