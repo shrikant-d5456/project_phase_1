@@ -1,15 +1,15 @@
 import {User} from '../models/User.js'
 import {Posts} from '../models/Post.js'
 import {Comments} from '../models/Comments.js'
-import bcrypt from 'bcrypt'
+import bcryptjs from 'bcryptjs'
 
 export const update = async(req,res)=>{
     try{
         const {username,email, password} = req.body;
 
         if(req.body.password){
-            const salt= await bcrypt.genSalt(10)
-            req.body.password = bcrypt.hashSync(req.body.password,salt)
+            const salt= await bcryptjs.genSalt(10)
+            req.body.password = bcryptjs.hashSync(req.body.password,salt)
         }
         const updateUser = await User.findByIdAndUpdate(req.params.id,{username,email, password} )
         res.status(200).send({msg:"update user",data:updateUser})

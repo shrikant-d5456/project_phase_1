@@ -1,5 +1,5 @@
 import { AdminData }  from '../models/Admin.js'
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export const createAdmin = async (req, res) => {
@@ -14,8 +14,8 @@ export const createAdmin = async (req, res) => {
 
         const newUser = new AdminData({ username, email, password, role });
 
-        const salt = await bcrypt.genSalt(10);
-        newUser.password = await bcrypt.hash(password, salt);
+        const salt = await bcryptjs.genSalt(10);
+        newUser.password = await bcryptjs.hash(password, salt);
 
         await newUser.save();
         res.status(200).send({ msg:"user Save", data : newUser})
@@ -50,7 +50,7 @@ export const getAdmin = async (req, res) => {
         }
 
         // Compare the password
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcryptjs.compare(password, user.password);
         if (!isMatch) {
             return res.status(400).send({ msg: 'Invalid password' });
         }
