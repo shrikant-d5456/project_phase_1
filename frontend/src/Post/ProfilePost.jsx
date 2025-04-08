@@ -11,7 +11,7 @@ const ProfilePost = () => {
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post`);
       setPosts(resp.data.data);
     } catch (err) {
       console.log(err);

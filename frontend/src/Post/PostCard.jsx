@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
   
   // const hostPost = async () => {
   //   try {
-  //     const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/admin/postData/${post._id}`);
+  //     const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/admin/postData/${post._id}`);
   //     console.log(resp.msg);
   //   } catch (err) {
   //     console.log(err);
@@ -35,7 +35,7 @@ const PostCard = ({ post }) => {
           <button className='absolute m-4 cursor-auto bg-green-500 px-4 py-1 text-white font-semibold'
           >{(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5)? "uploaded":"uploading.."}</button>
           : ""}
-        <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
+        <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}> 
           <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
             <div>
               <img className='w-full h-[150px]' src={post.img} alt="" />

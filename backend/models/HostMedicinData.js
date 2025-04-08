@@ -21,6 +21,10 @@ const hostMedicineSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    email: {
+        type: String,
+        
+    },
     categories: {
         type: [String], // Array of strings
         required: true,

@@ -3,7 +3,7 @@ import { User } from '../models/User.js';
 // Create a new post
 export const createPost = async (req, res) => {
     try {
-        const { title, desc, img, username,userId,categories,
+        const { title, desc, img, username,email,userId,categories,
             established,
             places,
             wpmh,
@@ -16,7 +16,7 @@ export const createPost = async (req, res) => {
             return res.status(401).send({ msg: "All fields are required" });
         }
 
-        const newPost = await Posts.create({ title, desc, img, username,userId,categories,established,
+        const newPost = await Posts.create({ title, desc, img, username,email,userId,categories,established,
             places,
             wpmh,
             vitamin,

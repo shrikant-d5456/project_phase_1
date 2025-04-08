@@ -59,6 +59,8 @@ const Createpost = () => {
         setSteps(steps.filter((_, index) => index !== i));
     };
 
+    console.log(user);
+
     const uploadPost = async () => {
         if (!title || !desc || !img || !user?.id || !user?.username) {
             setError(!user?.id ? "please login" : "All fields are required.");
@@ -71,8 +73,10 @@ const Createpost = () => {
                     desc,
                     img,  // Assuming img is a URL or base64 encoded string
                     username: user.username,
+                    email:user.email,
                     categories: cats,
                     userId: user.id,
+                                 
                     established,
                     places,
                     wpmh,
@@ -81,7 +85,7 @@ const Createpost = () => {
                     step: steps,
                     video_link,
                 };
-                const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post/create`, payload, {
+                const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/create`, payload, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -187,7 +191,7 @@ const Createpost = () => {
                 </div>
 
                 <hr className='border-[1px] border-green-800' />
-
+ 
 
                 <div className='flex w-full'>
                     <input

@@ -64,7 +64,8 @@ export const login =  async (req, res) => {
             msg: 'Login successful',
             token,
             id:user._id,
-            username:user.username
+            username:user.username,
+            email:email
         });
 
     } catch (err) {

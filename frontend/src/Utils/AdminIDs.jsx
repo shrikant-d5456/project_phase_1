@@ -5,7 +5,7 @@ const AdminIDs = [
     },
     {
         role: "validator1",
-        id: "67278d699e5ac4010a5881c3",
+        id: "67ed678794ab29881b30538e",
     },
     {
         role: "validator2",

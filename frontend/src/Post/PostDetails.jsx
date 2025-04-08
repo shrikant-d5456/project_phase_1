@@ -6,6 +6,8 @@ import { UserContext } from '../Utils/UserContext.jsx';
 import Comment from './Comment.jsx';
 import { BsBookmarkHeart, BsBookmarkHeartFill, BsHeart, BsYoutube } from 'react-icons/bs';
 import AdminIDs from "../Utils/AdminIDs.jsx";
+import Lang from '../components/Lang.jsx';
+import Email from '../components/Email.jsx';
 
 const PostDetails = () => {
   const [post, setPost] = useState({});
@@ -18,12 +20,13 @@ const PostDetails = () => {
   const { user } = useContext(UserContext);
   const postId = useParams();
 
-  const [save,setSave]= useState(false);
-  
+  const [save, setSave] = useState(false);
+
   const getPost = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post/${postId.id}`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/${postId.id}`);
       setPost(resp.data.data);
+      console.table(post);
     } catch (err) {
       console.log(err);
     }
@@ -66,13 +69,13 @@ const PostDetails = () => {
       setValidator("validator5");
       setChecked("checked5");
     }
-  });
+  },[post._id]);
 
-  
+
 
   const deletePost = async () => {
     try {
-      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/post/${postId.id}`);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/${postId.id}`);
       navigate('/admin/');
     } catch (err) {
       console.log(err);
@@ -81,7 +84,7 @@ const PostDetails = () => {
 
   const validateBy = async (isValid) => {
     try {
-      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/${admin}/${postId.id}`, {
         [`${validator}`]: isValid ? "true" : "false",
       });
       setValid(isValid);
@@ -92,7 +95,7 @@ const PostDetails = () => {
 
   const checkedBy = async (checkStatus) => {
     try {
-      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/${admin}/${postId.id}`, {
         [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);
@@ -102,6 +105,12 @@ const PostDetails = () => {
       console.log(err);
     }
   };
+
+  let validation_length=0;
+  validation_length = (post.validator1 && 1) + post.validator2 + post.validator3 + post.validator4 + post.validator5;
+console.log(validation_length);
+
+  const [targetLang, setTargetLang] = useState('en');
 
   return (
     <>
@@ -137,38 +146,51 @@ const PostDetails = () => {
           <div className='w-full m-auto p-2'>
             <div><img className='w-full lg:h-[550px] h-[250px]' src={post.img} alt="Post" /></div>
 
-            <div className='flex justify-end text-3xl font-bold my-2 mr-4'> 
-            {save ? <button onClick={()=>setSave(!save)} className=' text-red-500' >
-              <BsBookmarkHeartFill/>
-            </button>
-            :
-            <button onClick={()=>setSave(!save)}>
-                <BsBookmarkHeart/>
-            </button>
-            }
-            
-            </div>
+            <div className='flex justify-end text-3xl font-bold my-2 mr-4'>
+              {save ? <button onClick={() => setSave(!save)} className=' text-red-500' >
+                <BsBookmarkHeartFill />
+              </button>
+                :
+                <button onClick={() => setSave(!save)}>
+                  <BsBookmarkHeart />
+                </button>
+              }
 
+            </div>
+            <select
+              value={targetLang}
+              onChange={(e) => setTargetLang(e.target.value)}
+              className="border p-2  outline-none rounded-md float-end"
+            >
+              <option value="en">English</option>
+              <option value="es">Spanish</option>
+              <option value="fr">French</option>
+              <option value="mr">Marathi</option>
+            </select>
             <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>Published by @{post.username}</p>
-            <h1 className='text-2xl font-bold text-gray-800 my-2'>{post.title}</h1>
-            <div className='flex justify-start items-center gap-4 font-semibold'>Tags:
+
+
+            <h1 className="text-2xl font-bold text-gray-800 my-2">
+              <Lang translateWord={post.title} targetLang={targetLang} />
+            </h1>
+            <div className='flex flex-wrap justify-start items-center gap-4 font-semibold'>Tags:
               {post.categories?.map((d, i) => (
-                <p key={i} className='w-fit px-4 py-1 my-2 text-sm rounded-full font-semibold border-2 bg-green text-white text-nowrap'>{d}</p>
+                <p key={i} className='w-fit px-4 py-1 text-sm rounded-full font-semibold border-2 bg-green text-white text-nowrap'> <Lang translateWord={d} targetLang={targetLang} /> </p>
               ))}
             </div>
             <p className='text-sm my-4 font-semibold'>Upload Date : <span className='font-light'>{post.updatedAt}</span></p>
-            <p className='text-sm text-gray-800 my-2 font-semibold'>Place of Origin : <span className='font-light'>{post.places}</span></p>
-            <p className='text-sm text-gray-800 my-2 font-semibold'>Harmful for : <span className=' text-red-800 font-semibold'>{post.wpmh}</span></p>
+            <p className='text-sm text-gray-800 my-2 font-semibold'>Place of Origin : <span className='font-light'> <Lang translateWord={post.places} targetLang={targetLang} /> </span></p>
+            <p className='text-sm text-gray-800 my-2 font-semibold'>Harmful for : <span className=' text-red-800 font-semibold'><Lang translateWord={post.wpmh} targetLang={targetLang} /></span></p>
 
             <hr />
-            <p className='font-medium text-base text-gray-800 my-4 text-justify '>{post.desc}</p>
+            <p className='font-medium text-base text-gray-800 my-4 text-justify '><Lang translateWord={post.desc} targetLang={targetLang} /></p>
             <hr />
 
             <div className='flex justify-start font-semibold my-2'>Ingredients :
               <div>
                 {post.ingredient?.map((d, i) => (
                   <p key={i} className='w-fit flex gap-4 justify-center items-center px-2 pb-2 text-sm font-normal'>
-                    <input type="checkbox" />{d}
+                    <input type="checkbox" /><Lang translateWord={d} targetLang={targetLang} />
                   </p>
                 ))}
               </div>
@@ -180,7 +202,8 @@ const PostDetails = () => {
                 {post.step?.map((d, i) => (
                   <>
                     <p key={i} className='w-fit flex gap-2 justify-start items-start px-2 pb-2 text-sm font-normal text-justify'>
-                      <span className='bg-green text-sm text-white font-semibold lg:w-10 lg:h-10  rounded-full flex justify-center items-center'>{i + 1}</span> {d}
+                      <span className='bg-green text-sm text-white font-semibold lg:w-10 lg:h-10  rounded-full flex justify-center items-center'>{i + 1}</span>
+                      <Lang translateWord={d} targetLang={targetLang} />
                     </p>
                     <hr className='border-[1px] my-2 border-green' />
                   </>
@@ -189,25 +212,27 @@ const PostDetails = () => {
             </div>
 
             {
-              post?.video_link && 
+              post?.video_link &&
               <p className='flex items-center text-sm text-gray-800 mt-4 font-semibold'>Video link:
-              <a target='_blank' rel="noopener noreferrer" href={post?.video_link} className='flex w-fit justify-center items-center ml-2 gap-2 bg-red-500 px-4 py-1 rounded-full text-white'>
-                <BsYoutube /> See Video
-              </a>
-            </p>
+                <a target='_blank' rel="noopener noreferrer" href={post?.video_link} className='flex w-fit justify-center items-center ml-2 gap-2 bg-red-500 px-4 py-1 rounded-full text-white'>
+                  <BsYoutube /> See Video
+                </a>
+              </p>
             }
           </div>
 
           {
-            (user.id === AdminIDs[1].id || user.id === AdminIDs[2].id || user.id === AdminIDs[3].id 
+            (user.id === AdminIDs[1].id || user.id === AdminIDs[2].id || user.id === AdminIDs[3].id
               || user.id === AdminIDs[4].id || user.id === AdminIDs[5].id
-             )
+            )
             &&
-            <div className='w-full p-4 border-2 lg:flex flex-row my-4 bg-black text-white gap-2'>
-              <div className='md:w-2/3 w-full bg-black text-white'>
+            <div className='w-full p-4 border-2 lg:flex flex-row my-4 bg-[#275b21] text-white gap-2'>
+              <div className=' w-full'>
+              
+              <div className=' w-full flex flex-col justify-center items-center gap-2  text-white'>
+              <div className=' w-full  text-white'>
                 Once you pick a choice from these options, you will still be able to change it later on!
               </div>
-              <div className='md:w-1/3 w-full flex flex-col justify-center items-center gap-2 bg-black text-white'>
                 <div className='flex justify-center items-center gap-2 w-full'>
                   <button
                     onClick={() => validateBy(true)}
@@ -230,7 +255,11 @@ const PostDetails = () => {
                   {check ? "Checked! ✓" : "Check & Close"}
                 </button>
               </div>
+              <Email username={post.username} userEmail={post.email} validation_length={validation_length}/>
+              </div>
+              
             </div>
+            
           }
 
         </div>

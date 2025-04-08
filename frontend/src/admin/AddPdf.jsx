@@ -31,7 +31,7 @@ const FileUpload = () => {
         formData.append('category', fileCategory); // Include category
     
         try {
-            const res = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/api/files/upload`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/files/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -48,7 +48,7 @@ const FileUpload = () => {
 
     const fetchFiles = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/api/files`, {
+            const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/files`, {
                 params: { category: category === 'All' ? '' : category }, // Pass category as query parameter
             });
             setFiles(res.data);
@@ -63,12 +63,12 @@ const FileUpload = () => {
     }, [category]); // Re-fetch files whenever the category changes
 
     const handleOpenPDF = (filename) => {
-        window.open(`${import.meta.env.VITE_REACT_APP_BACKEND}/api/files/${filename}`, '_blank');
+        window.open(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/files/${filename}`, '_blank');
     };
 
     const handleDownload = async (filename) => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/api/files/${filename}`, {
+            const res = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/files/${filename}`, {
                 responseType: 'blob',
             });
 
@@ -86,7 +86,7 @@ const FileUpload = () => {
 
     const handleDelete = async (fileId) => {
         try {
-            await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND}/api/files/${fileId}`);
+            await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/files/${fileId}`);
             alert('File deleted successfully');
             fetchFiles(); // Refresh file list after deletion
         } catch (err) {

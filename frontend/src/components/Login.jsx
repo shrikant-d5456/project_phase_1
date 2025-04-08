@@ -8,8 +8,8 @@ import Modal from "react-modal";
 import AdminIDs from '../Utils/AdminIDs.jsx';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("dalvishrikant1201@gmail.com");
+  const [password, setPassword] = useState("shree");
   const [err, setErr] = useState(false);
   const { setUser } = useContext(UserContext);
   const [modalIsOpen, setModalIsOpen] = useState(true);
@@ -17,9 +17,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/login`, { email, password });
+      const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/login`, { email, password });
       setUser(resp.data);
-      // console.log("Login successful");
+      console.log(resp.data);
+      alert("Login successful");
       setErr(false);
       setModalIsOpen(false);
 
@@ -29,7 +30,7 @@ const Login = () => {
         navigate("/");
       }
     } catch (error) {
-      // console.log(error);
+      alert(error);
       setErr(true);
     }
   };

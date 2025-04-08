@@ -16,7 +16,7 @@ const Profile = () => {
 
   const getUser = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/user/${user.id}`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/user/${user.id}`);
       const userData = resp.data.data;
       setData(userData);
       setUsername(userData.username);
@@ -29,7 +29,7 @@ const Profile = () => {
 
   const setUser = async () => {
     try {
-      const resp = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/user/${user.id}`, {
+      const resp = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/user/${user.id}`, {
         username,
         email,
         password

@@ -25,7 +25,7 @@ const Layout = () => {
         <Route path='/' element={<Home />} />
 
         <Route element={<ProtectedRoute />}>
-          <Route path='/posts/post/:id' element={<PostDetails />} />
+          <Route path='/posts/post/:id' element={<PostDetails />} /> 
           <Route path='/posts/post/post-validatation/:id' element={<FiveStepValidation />} />
           <Route path='/createpost' element={<Createpost />} />
           <Route path='/post/editpost/:id' element={<EditPost />} />

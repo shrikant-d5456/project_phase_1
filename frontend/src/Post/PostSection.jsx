@@ -23,7 +23,7 @@ const PostSection = ({ send }) => {
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND}/auth/api/post/hostData`);
+      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/hostData`);
       setPosts(resp.data.data);
       setFilters(resp.data.data); // Initialize filters with fetched posts
     } catch (err) {
