@@ -1,8 +1,10 @@
-// index.js (just defines the app, no listen)
+import dotenv from "dotenv";
+dotenv.config();
 
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
+
 import authRouter from './routes/Auth.js';
 import userRouter from "./routes/User.js";
 import postRouter from "./routes/Post.js";
@@ -10,7 +12,6 @@ import commentRouter from "./routes/Comment.js";
 import medicineRoutes from "./routes/Verification.js";
 import adminRoutes from "./routes/Admin.js";
 import fileRoutes from "./routes/fileRoutes.js";
-import 'dotenv/config';
 
 const app = express();
 
