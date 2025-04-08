@@ -1,3 +1,5 @@
+// index.js (just defines the app, no listen)
+
 import express from "express";
 import mongoose from "mongoose";
 import cors from 'cors';
@@ -7,14 +9,15 @@ import postRouter from "./routes/Post.js";
 import commentRouter from "./routes/Comment.js";
 import medicineRoutes from "./routes/Verification.js";
 import adminRoutes from "./routes/Admin.js";
-// import uploadRouter from "./routes/Upload.js"; 
 import fileRoutes from "./routes/fileRoutes.js";
 import 'dotenv/config';
 
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({
+  origin: process.env.CLIENT_URL || "http://localhost:5173"
+}));
 
 app.use("/auth/api", authRouter);
 app.use("/auth/user", userRouter);
@@ -25,12 +28,11 @@ app.use("/auth/api", adminRoutes);
 app.use("/api/files", fileRoutes);
 
 mongoose.connect(process.env.MONGODB_URL)
-    .then(() => {
-        console.log("Connected to DB");
-        app.listen(process.env.PORT, () => {
-            console.log(`Server is running on: ${process.env.PORT}`);
-        });
-    })
-    .catch((err) => {
-        console.error(err);
-    });
+  .then(() => {
+    console.log("Connected to DB");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
+
+export default app;
