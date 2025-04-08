@@ -1,19 +1,32 @@
 // api/index.js
-
-import app from "../index.js";
 import mongoose from "mongoose";
+import serverless from "serverless-http";
+import app from "../index.js";
 
-// This is the serverless function handler for Vercel
-export default async function handler(req, res) {
-  if (mongoose.connection.readyState === 0) {
+let isConnected = false; // Global flag to prevent re-connections
+const handler = serverless(app);
+
+async function connectToDB() {
+  if (!isConnected) {
     try {
-      await mongoose.connect(process.env.MONGODB_URL);
-      console.log("Connected to MongoDB in Vercel function");
+      await mongoose.connect(process.env.MONGODB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      });
+      isConnected = true;
+      console.log("Connected to MongoDB from serverless function");
     } catch (err) {
-      console.error("MongoDB connection error in handler:", err);
-      return res.status(500).json({ error: "Failed to connect to DB" });
+      console.error("MongoDB connection error:", err);
+      throw err;
     }
   }
+}
 
-  return app(req, res); // use Express as a handler directly
+export default async function(req, res) {
+  try {
+    await connectToDB();
+    return handler(req, res); // Express now wrapped and safe for Vercel
+  } catch (err) {
+    return res.status(500).json({ error: "Failed to connect to DB" });
+  }
 }
