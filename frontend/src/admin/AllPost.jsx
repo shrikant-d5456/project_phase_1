@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const getposts = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.message);

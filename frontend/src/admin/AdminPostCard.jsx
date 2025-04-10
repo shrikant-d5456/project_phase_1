@@ -52,12 +52,12 @@ const PostCard = ({ post }) => {
               </div> : ""}
 
             <div>
-              <h1 className='font-medium my-1'>{post.title.substring(0, 30)}..</h1>
+              <h1 className='font-medium my-1 line-clamp-1'>{post.title}..</h1>
               <span>
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
                 <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
               </span>
-              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,30 )}..<span className=' text-blue-400'>Read More</span></p>
+              <p className=' text-sm text-gray-400 my-1 line-clamp-1'>{post.desc}..<span className=' text-blue-400'>Read More</span></p>
             </div>
 
 

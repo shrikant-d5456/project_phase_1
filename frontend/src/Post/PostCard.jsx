@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
   
   // const hostPost = async () => {
   //   try {
-  //     const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/admin/postData/${post._id}`);
+  //     const resp = await axios.post(`https://project-phase-1-tpyd.onrender.com/auth/api/post/admin/postData/${post._id}`);
   //     console.log(resp.msg);
   //   } catch (err) {
   //     console.log(err);
@@ -42,13 +42,13 @@ const PostCard = ({ post }) => {
             </div>
 
             <div>
-              <h1 className='font-medium my-1'>{post.title.substring(0, 30)}..</h1>
+              <h1 className='font-medium my-1 line-clamp-1'>{post.title}..</h1>
               <span>
-                <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
+                <p className=' text-xs text-gray-400 my-1'>@{post.username}</p>
                 
                 <p className=' text-[10px] text-gray-00 my-1'>{(updatedAtDate).toLocaleString()}</p>
               </span>
-              <p className=' text-sm text-gray-400 my-1'>{post.desc.substring(0,35 )}..<span className=' text-blue-400'>Read More</span></p>
+              <p className=' text-xs text-gray-500 my-1 line-clamp-2'>{post.desc}..<span className=' text-blue-400'>Read More</span></p>
             </div>
 
 

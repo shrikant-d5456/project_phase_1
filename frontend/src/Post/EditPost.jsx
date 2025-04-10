@@ -28,7 +28,7 @@ const EditPost = () => {
 
     const getPost = async () => {
         try {
-            const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/${postId}`);
+            const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/post/${postId}`);
             const fetchedPost = resp.data.data;
             setPost(fetchedPost);
             setTitle(fetchedPost.title);
@@ -47,7 +47,7 @@ const EditPost = () => {
     const uploadPost = async () => {
         try {
             const updatedPost = { title, img, desc, categories: cats };
-            const resp = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/${postId}`, updatedPost);
+            const resp = await axios.put(`https://project-phase-1-tpyd.onrender.com/auth/post/${postId}`, updatedPost);
             // console.log(resp);
             navigate('/');
         } catch (err) {

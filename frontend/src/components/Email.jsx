@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-const Email = ({ username = "a", userEmail = "hey", validation_length = 5 }) => {
+const Email = ({ username, userEmail, validation_length }) => {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const Email = ({ username = "a", userEmail = "hey", validation_length = 5 }) => 
   };
 
   return (
-    <div className="max-w-md float-start mx-auto  p-6 ">
+    <div className=" w-full float-start mx-auto  p-6 ">
       <h2 className="text-xl font-bold mb-4">Send Email </h2>
       {isSent && <p className="text-green-500">Email sent successfully!</p>}
       <form ref={form} onSubmit={sendEmail} className="space-y-4">
@@ -121,7 +121,7 @@ const Email = ({ username = "a", userEmail = "hey", validation_length = 5 }) => 
         <textarea
           name="message"
           value={msg}
-
+          rows={8}
           className="w-full p-2 border border-gray-300 text-black "
         />
         <button

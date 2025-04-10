@@ -16,7 +16,7 @@ const Profile = () => {
 
   const getUser = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/user/${user.id}`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/user/${user.id}`);
       const userData = resp.data.data;
       setData(userData);
       setUsername(userData.username);
@@ -29,7 +29,7 @@ const Profile = () => {
 
   const setUser = async () => {
     try {
-      const resp = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/user/${user.id}`, {
+      const resp = await axios.put(`https://project-phase-1-tpyd.onrender.com/auth/user/${user.id}`, {
         username,
         email,
         password
@@ -53,7 +53,7 @@ const Profile = () => {
       <div className='w-11/12 h-full m-auto'>
         <p className=' text-2xl font-semibold my-4 pl-2 text-gray-800'>Your Post</p>
 
-        <hr className=' border-[#00ff26] border-[1px]' />
+        <hr className=' border-[#00ff26] border-[1px] bg-white' />
 
         <div className='lg:flex w-full my-4'>
 
@@ -67,7 +67,7 @@ const Profile = () => {
           
           {user.username === "admin" ? 
          
-          <div className='lg:w-1/5'>
+          <div className='lg:w-1/5 '>
           <label htmlFor="inp" className=' text-sm font-semibold'>Enter Admin ID to Update Profile</label>
             <input
               type="text"
@@ -86,7 +86,7 @@ const Profile = () => {
 
                 <>
                   <p className=' text-2xl font-semibold my-4 text-gray-800'>Your Profile</p>
-                  <div className=' flex flex-col gap-2 text-sm border-[1px] border-[#00ff26] p-4' >
+                  <div className=' flex flex-col gap-2 text-sm border-[1px] border-[#00ff26] p-4 bg-white' >
 
                     <input
                       type="text"
@@ -123,7 +123,7 @@ const Profile = () => {
           {user.username === "admin" ? "" :
             <div className='lg:w-1/5  '>
               <p className=' text-2xl font-semibold my-4 text-gray-800'>Your Profile</p>
-              <div className=' flex flex-col gap-2 text-sm border-[1px] border-[#00ff26] p-4' >
+              <div className=' flex flex-col gap-2 text-sm border-[1px] border-[#00ff26] p-4 bg-white' >
 
                 <input
                   type="text"

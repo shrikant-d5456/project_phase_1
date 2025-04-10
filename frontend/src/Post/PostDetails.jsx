@@ -24,7 +24,7 @@ const PostDetails = () => {
 
   const getPost = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/${postId.id}`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/post/${postId.id}`);
       setPost(resp.data.data);
       console.table(post);
     } catch (err) {
@@ -74,17 +74,21 @@ const PostDetails = () => {
 
 
   const deletePost = async () => {
-    try {
-      await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/${postId.id}`);
-      navigate('/admin/');
-    } catch (err) {
-      console.log(err);
+    const ans = confirm("are you shure delete this post");
+    if(ans){
+      try {
+        await axios.delete(`https://project-phase-1-tpyd.onrender.com/auth/post/${postId.id}`);
+        alert("you delete this post succesfully")
+        navigate('/admin/');
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
   const validateBy = async (isValid) => {
     try {
-      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`https://project-phase-1-tpyd.onrender.com/auth/api/post/${admin}/${postId.id}`, {
         [`${validator}`]: isValid ? "true" : "false",
       });
       setValid(isValid);
@@ -95,7 +99,7 @@ const PostDetails = () => {
 
   const checkedBy = async (checkStatus) => {
     try {
-      await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`https://project-phase-1-tpyd.onrender.com/auth/api/post/${admin}/${postId.id}`, {
         [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);
@@ -230,19 +234,21 @@ console.log(validation_length);
               <div className=' w-full'>
               
               <div className=' w-full flex flex-col justify-center items-center gap-2  text-white'>
+              <Email username={post.username} userEmail={post.email} validation_length={validation_length}/>
+
               <div className=' w-full  text-white'>
                 Once you pick a choice from these options, you will still be able to change it later on!
               </div>
                 <div className='flex justify-center items-center gap-2 w-full'>
                   <button
                     onClick={() => validateBy(true)}
-                    className={`${valid ? "bg-green-700 border-2 border-white m-1" : "bg-green-300"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                    className={`${valid ? "bg-green-700 border-2 border-white m-1" : "bg-green-500"} hover:bg-green-700 rounded-full px-4 py-1 font-semibold text-white w-full`}
                   >
                     {valid ? "Yes! ✓" : "Yes"}
                   </button>
                   <button
                     onClick={() => validateBy(false)}
-                    className={`${valid ? "bg-red-400" : "bg-red-700 border-2 border-white m-1"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                    className={`${valid ? "bg-red-500" : "bg-red-700 border-2 border-white m-1"} hover:bg-red-700 rounded-full px-4 py-1 font-semibold text-white w-full`}
                   >
                     {valid ? "No" : "No ✓"}
                   </button>
@@ -250,12 +256,11 @@ console.log(validation_length);
 
                 <button
                   onClick={() => checkedBy(!check)}
-                  className={`${check ? "bg-yellow-700 border-2 border-white" : "bg-yellow-400"} rounded-full px-4 py-1 font-semibold text-white w-full`}
+                  className={`${check ? "bg-yellow-700 border-2 border-white" : "bg-yellow-500"} hover:bg-yellow-700 rounded-full px-4 py-1 font-semibold text-white w-full`}
                 >
                   {check ? "Checked! ✓" : "Check & Close"}
                 </button>
               </div>
-              <Email username={post.username} userEmail={post.email} validation_length={validation_length}/>
               </div>
               
             </div>

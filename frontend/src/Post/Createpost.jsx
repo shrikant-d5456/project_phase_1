@@ -85,7 +85,7 @@ const Createpost = () => {
                     step: steps,
                     video_link,
                 };
-                const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/post/create`, payload, {
+                const resp = await axios.post(`https://project-phase-1-tpyd.onrender.com/auth/post/create`, payload, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

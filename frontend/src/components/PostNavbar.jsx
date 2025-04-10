@@ -13,17 +13,22 @@ const PostNavbar = () => {
   const [menu, setmenu] = useState(false);
 
   const handlelogout = async () => {
-    try {
-      const resp = await axios.post(URL + "/auth/api/logout")
-      // console.log(resp.data);
-      setUser(null);
-      setmenu(false)
-      navigate('/login');
+    const ans = confirm("you want to logout 🤔");
+    if(ans){
+        try {
+            const resp = await axios.post("https://project-phase-1-tpyd.onrender.com/auth/api/logout")
+            console.log(resp.data);
+            setUser(null);
+            alert("logout successfully")
+            setmenu(false)
+            navigate('/login');
+        }
+        catch (err) {
+            console.log("someting went wrongs")
+        }
     }
-    catch (err) {
-      alert("someting went wrongs");
-    }
-  }
+}
+
   const [search, setSearch] = useState('');
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);

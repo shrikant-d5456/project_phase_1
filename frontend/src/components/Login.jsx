@@ -8,8 +8,8 @@ import Modal from "react-modal";
 import AdminIDs from '../Utils/AdminIDs.jsx';
 
 const Login = () => {
-  const [email, setEmail] = useState("dalvishrikant1201@gmail.com");
-  const [password, setPassword] = useState("shree");
+  const [email, setEmail] = useState("user@gmail.com");
+  const [password, setPassword] = useState("12345");
   const [err, setErr] = useState(false);
   const { setUser } = useContext(UserContext);
   const [modalIsOpen, setModalIsOpen] = useState(true);
@@ -17,12 +17,13 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const resp = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/login`, { email, password });
+      const resp = await axios.post(`https://project-phase-1-tpyd.onrender.com/auth/api/login`, { email, password });
       setUser(resp.data);
       console.log(resp.data);
       alert("Login successful");
       setErr(false);
       setModalIsOpen(false);
+      console.log(resp.data.id);
 
       if (AdminIDs.some((admin) => admin.id === resp.data.id)) {
         navigate("/admin/");

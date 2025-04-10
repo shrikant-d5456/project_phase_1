@@ -13,7 +13,7 @@ const MyPostChecking = () => {
 
   const getposts1 = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/validator1-checking`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/validator1-checking`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.message);
@@ -22,7 +22,7 @@ const MyPostChecking = () => {
 
   const getposts2 = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/validator2-checking`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/validator2-checking`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.message);
@@ -31,7 +31,7 @@ const MyPostChecking = () => {
 
   const getposts3 = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/validator3-checking`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/validator3-checking`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.message);
@@ -40,7 +40,7 @@ const MyPostChecking = () => {
 
   const getposts4 = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/validator4-checking`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/validator4-checking`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.message);
@@ -49,7 +49,7 @@ const MyPostChecking = () => {
 
   const getposts5 = async () => {
     try {
-      const resp = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/auth/api/post/validator5-checking`);
+      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/validator5-checking`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.message);
