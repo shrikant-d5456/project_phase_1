@@ -11,7 +11,7 @@ const ProfilePost = () => {
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/post`);
+      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/post`);
       setPosts(resp.data.data);
     } catch (err) {
       console.log(err);

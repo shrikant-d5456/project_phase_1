@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const resp = await axios.post(`https://project-phase-1-tpyd.onrender.com/auth/api/login`, { email, password });
+      const resp = await axios.post(`https://project-phase-1-woku.onrender.com/auth/api/login`, { email, password });
       setUser(resp.data);
       console.log(resp.data);
       alert("Login successful");

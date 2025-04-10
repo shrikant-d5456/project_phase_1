@@ -24,7 +24,7 @@ const PostDetails = () => {
 
   const getPost = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/post/${postId.id}`);
+      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/post/${postId.id}`);
       setPost(resp.data.data);
       console.table(post);
     } catch (err) {
@@ -77,7 +77,7 @@ const PostDetails = () => {
     const ans = confirm("are you shure delete this post");
     if(ans){
       try {
-        await axios.delete(`https://project-phase-1-tpyd.onrender.com/auth/post/${postId.id}`);
+        await axios.delete(`https://project-phase-1-woku.onrender.com/auth/post/${postId.id}`);
         alert("you delete this post succesfully")
         navigate('/admin/');
       } catch (err) {
@@ -88,7 +88,7 @@ const PostDetails = () => {
 
   const validateBy = async (isValid) => {
     try {
-      await axios.put(`https://project-phase-1-tpyd.onrender.com/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`https://project-phase-1-woku.onrender.com/auth/api/post/${admin}/${postId.id}`, {
         [`${validator}`]: isValid ? "true" : "false",
       });
       setValid(isValid);
@@ -99,7 +99,7 @@ const PostDetails = () => {
 
   const checkedBy = async (checkStatus) => {
     try {
-      await axios.put(`https://project-phase-1-tpyd.onrender.com/auth/api/post/${admin}/${postId.id}`, {
+      await axios.put(`https://project-phase-1-woku.onrender.com/auth/api/post/${admin}/${postId.id}`, {
         [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);

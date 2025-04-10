@@ -12,7 +12,7 @@ const AdminPage = () => {
 
   const getposts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/hostData`);
+      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/api/post/hostData`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.msg);

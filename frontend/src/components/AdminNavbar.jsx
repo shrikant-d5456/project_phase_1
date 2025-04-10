@@ -18,7 +18,7 @@ const AdminNavbar = () => {
         const ans = confirm("you want to logout 🤔");
         if(ans){
             try {
-                const resp = await axios.post("https://project-phase-1-tpyd.onrender.com/auth/api/logout")
+                const resp = await axios.post("https://project-phase-1-woku.onrender.com/auth/api/logout")
                 console.log(resp.data);
                 setUser(null);
                 alert("logout successfully")

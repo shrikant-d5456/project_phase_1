@@ -23,7 +23,7 @@ const PostSection = ({ send }) => {
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-tpyd.onrender.com/auth/api/post/hostData`);
+      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/api/post/hostData`);
       setPosts(resp.data.data);
       setFilters(resp.data.data); // Initialize filters with fetched posts
     } catch (err) {

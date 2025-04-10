@@ -12,7 +12,7 @@ const Practioners = () => {
 
     const fetchFiles = async () => {
         try {
-            const res = await axios.get(`https://project-phase-1-tpyd.onrender.com/api/files`);
+            const res = await axios.get(`https://project-phase-1-woku.onrender.com/api/files`);
             setFiles(res.data);
             setFilteredFiles(res.data); // Initially show all files
         } catch (err) {
@@ -34,12 +34,12 @@ const Practioners = () => {
     }, [category, files]);
 
     const handleOpenPDF = (filename) => {
-        window.open(`https://project-phase-1-tpyd.onrender.com/api/files/${filename}`, '_blank');
+        window.open(`https://project-phase-1-woku.onrender.com/api/files/${filename}`, '_blank');
     };
 
     const handleDownload = async (filename) => {
         try {
-            const res = await axios.get(`https://project-phase-1-tpyd.onrender.com/api/files/${filename}`, {
+            const res = await axios.get(`https://project-phase-1-woku.onrender.com/api/files/${filename}`, {
                 responseType: 'blob',
             });
 
@@ -57,7 +57,7 @@ const Practioners = () => {
 
     const handleDelete = async (fileId) => {
         try {
-            await axios.delete(`https://project-phase-1-tpyd.onrender.com/api/files/${fileId}`);
+            await axios.delete(`https://project-phase-1-woku.onrender.com/api/files/${fileId}`);
             alert('File deleted successfully');
             fetchFiles(); // Refresh the file list after deletion
         } catch (err) {

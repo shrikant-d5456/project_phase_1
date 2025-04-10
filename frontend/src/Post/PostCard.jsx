@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
   
   // const hostPost = async () => {
   //   try {
-  //     const resp = await axios.post(`https://project-phase-1-tpyd.onrender.com/auth/api/post/admin/postData/${post._id}`);
+  //     const resp = await axios.post(`https://project-phase-1-woku.onrender.com/auth/api/post/admin/postData/${post._id}`);
   //     console.log(resp.msg);
   //   } catch (err) {
   //     console.log(err);
