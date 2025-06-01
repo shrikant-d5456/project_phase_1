@@ -31,7 +31,7 @@ const FileUpload = () => {
         formData.append('category', fileCategory); // Include category
     
         try {
-            const res = await axios.post(`https://project-phase-1-woku.onrender.com/api/files/upload`, formData, {
+            const res = await axios.post(`http://localhost:8000/api/files/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -48,7 +48,7 @@ const FileUpload = () => {
 
     const fetchFiles = async () => {
         try {
-            const res = await axios.get(`https://project-phase-1-woku.onrender.com/api/files`, {
+            const res = await axios.get(`http://localhost:8000/api/files`, {
                 params: { category: category === 'All' ? '' : category }, // Pass category as query parameter
             });
             setFiles(res.data);
@@ -63,12 +63,12 @@ const FileUpload = () => {
     }, [category]); // Re-fetch files whenever the category changes
 
     const handleOpenPDF = (filename) => {
-        window.open(`https://project-phase-1-woku.onrender.com/api/files/${filename}`, '_blank');
+        window.open(`http://localhost:8000/api/files/${filename}`, '_blank');
     };
 
     const handleDownload = async (filename) => {
         try {
-            const res = await axios.get(`https://project-phase-1-woku.onrender.com/api/files/${filename}`, {
+            const res = await axios.get(`http://localhost:8000/api/files/${filename}`, {
                 responseType: 'blob',
             });
 
@@ -86,7 +86,7 @@ const FileUpload = () => {
 
     const handleDelete = async (fileId) => {
         try {
-            await axios.delete(`https://project-phase-1-woku.onrender.com/api/files/${fileId}`);
+            await axios.delete(`http://localhost:8000/api/files/${fileId}`);
             alert('File deleted successfully');
             fetchFiles(); // Refresh file list after deletion
         } catch (err) {
@@ -107,8 +107,8 @@ const FileUpload = () => {
 
     return (
         <div className="lg:w-10/12 md:w-10/12 w-full m-auto">
-            <div className="flex justify-center items-center my-8 flex-col border-2">
-                <h1 className="text-2xl font-semibold my-2 bg-gray-100 w-full text-center p-2">Upload Files</h1>
+            <div className="flex justify-center items-center my-8 flex-col border-2 bg-gray-100">
+                <h1 className="text-2xl font-semibold my-2  w-full text-center p-2">Upload Files</h1>
                 <div className="p-4 w-full shadow-md flex flex-col items-center rounded-md">
                     <input type="file" onChange={handleFileChange} />
                     <select

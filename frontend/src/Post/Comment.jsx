@@ -24,7 +24,7 @@ const Comment = ({ post }) => {
   const sendComment = async () => {
     try {
       if (comment.trim() !== "") {
-        await axios.post(`https://project-phase-1-woku.onrender.com/auth/comment/create`, {
+        await axios.post(`http://localhost:8000/auth/comment/create`, {
           comment,
           author: user.username,
           postId,
@@ -45,7 +45,7 @@ const Comment = ({ post }) => {
 
   const getComment = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/comment/post/${postId}`);
+      const resp = await axios.get(`http://localhost:8000/auth/comment/post/${postId}`);
       setData(Array.isArray(resp.data.data) ? resp.data.data : []);
     } catch (err) {
       console.log(err);
@@ -54,7 +54,7 @@ const Comment = ({ post }) => {
 
   const deleteComment = async (commentId) => {
     try {
-      await axios.delete(`https://project-phase-1-woku.onrender.com/auth/comment/${commentId}`);
+      await axios.delete(`http://localhost:8000/auth/comment/${commentId}`);
       getComment();
     } catch (err) {
       console.log(err);
@@ -64,7 +64,7 @@ const Comment = ({ post }) => {
   const updateComment = async () => {
     try {
       if (comment.trim() !== "") {
-        await axios.put(`https://project-phase-1-woku.onrender.com/auth/comment/${editComment._id}`, {
+        await axios.put(`http://localhost:8000/auth/comment/${editComment._id}`, {
           comment,
           author: user.username,
           postId,
@@ -95,7 +95,7 @@ const Comment = ({ post }) => {
   };
 
   return (
-    <div className=' my-4'>
+    <div className=' my-4 text-sm'>
       <p className='text-xl font-semibold my-4'>Comments</p>
       {err && <p className=' bg-yellow-200 w-full font-semibold rounded-sm text-gray-800 p-2 my-2'>error while analysing</p>}
       <div className='flex w-full p-2 border justify-between items-center border-gray-400'>

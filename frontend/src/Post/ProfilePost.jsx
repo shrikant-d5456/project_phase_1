@@ -11,7 +11,7 @@ const ProfilePost = () => {
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/post`);
+      const resp = await axios.get(`http://localhost:8000/auth/post`);
       setPosts(resp.data.data);
     } catch (err) {
       console.log(err);
@@ -32,7 +32,11 @@ const ProfilePost = () => {
           <div key={index} >
             <img className='w-full h-[150px]' src={post.img} alt="" />
             <h1 className='text-justify my-2 font-semibold text-gray-800 line-clamp-2'>{post.title}</h1>
-            <p className=' my-2 text-gray-600 text-justify line-clamp-2'>{post.desc}..Read More</p>
+            <div className=' my-2 text-gray-600 text-justify line-clamp-2'>
+              <div
+                className=' text-gray-800  text-sm text-justify prose max-w-none'
+                dangerouslySetInnerHTML={{ __html: post.desc }}
+              />..Read More</div>
           </div>
           </Link>
         ))

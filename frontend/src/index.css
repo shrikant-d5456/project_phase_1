@@ -41,7 +41,7 @@ body{
 
 @layer utilities{
   .inp{
-    @apply text-sm rounded-3xl text-gray-800  border-[1px] border-green-800  px-8 py-2;
+    @apply text-sm  text-gray-800  border-[1px] border-green-800  px-4 py-2;
   }
   .header-section{
     @apply w-full py-8 flex flex-col justify-center items-center;
@@ -181,4 +181,10 @@ li:hover .tooltip-text {
     transform: scale(2, 2);
     -webkit-filter: blur(20px);
   }
+}
+.bgImg {
+  background-image: url('https://t3.ftcdn.net/jpg/14/57/23/84/240_F_1457238456_v4fyi91NwBNFn7m8km2fHH83Bm1UxxHb.jpg');
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-position: center;
 }

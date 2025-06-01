@@ -16,7 +16,7 @@ const Profile = () => {
 
   const getUser = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/user/${user.id}`);
+      const resp = await axios.get(`http://localhost:8000/auth/user/${user.id}`);
       const userData = resp.data.data;
       setData(userData);
       setUsername(userData.username);
@@ -29,7 +29,7 @@ const Profile = () => {
 
   const setUser = async () => {
     try {
-      const resp = await axios.put(`https://project-phase-1-woku.onrender.com/auth/user/${user.id}`, {
+      const resp = await axios.put(`http://localhost:8000/auth/user/${user.id}`, {
         username,
         email,
         password

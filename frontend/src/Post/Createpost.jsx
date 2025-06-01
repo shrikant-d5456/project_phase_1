@@ -1,4 +1,6 @@
 import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import React, { useContext, useRef, useState } from 'react';
 import { UserContext } from '../Utils/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -72,10 +74,10 @@ const Createpost = () => {
                     desc,
                     img,  // Assuming img is a URL or base64 encoded string
                     username: user.username,
-                    email:user.email,
+                    email: user.email,
                     categories: cats,
                     userId: user.id,
-                                 
+
                     established,
                     places,
                     wpmh,
@@ -84,7 +86,7 @@ const Createpost = () => {
                     step: steps,
                     video_link,
                 };
-                const resp = await axios.post(`https://project-phase-1-woku.onrender.com/auth/post/create`, payload, {
+                const resp = await axios.post(`http://localhost:8000/auth/post/create`, payload, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -103,15 +105,15 @@ const Createpost = () => {
 
 
     return (
-        <div className='flex flex-col gap-4 w-full h-full m-auto pb-8 mt-4'>
-            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#ccffc199] shadow-xl  border-4 border-white'>
+        <div className='flex flex-col gap-4 w-full h-full m-auto pb-8 bgImg'>
+            <div className='flex flex-col lg:w-1/2 w-full m-auto gap-4 p-8  bg-[#d4ffdf9d]  shadow-xl  border-4 border-white'>
                 <h1 className=' text-2xl font-semibold my-2 text-gray-800'>Create Post</h1>
 
                 <input
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     type="text"
-                    placeholder='Enter post title'
+                    placeholder='Your post title 💡'
                     className='inp'
                 />
 
@@ -119,7 +121,7 @@ const Createpost = () => {
                     value={img}
                     onChange={(e) => setImg(e.target.value)}
                     type='text'
-                    placeholder='Enter image URL or base64 string '
+                    placeholder='add image URL from internet 🌐'
                     className='inp'
                 />
 
@@ -127,15 +129,15 @@ const Createpost = () => {
                     value={video_link}
                     onChange={(e) => setVideo_link(e.target.value)}
                     type='text'
-                    placeholder='paste video link here..'
+                    placeholder='paste ▶️ video link here..'
                     className='inp'
                 />
 
                 <input
                     value={established}
                     onChange={(e) => setEstablished(e.target.value)}
-                    type='text'
-                    placeholder='Enter established date'
+                    type='date'
+                    placeholder='When this medicine found 📅'
                     className='inp'
                 />
 
@@ -143,7 +145,7 @@ const Createpost = () => {
                     value={places}
                     onChange={(e) => setPlaces(e.target.value)}
                     type='text'
-                    placeholder='Enter Place'
+                    placeholder=' where this medicine get (Origine place) 🪧🗺️'
                     className='inp'
                 />
 
@@ -151,7 +153,7 @@ const Createpost = () => {
                     value={wpmh}
                     onChange={(e) => setWpmh(e.target.value)}
                     type='text'
-                    placeholder='Which Patient this medicine is harmful '
+                    placeholder='Which Patient this medicine is harmful 🤕🤒'
                     className='inp'
                 />
 
@@ -159,7 +161,7 @@ const Createpost = () => {
                     value={vitamin}
                     onChange={(e) => setVitsmin(e.target.value)}
                     type='text'
-                    placeholder='Vitamin section'
+                    placeholder='Vitamin section 💪🏻'
                     className='inp'
                 />
 
@@ -168,7 +170,7 @@ const Createpost = () => {
                         value={ingredient}
                         onChange={(e) => setIngredient(e.target.value)}
                         type="text"
-                        placeholder='Enter ingredients'
+                        placeholder='Enter ingredients 🧺🥬'
                         className='inp w-full'
                         ref={ingredientFocus}
                     />
@@ -182,22 +184,22 @@ const Createpost = () => {
 
                 <div className='flex gap-2 flex-wrap'>
                     {ingredients.map((c, index) => (
-                        <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
+                        <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white  py-1 px-2 '>
                             <p className='w-fit'>{c}</p>
-                            <button onClick={() => deleteIngredient(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle /></button>
+                            <button onClick={() => deleteIngredient(index)} className='  text-white bg-gray-600 p-1' ><BsXCircle /></button>
                         </div>
                     ))}
                 </div>
 
                 <hr className='border-[1px] border-green-800' />
- 
+
 
                 <div className='flex w-full'>
                     <input
                         value={step}
                         onChange={(e) => setStep(e.target.value)}
                         type="text"
-                        placeholder='Enter steps'
+                        placeholder='Enter steps 🔢'
                         className='inp w-full'
                     />
                     <button
@@ -211,7 +213,7 @@ const Createpost = () => {
                     {steps.map((c, index) => (
                         <div key={index} className='flex gap-2 text-sm items-center bg-slate-200 rounded-r-full  py-1 px-2 shadow-xl'>
                             <p className='w-fit px-4'><span className='font-semibold'>step {index + 1} : </span> {c}</p>
-                            <button onClick={() => deleteStep(index)} className=' rounded-full text-white bg-red-600 h-7 w-7 flex justify-center items-center' ><BsXCircle /></button>
+                            <button onClick={() => deleteStep(index)} className='  text-white bg-red-600 h-7 w-7 flex justify-center items-center' ><BsXCircle /></button>
                         </div>
                     ))}
                 </div>
@@ -221,8 +223,8 @@ const Createpost = () => {
                 <div className='flex w-full'>
                     <Select
                         options={tags}
-                        className="border-[1px] text-sm border-gray-300 px-4 py-2  outline-none"
-                        placeholder="Add tags.."
+                        className="border-[1px] text-sm border-gray-300 px-4 py-2  outline-none z-50"
+                        placeholder="Add tags.. 🧩 "
                         inp={cat}
                         setInp={setCat}
                         width={400} //width length 100 200 250 300 400
@@ -236,22 +238,36 @@ const Createpost = () => {
                 </div>
                 <div className='flex gap-2 flex-wrap'>
                     {cats.map((c, index) => (
-                        <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white rounded-full py-1 px-2 '>
+                        <div key={index} className='flex gap-2 text-sm bg-slate-200 border-2 border-white  py-1 px-2  rounded-full pl-4'>
                             <p className='w-fit'>{c}</p>
-                            <button onClick={() => deleteCategory(index)} className=' rounded-full text-white bg-gray-600 p-1' ><BsXCircle /></button>
+                            <button onClick={() => deleteCategory(index)} className='  text-white bg-gray-600 p-1 rounded-full' ><BsXCircle /></button>
                         </div>
                     ))}
                 </div>
 
                 <hr className='border-[1px] border-green-800' />
 
-                <textarea
+                <ReactQuill
+                    theme="snow"
                     value={desc}
-                    onChange={(e) => setDesc(e.target.value)}
-                    placeholder='Enter description'
-                    cols={10}
-                    rows={5}
-                    className='inp'
+                    onChange={setDesc}
+                    placeholder="Enter description..."
+                    className="bg-white rounded-md"
+                    modules={{
+                        toolbar: [
+                            [{ header: [1, 2, false] }],
+                            ['bold', 'italic', 'underline', 'strike'],
+                            [{ list: 'ordered' }, { list: 'bullet' }],
+                            ['link'],
+                            ['clean']
+                        ],
+                    }}
+                    formats={[
+                        'header',
+                        'bold', 'italic', 'underline', 'strike',
+                        'list', 'bullet',
+                        'link', 
+                    ]}
                 />
                 {error && <p className=' text-red-500 animate-pulse text-sm'>{error}</p>}
 

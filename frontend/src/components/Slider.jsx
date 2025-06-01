@@ -1,28 +1,98 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
-const AutoplaySlider = withAutoplay(AwesomeSlider); 
+import { BsX } from 'react-icons/bs';
+import sound from '../../assets/notification.mp3';
+import img1 from '../../assets/img1.jpeg'
 
-const slider = () => {
+const AutoplaySlider = withAutoplay(AwesomeSlider);
+
+const Slider = () => {
+  const [msg, setMsg] = useState('');
+
+  const [isOpen, setIsOpen] = useState(true);
+  const audioRef = useRef(new Audio(sound));
+
+  useEffect(() => {
+    const currentHour = new Date().getHours();
+    if (currentHour < 12) {
+      setMsg("Good Morning 🌅");
+    } else if (currentHour < 17) {
+      setMsg("Good Afternoon ☀️");
+    } else if (currentHour < 21) {
+      setMsg("Good Evening 🌇");
+    } else {
+      setMsg("Good Night 🌙");
+    }
+
+    // Play audio only after user interacts
+    const handleUserInteraction = () => {
+      audioRef.current.play().catch(err => console.error("Audio play error:", err));
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('keydown', handleUserInteraction);
+    };
+
+    window.addEventListener('click', handleUserInteraction);
+    window.addEventListener('keydown', handleUserInteraction);
+
+    return () => {
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('keydown', handleUserInteraction);
+    };
+  }, [isOpen]);
+
   return (
-    
-    <AutoplaySlider
-    play={true}
-    cancelOnInteraction={false} // should stop playing on user interaction
-    interval={5000}
-    bullets={true}
-    className=' border-8 border-white z-0 w-full lg:h-[700px] md:h-[500px] h-[250px] lg:rounded-3xl overflow-hidden'
-  >
-          <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/diabic-care-landscape-1920-x1040-672c43407bfcd.webp?v=1730954644'/></div>
-          <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/she-care-landscape-1920-x-1040-672c43400f985.webp?v=1730954644'/></div>
-          <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/web-banner-55455.jpg?v=1714498263'/></div>
-          <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/web_banner_copy1.jpg?v=1697303065'/></div>
-          <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/banner-3564645.jpg?v=1704390628'/></div>
-          <div className='w-full h-full'><img className='w-full h-full' src='https://krishnaayurved.com/cdn/shop/files/diabic-care-landscape-1920-x1040-672c43407bfcd.webp?v=1730954644'/></div>
-    </AutoplaySlider>
-    
-  )
-}
+    <>
+      <AutoplaySlider
+        play={true}
+        cancelOnInteraction={false}
+        interval={5000}
+        bullets={true}
+        className='border-8 border-white z-0 w-full lg:h-[700px] md:h-[500px] h-[250px] lg:rounded-3xl overflow-hidden'
+      >
+        <div className='w-full h-full'>
+          <img
+            className='w-full h-full object-cover'
+            src='https://kairalicenters.com/wp-content/uploads/2022/02/Blog-789x471-1-1.png'
+            alt='Ayurveda Blog'
+          />
+        </div>
+        <div className='w-full h-full'>
+          <img
+            className='w-full h-full object-cover'
+            src='https://thumbs.dreamstime.com/b/five-elements-ayurveda-ether-water-wind-fire-earth-circle-border-line-icon-sign-vector-design-206840445.jpg'
+            alt='Five Elements Ayurveda'
+          />
+        </div>
+        <div className='w-full h-full'>
+          <img
+            className='w-full h-full object-cover'
+            src={img1}
+            alt='Five Elements Ayurveda'
+          />
+        </div>
+      </AutoplaySlider>
 
-export default slider
+      {isOpen && (
+        <div className='fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex items-start space-x-2 bg-green-50 border border-gray-300 rounded-md p-4 max-w-md shadow-lg'>
+          <button
+            className='text-gray-500 hover:text-green-700 focus:outline-none'
+            onClick={() => setIsOpen(false)}
+            aria-label="Close notification"
+          >
+            <BsX size={24} />
+          </button>
+          <p className='font-medium text-sm text-gray-700'>
+            {msg}
+            <br />
+            Welcome to{' '}
+            <span className='text-green-700 font-semibold'>'AayurMedGuide'</span> — your trusted companion in discovering the healing power of Ayurveda 🌿.
+          </p>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Slider;

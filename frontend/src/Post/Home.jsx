@@ -8,6 +8,7 @@ import Service from '../pages/Service.jsx';
 import Experts from '../pages/Experts.jsx';
 import DiscoverAayurveda from '../pages/DiscoverAayurveda.jsx';
 import PlayStoreApp from '../pages/PlayStoreApp.jsx';
+import AyurvedaPage from '../pages/AyurvedaPage.jsx';
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
 
   const getposts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/api/post/hostData`);
+      const resp = await axios.get(`http://localhost:8000/auth/api/post/hostData`);
       setposts(resp.data.data);
     } catch (err) {
       setError(err.msg);
@@ -111,7 +112,7 @@ const Home = () => {
       </div> */}
 
       <div id='post' className='lg:w-10/12 lg:p-0 px-4 m-auto justify-center items-center'>
-        <h1 className='text-2xl font-semibold text-gray-600 py-4 mt-4'>Popular Topics </h1>
+        <h1 className='text-2xl font-semibold text-gray-600 py-4 mt-4'>Releases Topics </h1>
         <hr />
         <div className='w-full flex flex-wrap lg:justify-start justify-center items-center m-auto py-6'>
           {posts.slice(0, 4).map((post, index) => (
@@ -129,6 +130,7 @@ const Home = () => {
         </div>
       </div>
       <DiscoverAayurveda />
+    <AyurvedaPage/>
       <Service />
       <Experts />
       <PlayStoreApp />

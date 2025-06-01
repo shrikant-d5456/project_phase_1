@@ -12,7 +12,7 @@ const SavePost = () => {
 
   const getUserSavedPosts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/user/${user.id}`);
+      const resp = await axios.get(`http://localhost:8000/auth/user/${user.id}`);
       setSavePosts(resp.data.data.savedPosts || []);
       // console.log('Saved posts:', resp.data.data.savedPosts);
     } catch (err) {
@@ -22,7 +22,7 @@ const SavePost = () => {
 
   const getPosts = async () => {
     try {
-      const resp = await axios.get(`https://project-phase-1-woku.onrender.com/auth/post`);
+      const resp = await axios.get(`http://localhost:8000/auth/post`);
       setPosts(resp.data.data || []);
       // console.log('Posts:', resp.data.data);
     } catch (err) {

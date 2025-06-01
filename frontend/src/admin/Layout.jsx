@@ -54,11 +54,7 @@ const AdminLayout = () => {
       path_name: "Practionr's",
       path_link: "/admin/practioner",
     },
-    {
-      path_icon: "BsTree",
-      path_name: "Plant Information",
-      path_link: "/admin/plant-info",
-    },
+    
   ]
 
   return (

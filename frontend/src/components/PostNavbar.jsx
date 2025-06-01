@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { URL } from '../url.js';
 import { useNavigate, Link } from 'react-router-dom'
 import { UserContext } from '../Utils/UserContext.jsx';
 import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX, BsHeart, BsBagHeartFill } from 'react-icons/bs';
 import logo from "../../assets/logo.jpeg"
+import { wellnessQuotes } from '../Data/Quotes.jsx';
 
 const PostNavbar = () => {
 
@@ -14,20 +15,20 @@ const PostNavbar = () => {
 
   const handlelogout = async () => {
     const ans = confirm("you want to logout 🤔");
-    if(ans){
-        try {
-            const resp = await axios.post("https://project-phase-1-woku.onrender.com/auth/api/logout")
-            console.log(resp.data);
-            setUser(null);
-            alert("logout successfully")
-            setmenu(false)
-            navigate('/login');
-        }
-        catch (err) {
-            console.log("someting went wrongs")
-        }
+    if (ans) {
+      try {
+        const resp = await axios.post("http://localhost:8000/auth/api/logout")
+        console.log(resp.data);
+        setUser(null);
+        alert("logout successfully")
+        setmenu(false)
+        navigate('/login');
+      }
+      catch (err) {
+        console.log("someting went wrongs")
+      }
     }
-}
+  }
 
   const [search, setSearch] = useState('');
   const [posts, setPosts] = useState([]);
@@ -45,7 +46,7 @@ const PostNavbar = () => {
     try {
       setLoading(true);
       const response = await axios.post(URL + `/auth/post/search`, { search: keyword });
-      setPosts(response.data.data); 
+      setPosts(response.data.data);
     } catch (error) {
       console.error("Error fetching posts:", error);
     } finally {
@@ -53,12 +54,30 @@ const PostNavbar = () => {
     }
   };
 
+  const [msg, setMsg] = useState('');
+  const [isOpen, setisOpen] = useState(true);
+
+  useEffect(() => {
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+      setMsg("Good Morning 🌅");
+    } else if (currentHour < 17) {
+      setMsg("Good Afternoon ☀️");
+    } else if (currentHour < 21) {
+      setMsg("Good Evening 🌇");
+    } else {
+      setMsg("Good Night 🌙");
+    }
+  }, []);
+
+
   return (
     <header>
       <div className='fixed top-0 z-50 w-full bg-white shadow-md '>
-        
-        <div className=' w-full bg-green text-white font-semibold text-center p-1 overflow-hidden'>
-          <p className=' text-sm '>Welcome to AayurMedGuide!</p>
+
+        <div className=' w-full bg-green text-white font-semibold text-center p-2 overflow-hidden'>
+          <p className=' text-sm animate-pulse transition-transform ease-in-out '>✨ { wellnessQuotes[Math.floor(Math.random() * 5) + 1]}</p>
         </div>
 
         <div className='flex justify-between items-center p-4'>
@@ -111,7 +130,7 @@ const PostNavbar = () => {
                       <BsPerson />
                       Profile
                     </span>
-                  </Link>                
+                  </Link>
 
                   <Link to="/createpost">
                     <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
@@ -119,12 +138,13 @@ const PostNavbar = () => {
                       Create
                     </span>
                   </Link>
-                  <Link to="/save-post">
+
+                  {/* <Link to="/save-post">
                       <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                         <BsBagHeartFill />
                         Like
                       </span>
-                    </Link>
+                    </Link> */}
 
                   <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
                 </>}

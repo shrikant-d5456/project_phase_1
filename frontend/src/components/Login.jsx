@@ -17,7 +17,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const resp = await axios.post(`https://project-phase-1-woku.onrender.com/auth/api/login`, { email, password });
+      const resp = await axios.post(`http://localhost:8000/auth/api/login`, { email, password });
       setUser(resp.data);
       console.log(resp.data);
       alert("Login successful");
@@ -50,7 +50,7 @@ const Login = () => {
         className="transition-all"
         preventScroll={false}
       >
-        <div className="flex w-full h-screen justify-center items-center text-center bg-[#bcffa9]">
+        <div className="flex w-full h-screen justify-center items-center text-center bg-[#c8ffb9]">
           <button
             className="absolute text-2xl w-[45px] h-[45px] z-10 lg:top-20 md:top-20 top-16 pl-[10px] border-[1px] text-white bg-gray-800 rounded-full shadow-xl"
             onClick={CloseEventCall}

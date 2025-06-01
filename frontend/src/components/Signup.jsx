@@ -20,10 +20,11 @@ const Signup = () => {
 
   const handlereg = async () => {
     try {
-      const resp = await axios.post(URL + "/auth/api/sign", { username, email, password });
+      const resp = await axios.post("http://localhost:8000/auth/api/sign", { username, email, password });
       // console.log("signup :" + resp.data);
 
       setUsername(resp.data.username);
+      alert("congrtuliation!, signup successfully😇");
       setEmail(resp.data.email);
       setPassword(resp.data.password);
       setErr(false);
