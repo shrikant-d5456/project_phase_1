@@ -151,4 +151,4 @@ const MedicinalPlants = () => {
   );
 };
 
-export default MedicinalPlants
+export default MedicinalPlants;
