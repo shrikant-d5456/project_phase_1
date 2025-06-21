@@ -5,11 +5,13 @@ import 'react-awesome-slider/dist/styles.css';
 import { BsX } from 'react-icons/bs';
 import sound from '../../assets/notification.mp3';
 import img1 from '../../assets/img1.jpeg'
-
+import {toast} from 'react-toastify';
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 const Slider = () => {
   const [msg, setMsg] = useState('');
+  const [hasShowPopup, setHasShowPopup] = useState(false);
+
 
   const [isOpen, setIsOpen] = useState(true);
   const audioRef = useRef(new Audio(sound));
@@ -25,16 +27,17 @@ const Slider = () => {
     } else {
       setMsg("Good Night 🌙");
     }
-
+    const alreadyShown = sessionStorage.getItem('hasShowPopup');
+    if (!alreadyShown) {
+      setHasShowPopup(true);
+      sessionStorage.setItem('hasShowPopup', true);
+    }
     // Play audio only after user interacts
     const handleUserInteraction = () => {
       audioRef.current.play().catch(err => console.error("Audio play error:", err));
       window.removeEventListener('click', handleUserInteraction);
       window.removeEventListener('keydown', handleUserInteraction);
     };
-
-    window.addEventListener('click', handleUserInteraction);
-    window.addEventListener('keydown', handleUserInteraction);
 
     return () => {
       window.removeEventListener('click', handleUserInteraction);
@@ -74,7 +77,7 @@ const Slider = () => {
         </div>
       </AutoplaySlider>
 
-      {isOpen && (
+      {isOpen && hasShowPopup && (
         <div className='fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex items-start space-x-2 bg-green-50 border border-gray-300 rounded-md p-4 max-w-md shadow-lg'>
           <button
             className='text-gray-500 hover:text-green-700 focus:outline-none'

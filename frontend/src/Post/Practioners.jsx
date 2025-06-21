@@ -3,7 +3,7 @@ import axios from 'axios';
 import { URL } from '../url';
 import { BsFiletypePdf } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-
+import {toast} from 'react-toastify';
 const Practioners = () => {
     const [file, setFile] = useState(null);
     const [files, setFiles] = useState([]);
@@ -58,11 +58,11 @@ const Practioners = () => {
     const handleDelete = async (fileId) => {
         try {
             await axios.delete(`http://localhost:8000/api/files/${fileId}`);
-            alert('File deleted successfully');
+            toast('File deleted successfully');
             fetchFiles(); // Refresh the file list after deletion
         } catch (err) {
             console.error('Error deleting file:', err);
-            alert('Error deleting file');
+            toast('Error deleting file');
         }
     };
 

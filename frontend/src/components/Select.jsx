@@ -19,19 +19,19 @@ const Select = ({ options, placeholder, inp, setInp, width }) => {
   return (
     <div
      ref={optionRef}
-      className={`w-[${width}px] relative cursor-pointer`}
+      className={`w-full relative cursor-pointer`}
       onClick={() => setShowoptions(!showoptions)}
     >
       <input
         type="text"
         placeholder={placeholder}
-        className={`w-[${width}px] px-4 py-2 text-sm border outline-none`}
+        className={`w-full px-4 py-2 text-sm border outline-none`}
         value={inp}
         onChange={(e) => setInp(e.target.value)}
         title="click here"
       />
       <div
-        className={`w-[${width}px] absolute transition-all transform shadow-md mt-[1px] rounded-sm overflow-scroll bg-white duration-500 ease-in-out`}
+        className={`w-full z-50 absolute transition-all transform shadow-md mt-[1px] rounded-sm overflow-scroll bg-white duration-500 ease-in-out`}
         style={{
           height: showoptions ? "110px" : "0px",
           opacity: showoptions ? 1 : 0,
@@ -60,7 +60,7 @@ const Option = ({ ele, setInp, setShowoptions }) => {
 
   return (
     <div
-      className="w-full border-b-[1px] text-sm bg-white overflow-scroll cursor-pointer transition-transform transform "
+      className="w-full z-90 border-b-[1px] text-sm bg-white overflow-scroll cursor-pointer transition-transform transform "
       onClick={operation}
     >
         <p className="w-full hover:bg-green-500 text-left hover:text-white bg-white p-1 overflow-x-scroll px-2">

@@ -9,7 +9,7 @@ import Lang from '../components/Lang.jsx';
 import Email from '../components/Email.jsx';
 import { summarize } from "@ebereplenty/summarize";
 import PostCard from './PostCard.jsx';
-
+import {toast} from 'react-toastify';
 const PostDetails = () => {
   const [post, setPost] = useState({});
   const [posts, setPosts] = useState([]);
@@ -25,7 +25,7 @@ const PostDetails = () => {
   const [targetLang, setTargetLang] = useState('en');
   const [summary, setSummary] = useState('');
   const [loadingSummary, setLoadingSummary] = useState(false);
-  const openAiApiKey = ""; // <-- Add your OpenAI API Key here
+  const openAiApiKey = "gckpiiQ9fC5JaKGOSCeofks2-IotMYCwqii3iP7immT3BlbkFJu_-bhHAFre3ijY5TFh85FfYzh4X2YNDzJW6dwaP6r0xLvJg0XSzf0fx_3X50WRYIpU0kGnCCsA"; 
 
   const getPost = async () => {
     try {
@@ -67,7 +67,7 @@ const PostDetails = () => {
     if (confirm("Are you sure you want to delete this post?")) {
       try {
         await axios.delete(`http://localhost:8000/auth/post/${id}`);
-        alert("Post deleted successfully");
+        toast("Post deleted successfully");
         navigate('/admin/');
       } catch (err) {
         console.log(err);
@@ -92,7 +92,7 @@ const PostDetails = () => {
         [`${checked}`]: checkStatus ? "true" : "false",
       });
       setCheck(checkStatus);
-      alert("Thank you for validation");
+      toast("Thank you for validation");
       navigate('/admin/');
     } catch (err) {
       console.log(err);
@@ -129,7 +129,7 @@ const PostDetails = () => {
       utterance.lang = { mr: 'mr-IN', fr: 'fr-FR', es: 'es-ES', en: 'en-US' }[targetLang];
       synth.speak(utterance);
     } else {
-      alert('Text-to-speech not supported in your browser');
+      toast('Text-to-speech not supported in your browser');
     }
   };
   const handlePause = () => {synth.pause(); setActive({pause:true})}

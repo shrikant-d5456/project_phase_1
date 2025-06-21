@@ -183,8 +183,9 @@ li:hover .tooltip-text {
   }
 }
 .bgImg {
-  background-image: url('https://t3.ftcdn.net/jpg/14/57/23/84/240_F_1457238456_v4fyi91NwBNFn7m8km2fHH83Bm1UxxHb.jpg');
+  /* background-image: url('https://designerapp.officeapps.live.com/designerapp/document.ashx?path=/c93fd13b-4ec0-4fe1-9edd-8d182394af2a/DallEGeneratedImages/dalle-06689530-6203-4e2e-954f-f0012ada5d270251651952653025732600.jpg&dcHint=JapanEast&fileToken=ac1f8a5d-32c0-4226-bd83-f2c37c1ee232&speCId=a1509c2d-ae5c-4102-8d54-f8796153b571&speType=Image&speIdx=2'); */
   background-repeat: no-repeat;
-  object-fit: cover;
+  background-size: cover; /* Correct property */
   background-position: center;
 }
+

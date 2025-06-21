@@ -6,11 +6,12 @@ import Signup from './components/Signup';
 import AdminLayout from './admin/Layout';
 import PostLayout from "./Post/Layout";
 import ProtectedRoute from './Utils/ProtectedRoute';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
     <UserContextProvider>
-
+<ToastContainer />
 
       <div className='lg:text-base text-sm'>
         <Routes>

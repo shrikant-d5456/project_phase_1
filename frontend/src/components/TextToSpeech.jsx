@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import {toast} from 'react-toastify';
 const TextToSpeech = ({data}) => {
   const [text, setText] = useState("");
 
@@ -8,7 +8,7 @@ const TextToSpeech = ({data}) => {
       const utterance = new SpeechSynthesisUtterance(text);
       window.speechSynthesis.speak(utterance);
     } else {
-      alert("Sorry, your browser does not support text-to-speech.");
+      toast.error("Sorry, your browser does not support text-to-speech.");
     }
   };
 

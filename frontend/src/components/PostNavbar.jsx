@@ -6,6 +6,7 @@ import { UserContext } from '../Utils/UserContext.jsx';
 import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX, BsHeart, BsBagHeartFill } from 'react-icons/bs';
 import logo from "../../assets/logo.jpeg"
 import { wellnessQuotes } from '../Data/Quotes.jsx';
+import {toast} from 'react-toastify';
 
 const PostNavbar = () => {
 
@@ -14,13 +15,13 @@ const PostNavbar = () => {
   const [menu, setmenu] = useState(false);
 
   const handlelogout = async () => {
-    const ans = confirm("you want to logout 🤔");
+    const ans = toast.warn(confirm("you want to logout 🤔"));
     if (ans) {
       try {
         const resp = await axios.post("http://localhost:8000/auth/api/logout")
         console.log(resp.data);
         setUser(null);
-        alert("logout successfully")
+        toast.success("logout successfully")
         setmenu(false)
         navigate('/login');
       }
@@ -74,10 +75,10 @@ const PostNavbar = () => {
 
   return (
     <header>
-      <div className='fixed top-0 z-50 w-full bg-white shadow-md '>
+      <div className='fixed top-0 z-50 w-full bg-white '>
 
         <div className=' w-full bg-green text-white font-semibold text-center p-2 overflow-hidden'>
-          <p className=' text-sm animate-pulse transition-transform ease-in-out '>✨ { wellnessQuotes[Math.floor(Math.random() * 5) + 1]}</p>
+          <p className=' line-clamp-1 text-sm animate-pulse transition-transform ease-in-out '>✨ { wellnessQuotes[Math.floor(Math.random() * 5) + 1]}</p>
         </div>
 
         <div className='flex justify-between items-center p-4'>

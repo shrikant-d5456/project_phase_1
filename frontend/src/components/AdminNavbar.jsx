@@ -6,6 +6,7 @@ import { UserContext } from '../Utils/UserContext.jsx';
 import { BsBag, BsFilePost, BsList, BsPersonAdd, BsPersonDashFill, BsPerson, BsSearch, BsX } from 'react-icons/bs';
 import { BsBank, BsClipboardDataFill, BsDatabaseFillAdd, BsFileEarmarkArrowUpFill, BsPersonVcardFill, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
 import logo from "../../assets/logo.jpeg";
+import {toast} from 'react-toastify';
 
 const AdminNavbar = () => {
 
@@ -21,7 +22,7 @@ const AdminNavbar = () => {
                 const resp = await axios.post("http://localhost:8000/auth/api/logout")
                 console.log(resp.data);
                 setUser(null);
-                alert("logout successfully")
+                toast.success("logout successfully")
                 setmenu(false)
                 navigate('/login');
             }

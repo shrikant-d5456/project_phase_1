@@ -22,7 +22,7 @@ const FileUpload = () => {
 
     const handleUpload = async () => {
         if (!file) {
-            alert('Please select a file first.');
+            toast('Please select a file first.');
             return;
         }
     
@@ -37,11 +37,11 @@ const FileUpload = () => {
                 },
             });
     
-            alert('File uploaded successfully: ' + res.data.message);
+            toast('File uploaded successfully: ' + res.data.message);
             fetchFiles(); // Refresh file list
             setFile(null); // Reset file state
         } catch (err) {
-            alert('Error uploading file:', err);
+            toast('Error uploading file:', err);
         }
     };
     
@@ -87,11 +87,11 @@ const FileUpload = () => {
     const handleDelete = async (fileId) => {
         try {
             await axios.delete(`http://localhost:8000/api/files/${fileId}`);
-            alert('File deleted successfully');
+            toast('File deleted successfully');
             fetchFiles(); // Refresh file list after deletion
         } catch (err) {
             console.error('Error deleting file:', err);
-            alert('Error deleting file');
+            toast('Error deleting file');
         }
     };
 

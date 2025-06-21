@@ -5,7 +5,7 @@ import { UserContext } from '../Utils/UserContext.jsx';
 import ProfilePost from './ProfilePost.jsx';
 import AdminIDs from '../Utils/AdminIDs.jsx';
 // import Navbar from '../components/Navbar';
-
+import {toast} from 'react-toastify';
 const Profile = () => {
   const { user } = useContext(UserContext);
   const [data, setData] = useState(null);
@@ -35,11 +35,11 @@ const Profile = () => {
         password
       });
       setData(resp.data.data);
-      alert("user Updated")
+      toast("user Updated")
       // console.log("updated ")
     } catch (err) {
       console.log(err);
-      alert("somting went wrong!!")
+      toast("somting went wrong!!")
     }
   };
 
