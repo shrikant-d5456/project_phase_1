@@ -1,98 +1,74 @@
 import React from "react";
-const DiscoverAayurveda = () => {
 
+const DiscoverAayurveda = () => {
   const array = [
     {
-      img: "https://s3-alpha-sig.figma.com/img/8567/a17c/ce30a4f9be32f98dae27064431959708?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o2K2UNFU-atZtdELZ7sIbt5Nu0JHopIJRYSkujOP9d5aDShrEqAz7jqghzNfF80st8j6BJpOb88EpXga1Cnzo4MGfvGuANxvouRTGkrwTa47uHxz6c0BsooMJCj4E1R7-Klr16P3V0eANJHmAXeGIs6QOh~00eiahctOzofbKyt9In2Q~cSXmawPwpRK1En7hb6LuMW3c5rHrCEWCa1ARwWCXctpzbd-HREZpQ8wrRKLG4-Ezw48JJyt9yosUqNoiAW~VmbEI2kAQ4XFBpF8CC1DETKQJeEZ3~LV5uYjZs3p26URvsFtgbMAqgizkk4wx2TKGxrAvlW-qbFs~TczfA__",
-      haeding:"Personalized Wellness",
-      subheading: "Get treatments made just for you based on your individual doshas (body type)",
+      img: "https://th.bing.com/th/id/OIP.filZ9uARTGfJRqIMQ5pCrAHaH2?rs=1&pid=ImgDetMain&cb=idpwebpc2",
+      heading: "Personalized Wellness",
+      subheading: "Get treatments crafted for you based on your unique doshas (Vata, Pitta, Kapha).",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/8567/a17c/ce30a4f9be32f98dae27064431959708?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o2K2UNFU-atZtdELZ7sIbt5Nu0JHopIJRYSkujOP9d5aDShrEqAz7jqghzNfF80st8j6BJpOb88EpXga1Cnzo4MGfvGuANxvouRTGkrwTa47uHxz6c0BsooMJCj4E1R7-Klr16P3V0eANJHmAXeGIs6QOh~00eiahctOzofbKyt9In2Q~cSXmawPwpRK1En7hb6LuMW3c5rHrCEWCa1ARwWCXctpzbd-HREZpQ8wrRKLG4-Ezw48JJyt9yosUqNoiAW~VmbEI2kAQ4XFBpF8CC1DETKQJeEZ3~LV5uYjZs3p26URvsFtgbMAqgizkk4wx2TKGxrAvlW-qbFs~TczfA__",
-      haeding:"Personalized Wellness",
-      subheading: "Get treatments made just for you based on your individual doshas (body type)",
+      img: "https://awsimages.detik.net.id/community/media/visual/2021/07/13/ilustrasi-herbal.jpeg?w=700&q=90",
+      heading: "Herbal Remedies",
+      subheading: "Discover the healing power of natural herbs used in Ayurvedic treatments for centuries.",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/8567/a17c/ce30a4f9be32f98dae27064431959708?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o2K2UNFU-atZtdELZ7sIbt5Nu0JHopIJRYSkujOP9d5aDShrEqAz7jqghzNfF80st8j6BJpOb88EpXga1Cnzo4MGfvGuANxvouRTGkrwTa47uHxz6c0BsooMJCj4E1R7-Klr16P3V0eANJHmAXeGIs6QOh~00eiahctOzofbKyt9In2Q~cSXmawPwpRK1En7hb6LuMW3c5rHrCEWCa1ARwWCXctpzbd-HREZpQ8wrRKLG4-Ezw48JJyt9yosUqNoiAW~VmbEI2kAQ4XFBpF8CC1DETKQJeEZ3~LV5uYjZs3p26URvsFtgbMAqgizkk4wx2TKGxrAvlW-qbFs~TczfA__",
-      haeding:"Personalized Wellness",
-      subheading: "Get treatments made just for you based on your individual doshas (body type)",
+      img: "https://e2e85xpajrr.exactdn.com/wp-content/uploads/2021/07/21190510/Soccer-Player-Diet-1.webp?strip=all&lossy=1&ssl=1",
+      heading: "Diet & Nutrition",
+      subheading: "Learn dietary practices that align with your body constitution to maintain balance and health.",
     },
-  ]
+    {
+      img: "https://th.bing.com/th/id/R.0bc79afacdedaa3546f9dc9d8bfa1706?rik=pBDaK17hTg4NWg&riu=http%3a%2f%2fchristinalombardo.com%2fwp-content%2fuploads%2f2020%2f10%2fBody-Spirit-Mind-Balance.jpg&ehk=AxHfp2mwBUVFxXetRyrvj5HJEjeBEXT8ynYm1iZCx70%3d&risl=&pid=ImgRaw&r=0",
+      heading: "Mind-Body Balance",
+      subheading: "Integrate yoga, meditation, and mindfulness techniques to harmonize mind and body.",
+    },
+  ];
 
   return (
-    <main id="about" className=' bg-white w-full sm:h-screen h-full mt-20 mb-3 p-4'>
-      <div className='header-section'>
-        <p className='heading'>Discover Ayurveda’s magic with us </p>
-        <p className='sub-heading'>Ayurvedic treatment aims to balance your body and mind, bringing harmony and vitality. It's like a journey to better health using ancient wisdom,
-          a totally effective approach for a better life. </p>
+    <main id="about" className="bg-gradient-to-b from-green-50 to-white w-full py-16 px-6">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-extrabold text-green-800 mb-4">Discover Ayurveda’s Magic With Us</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Ayurveda aims to balance your body and mind, bringing harmony and vitality. Experience ancient wisdom for a modern healthy life.
+        </p>
       </div>
-      <div className='sm:flex'>
 
-        <div className='flex w-full justify-center items-center m-auto sm:hidden'>
-          <div className='relative w-full max-w-[600px] m-auto h-[500px] ml-4'>
-            <img
-              src='https://s3-alpha-sig.figma.com/img/328a/02bf/246a02b2aac7549c73dbe7dacc8e2553?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AcpNoRRMVHSjTVAz8ojJG6ss2oryK0OXcDoaG5OQzg4GVB87XiE92djyD~MlU72AXN~-wRow7Iow-do1FR5M7VJkJ-Ilk1nhirasx7AM-550hKABD2EYOSQe~thw0PMO7zmkUhA0GYChSSS1yCdVKl9-iEKkSlPY0pJi4EYWhVYejclLBGjT7Si6kG0SY-WRipVRSBAJlQf1bu192R-HHw~NRaHLD3z1~E7wtR4rdSuELpBMg0OCVhU2fE6FwTPgz4l3ZokcrtuyrPkKeyohAmpsR3U4Q9gMM43DVK9FnQPisuRH6mGXHfpOghLOFa03jVVi9YuR67RuS4eqyizc4g__'
-              alt=""
-              className='absolute'
-            />
-            <img
-              src='https://s3-alpha-sig.figma.com/img/940c/90b2/b036ab89705f9413d552418bf0f9fa8f?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MNENf1nQaTZtff5tmHm9xnwWtH48Y~dvo9MiZFYBS6AEkuLsnbN7FxbmlOSn-SEDVGqX9D1rWCLekX3FEZC4FEbSf37cbmO~QnmiUbVqrVpe0-JN7jv~OLMDBlC4GDQV~Pt54nJCkemYfTZwz2se6OjLs5-rotD8rrM00~eziCWtYBkdEYTpMmPr29LdubTG7ww0KdlxLMvBNOaoPX-l8EQrX0Yn5K~srQuoJCu01jaPfYHBFY4Bv-00jgO4xWHqOhKZZD2WY50KX3oJCZdAytwExLRlUh526f~JuBS7nQArzz2F3CI0nvcos0WVyNyodq7iLTs8Ui96QSnwP6hVBQ__'
-              alt=''
-              className='absolute z-10 w-[430px] md:top-[-80px] top-[-40px]'
-            />
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto items-center">
+        
+        {/* Left 2 cards */}
+        <div className="flex flex-col gap-8">
+          {array.slice(0, 2).map((item, ind) => (
+            <div key={ind} className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:scale-105 flex flex-col items-center text-center">
+              <img src={item.img} alt={item.heading} className="w-16 h-16 mb-4" />
+              <h3 className="text-xl font-semibold text-green-900 mb-2">{item.heading}</h3>
+              <p className="text-gray-600 text-sm">{item.subheading}</p>
+            </div>
+          ))}
         </div>
 
-
-        <div className=' sm:w-1/3 w-full h-fit grid md:grid-cols-1  justify-center items-center gap-1 '>
-          {
-            array.map((item,ind) => (
-              <div  key={ind} className='sm:flex flex flex-col sm:flex-row-reverse justify-center items-center gap-2 w-full py-4 '>
-                <span className='flex  w-fit'>
-                  <img src={item.img} alt='img'
-                    className=' w-10 '
-                  />
-                </span>
-                <span className=' w-60 flex flex-col text-sm text-center sm:text-left'>
-                  <p className=" font-bold ">{item.haeding}</p>
-                  <p className=" " >{item.subheading}</p>
-                </span>
-              </div>
-            ))
-          }
+        {/* Center Image */}
+        <div className="flex justify-center">
+          <img
+            src="https://cdn.vectorstock.com/i/preview-1x/34/95/woman-doing-yogasan-for-international-yoga-day-vector-25123495.jpg"
+            alt="Ayurveda Illustration"
+            className="w-64 h-64 object-contain rounded-full scale-110"
+          />
         </div>
 
-        <div className=' sm:w-1/3 sm:block hidden '>
-          <div className=' relative w-full ml-4'>
-            <img src='https://s3-alpha-sig.figma.com/img/328a/02bf/246a02b2aac7549c73dbe7dacc8e2553?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AcpNoRRMVHSjTVAz8ojJG6ss2oryK0OXcDoaG5OQzg4GVB87XiE92djyD~MlU72AXN~-wRow7Iow-do1FR5M7VJkJ-Ilk1nhirasx7AM-550hKABD2EYOSQe~thw0PMO7zmkUhA0GYChSSS1yCdVKl9-iEKkSlPY0pJi4EYWhVYejclLBGjT7Si6kG0SY-WRipVRSBAJlQf1bu192R-HHw~NRaHLD3z1~E7wtR4rdSuELpBMg0OCVhU2fE6FwTPgz4l3ZokcrtuyrPkKeyohAmpsR3U4Q9gMM43DVK9FnQPisuRH6mGXHfpOghLOFa03jVVi9YuR67RuS4eqyizc4g__' alt=""
-              className=' absolute'
-            />
-            <img src='https://s3-alpha-sig.figma.com/img/940c/90b2/b036ab89705f9413d552418bf0f9fa8f?Expires=1735516800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=MNENf1nQaTZtff5tmHm9xnwWtH48Y~dvo9MiZFYBS6AEkuLsnbN7FxbmlOSn-SEDVGqX9D1rWCLekX3FEZC4FEbSf37cbmO~QnmiUbVqrVpe0-JN7jv~OLMDBlC4GDQV~Pt54nJCkemYfTZwz2se6OjLs5-rotD8rrM00~eziCWtYBkdEYTpMmPr29LdubTG7ww0KdlxLMvBNOaoPX-l8EQrX0Yn5K~srQuoJCu01jaPfYHBFY4Bv-00jgO4xWHqOhKZZD2WY50KX3oJCZdAytwExLRlUh526f~JuBS7nQArzz2F3CI0nvcos0WVyNyodq7iLTs8Ui96QSnwP6hVBQ__' alt=''
-              className=' absolute z-10 w-[430px] md:top-[-80px] top-[-40px]'
-            />
-          </div>
+        {/* Right 2 cards */}
+        <div className="flex flex-col gap-8">
+          {array.slice(2, 4).map((item, ind) => (
+            <div key={ind} className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:scale-105 flex flex-col items-center text-center">
+              <img src={item.img} alt={item.heading} className="w-16 h-16 mb-4" />
+              <h3 className="text-xl font-semibold text-green-900 mb-2">{item.heading}</h3>
+              <p className="text-gray-600 text-sm">{item.subheading}</p>
+            </div>
+          ))}
         </div>
 
-        <div className=' sm:w-1/3 w-full h-fit grid md:grid-cols-1  justify-center items-center gap-1 '>
-          {
-            array.map((item, ind) => (
-              <div key={ind} className='sm:flex flex flex-col sm:flex-row justify-center items-center gap-2 w-full py-4 '>
-                <span className='flex  w-fit'>
-                  <img src={item.img} alt='img'
-                    className=' w-10 '
-                  />
-                </span>
-                <span className=' w-60 flex flex-col text-sm text-center sm:text-left'>
-                  <p className=" font-bold ">{item.haeding}</p>
-                  <p className=" " >{item.subheading}</p>
-                </span>
-              </div>
-            ))
-          }
-        </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default DiscoverAayurveda
+export default DiscoverAayurveda;

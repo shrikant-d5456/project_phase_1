@@ -125,7 +125,7 @@ const PostSection = ({ send }) => {
 
       </div>
 
-      <div className='w-full sm:w-11/12 grid md:grid-cols-4 grid-cols-2 gap-2 justify-start  items-start px-4'>
+      <div className='w-full sm:w-11/12 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 gap-2 justify-start  items-start px-4'>
         {magic && <Magic />}
         {filters.map((post, index) => (
           <div key={index} >

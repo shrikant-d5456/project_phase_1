@@ -9,7 +9,7 @@ import Lang from '../components/Lang.jsx';
 import Email from '../components/Email.jsx';
 import { summarize } from "@ebereplenty/summarize";
 import PostCard from './PostCard.jsx';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 const PostDetails = () => {
   const [post, setPost] = useState({});
   const [posts, setPosts] = useState([]);
@@ -18,6 +18,8 @@ const PostDetails = () => {
   const [admin, setAdmin] = useState("");
   const [validator, setValidator] = useState("");
   const [checked, setChecked] = useState("");
+  const [ttsState, setTtsState] = useState("idle"); // "idle", "playing", "paused"
+
   const { id } = useParams();
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -25,7 +27,6 @@ const PostDetails = () => {
   const [targetLang, setTargetLang] = useState('en');
   const [summary, setSummary] = useState('');
   const [loadingSummary, setLoadingSummary] = useState(false);
-  const openAiApiKey = "gckpiiQ9fC5JaKGOSCeofks2-IotMYCwqii3iP7immT3BlbkFJu_-bhHAFre3ijY5TFh85FfYzh4X2YNDzJW6dwaP6r0xLvJg0XSzf0fx_3X50WRYIpU0kGnCCsA"; 
 
   const getPost = async () => {
     try {
@@ -100,30 +101,50 @@ const PostDetails = () => {
   };
 
   const generateSummary = async () => {
-    if (!post.desc) return;
+    if (!post?.desc) {
+      toast.warn('Post description is empty!');
+      return;
+    }
+
+    setLoadingSummary(true);
     try {
-      setLoadingSummary(true);
-      const result = await summarize({
-        input: post.desc.replace(/<[^>]+>/g, ''),
-        openAiApiKey: openAiApiKey,
-      });
-      setSummary(result);
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+      const response = await axios.post(
+        'https://generativelanguage.googleapis.com/v1/models/text-bison-001:generateText',
+        {
+          prompt: {
+            text: `Summarize the following text:\n\n${post.desc.replace(/<[^>]+>/g, '')}`
+          }
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'x-goog-api-key': apiKey
+          }
+        }
+      );
+
+      const result = response.data.candidates?.[0]?.output;
+      setSummary(result || 'No summary generated.');
     } catch (error) {
-      console.error("Error summarizing text:", error);
-      setSummary('Error generating summary');
+      console.error('Summary Error:', error.response?.data || error.message);
+      toast.error('Error generating summary!');
     } finally {
       setLoadingSummary(false);
     }
   };
 
 
-  const [active,setActive] = useState({play:false,pause:false, resume:false, close:false});
+
+
+  const [active, setActive] = useState({ play: false, pause: false, resume: false, close: false });
 
   // Text-to-speech logic
   const synth = window.speechSynthesis;
   const handleSpeak = () => {
     if (synth.speaking) synth.cancel();
-    setActive({play:true})
+    setActive({ play: true })
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(post.desc.replace(/<[^>]+>/g, ''));
       utterance.lang = { mr: 'mr-IN', fr: 'fr-FR', es: 'es-ES', en: 'en-US' }[targetLang];
@@ -132,9 +153,9 @@ const PostDetails = () => {
       toast('Text-to-speech not supported in your browser');
     }
   };
-  const handlePause = () => {synth.pause(); setActive({pause:true})}
-  const handleResume = () => {synth.resume(); setActive({resume:true})}
-  const handleStop = () => {synth.cancel(); setActive({close:true})}
+  const handlePause = () => { synth.pause(); setActive({ pause: true }) }
+  const handleResume = () => { synth.resume(); setActive({ resume: true }) }
+  const handleStop = () => { synth.cancel(); setActive({ close: true }) }
 
   let validation_length = 0;
   validation_length =
@@ -143,25 +164,29 @@ const PostDetails = () => {
   return (
     <div className='lg:w-full lg:p-4 p-2 sm:flex m-auto bg-white'>
       <div className={`md:w-3/4 ${AdminIDs.some(admin => admin.id === user?.id && "w-full")} w-full`}>
-        <div className='w-full bg-transparent text-black'> 
+        <div className=' relative w-full bg-transparent text-black'>
 
-          {user?.id === AdminIDs[0]?.id && (
-            <div className='flex justify-between items-center'>
-              <div>
-                <div className='flex justify-end gap-[1px] m-2'>
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className={`${post[`validator${i + 1}`] ? 'bg-green' : 'bg-red-600'} w-6 h-2 rounded-sm`} />
-                  ))}
+          <div className=' w-full absolute'>
+            {user?.id === AdminIDs[0]?.id && (
+              <div className=' w-full flex justify-between items-center'>
+                <div>
+                  <div className='flex justify-end gap-[1px] m-2'>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <div key={i} className={`${post[`validator${i + 1}`] ? 'bg-green' : 'bg-red-600'} w-6 h-2 rounded-sm`} />
+                    ))}
+                  </div>
+                  <div className='flex justify-end gap-[1px]'>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <div key={i} className={`${post[`checked${i + 1}`] ? 'bg-yellow-400' : 'bg-red-500'} w-6 h-2 rounded-sm`} />
+                    ))}
+                  </div>
                 </div>
-                <div className='flex justify-end gap-[1px]'>
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className={`${post[`checked${i + 1}`] ? 'bg-yellow-400' : 'bg-red-500'} w-6 h-2 rounded-sm`} />
-                  ))}
+                <div>
+                  <button onClick={deletePost} className='bg-red-500 px-4 py-2 text-white font-semibold mx-4 my-2'>Delete</button>
                 </div>
               </div>
-              <button onClick={deletePost} className='bg-red-500 px-4 py-2 text-white font-semibold mx-4 my-2'>Delete</button>
-            </div>
-          )}
+            )}
+          </div>
 
           <img className='w-full lg:h-[550px] h-[250px]' src={post.img} alt="Post" />
 
@@ -188,35 +213,69 @@ const PostDetails = () => {
             ))}
           </div>
 
-          <p className='text-sm my-2 font-semibold'>Upload Date: <span className='font-light'>{post.updatedAt}</span></p>
+          <p className='text-sm my-2 font-semibold'>Upload Date : <span className='font-light text-sm'>{post.updatedAt ? new Date(post.updatedAt).toLocaleString() : 'No date available'}</span></p>
 
           {post.places && (
-            <p className='text-sm font-semibold'>Place of Origin:
-              <span className='font-light'> <Lang translateWord={post.places} targetLang={targetLang} /></span>
+            <p className='text-sm font-semibold mb-2'>Place of Origin :
+              <span className='font-light '> <Lang translateWord={post.places} targetLang={targetLang} /></span>
             </p>
           )}
 
           {post.wpmh && (
-            <p className='text-sm font-semibold'>Harmful for:
-              <span className='text-red-800'><Lang translateWord={post.wpmh} targetLang={targetLang} /></span>
+            <p className='text-sm font-semibold'>Harmful for :
+              <span className='text-red-800'> <Lang translateWord={post.wpmh} targetLang={targetLang} /></span>
             </p>
           )}
 
-          <div className='flex gap-4 float-end mr-2 text-xl bg-black/50 text-white p-2 rounded-full'>
-            <button className={`${active.play && ' p-1 rounded-full bg-white text-black animate-pulse'}`} onClick={handleSpeak}><BsSoundwave /></button>
-            <button className={`${active.pause && ' p-1 rounded-full bg-white text-black animate-pulse'}`} onClick={handlePause}><BsPauseBtnFill /></button>
-            <button className={`${active.resume && ' p-1 rounded-full bg-white text-black animate-pulse'}`} onClick={handleResume}><BsMicMuteFill /></button>
-            <button className={`${active.close && ' p-1 rounded-full bg-white text-black animate-pulse'}`} onClick={handleStop}><BsSignStopFill /></button>
-          </div>
 
           {post.desc && (
-            <div className='border-l-4 mt-10 border-green-500 pl-4 bg-green-50 p-2 text-justify text-sm prose max-w-none'
+            <div className='border-l-4 mt-4 border-green-500 pl-4 bg-green-50 p-2 text-justify text-sm prose max-w-none'
               dangerouslySetInnerHTML={{ __html: post.desc }} />
           )}
 
-          <button onClick={generateSummary} className='px-4 py-2 mt-2 rounded-full bg-green-500 text-white'>
-            {loadingSummary ? 'Summarizing...' : 'Generate Summary'}
-          </button>
+          <div className=' flex justify-between items-center my-4'>
+            <div>
+              <button onClick={generateSummary} className='px-4 py-2 mt-2 rounded-full bg-green-500 text-white'>
+                {loadingSummary ? 'Summarizing...' : 'Generate Summary'}
+              </button>
+            </div>
+            <div className=' flex gap-4 bg-green-200 text-white p-2 rounded-full'>
+              {ttsState === "idle" && (
+                <button
+                  className='p-1 rounded-full bg-white text-green-800 '
+                  onClick={() => { handleSpeak(); setTtsState("playing"); }}>
+                  <BsSoundwave />
+                </button>
+              )}
+
+              {ttsState === "playing" && (
+                <button
+                  className='p-1 rounded-full bg-white text-green-800 '
+                  onClick={() => { handlePause(); setTtsState("paused"); }}>
+                  <BsPauseBtnFill />
+                </button>
+              )}
+
+              {ttsState === "paused" && (
+                <button
+                  className='p-1 rounded-full bg-white text-green-800 '
+                  onClick={() => { handleResume(); setTtsState("playing"); }}>
+                  <BsMicMuteFill />
+                </button>
+              )}
+
+              {(ttsState === "playing" || ttsState === "paused") && (
+                <button
+                  className='p-1 rounded-full bg-white text-green-800 '
+                  onClick={() => { handleStop(); setTtsState("idle"); }}>
+                  <BsSignStopFill />
+                </button>
+              )}
+            </div>
+
+          </div>
+
+
 
           {summary && (
             <div className="my-4 p-4 bg-gray-100 border-l-4 border-green-500">
@@ -224,6 +283,7 @@ const PostDetails = () => {
               <p className="text-sm text-gray-800">{summary}</p>
             </div>
           )}
+
 
           {post.ingredient && (
             <div className='font-semibold my-2'>Ingredients:

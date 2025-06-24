@@ -1,55 +1,66 @@
 import React from "react";
+
 const Service = () => {
   const array = [
     {
-      id:"1",
-      heading:"Make Appointment",
-      subHeading:" You must make an appointment in advance, to choose the service and date.", 
+      id: "1",
+      heading: "Verified Blogs",
+      subHeading:
+        "All the information used on the website is verified and is easily accessible due to our Expert's help!",
     },
     {
-      id:"2",
-      heading:"Consultations",
-      subHeading:"The next stage involves a thorough consultation with an Ayurveda practitioner.", 
+      id: "2",
+      heading: "Language Translation",
+      subHeading:
+        "This service allows you to change the default language to your preferred language of reading.",
     },
     {
-      id:"3",
-      heading:"Treatment Planning",
-      subHeading:" The Ayurvedic practitioner creates a personalized treatment plan for you", 
+      id: "3",
+      heading: "Image Recognition",
+      subHeading:
+        "Upload or click pictures of any plant to recognize and use the plant as per your needs!",
     },
     {
-      id:"4",
-      heading:"Maintenance",
-      subHeading:"These visits allow for assessment of progress, adjustments to the treatment.", 
+      id: "4",
+      heading: "Text-to-Speech",
+      subHeading:
+        "You'll be able to listen to blogs which are verified by our Experts!",
     },
   ];
 
   return (
-    <main  id="service" className=' w-full min-h-screen flex flex-col justify-center items-center m-auto'>
-        
-        <div>
-            <img src="" alt="" />
-            <p></p>
-            <button></button>
-        </div>
-        <div className='header-section'>
-            <p className='heading'>Our Aayurvedic Approach</p>
-            <p className='sub-heading'>At Amrutam we follow a unique and personalized approach to healing. Our expert practitioners begin each treatment process by conducting a thorough analysis of the patient’s body type, medical history, and current health conditions. </p>
-        </div>
+    <main
+      id="service"
+      className="w-full md:w-10/12 flex flex-col items-center py-10  m-auto"
+    >
+      <div className="text-center mb-10 px-4">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-green-800 mb-4">
+          Our Ayurvedic Approach
+        </h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          At AyurMedGuide, we follow a unique and personalized approach to
+          showcasing Ayurvedic knowledge.
+        </p>
+      </div>
 
-        <div className=' sm:w-10/12 w-full sm:flex flex-wrap gap-2 items-center justify-center'>
-          {
-           array.map((item, ind)=>(
-            <div key={ind} className=' bg-white  sm:w-1/5 h-[250px] m-4 sm:m-1 border-t-2 border-green-800 rounded-3xl p-8 flex flex-col justify-center items-center shadow-xl'>
-            <p className=' bg-green-100 w-10 h-10 rounded-full flex justify-center items-center '><span>{item.id}</span></p>
-            <p className=' font-bold text-green-800 text-xl text-nowrap my-2'>{item.heading}</p>
-            <p className=' text-center text-sm'>{item.subHeading}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 sm:px-0">
+        {array.map((item, ind) => (
+          <div
+            key={ind}
+            className="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center transform hover:scale-105 transition-transform duration-300 border border-green-200"
+          >
+            <div className="bg-green-100 text-green-800 w-12 h-12 flex items-center justify-center rounded-full font-bold text-lg mb-4 shadow-md">
+              {item.id}
             </div>
-           ))
-          }
-        </div>
-
+            <h3 className="text-xl font-semibold text-green-900 mb-2 text-center">
+              {item.heading}
+            </h3>
+            <p className="text-gray-600 text-sm text-center">{item.subHeading}</p>
+          </div>
+        ))}
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default Service
+export default Service;

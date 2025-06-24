@@ -57,7 +57,7 @@ const PostCard = ({ post }) => {
                 <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
                 <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
               </span>
-              <p className=' text-sm text-gray-400 my-1 line-clamp-1'>{post.desc}..<span className=' text-blue-400'>Read More</span></p>
+              <pre className=' text-sm text-gray-400 my-1 line-clamp-1'>{post.desc}<span className=' text-blue-400'>Read More</span></pre>
             </div>
 
 

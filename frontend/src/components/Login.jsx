@@ -57,7 +57,7 @@ const Login = () => {
             <div className="lg:block hidden w-3/5"></div>
 
 
-            <div className=" relative lg:w-2/5 w-full flex flex-col gap-4 bg-white sm:bg-[#ffffff99] backdrop-blur  p-4 shadow-inner">
+            <div className=" relative lg:w-2/5 w-full flex flex-col gap-4 bg-white p-4 shadow-inner">
               <button
                 className="absolute top-4 left-4 text-2xl text-gray-400 rounded-full "
                 onClick={CloseEventCall}

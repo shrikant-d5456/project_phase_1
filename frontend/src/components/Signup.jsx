@@ -82,7 +82,7 @@ const Signup = () => {
 
             <form 
               onSubmit={handlereg}
-              className='relative lg:w-2/5 w-full flex flex-col gap-2 bg-white sm:bg-[#ffffff99] backdrop-blur  p-4 shadow-inner'
+              className='relative lg:w-2/5 w-full flex flex-col gap-2 bg-white  p-4 shadow-inner'
             >
               <button
                 className="absolute top-4 left-4 text-2xl text-gray-400 rounded-full "

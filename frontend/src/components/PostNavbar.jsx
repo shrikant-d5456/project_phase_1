@@ -97,8 +97,7 @@ const PostNavbar = () => {
                 {user &&
                   <>
                     <span onClick={handlelogout} className='flex gap-2 justify-center items-center hover:text-green-800 cursor-pointer'><BsPersonDashFill />Logout</span>
-                    <span className='flex gap-2 items-center hover:text-green-800 cursor-pointer'><BsBag />Cart</span>
-
+                    
                     <Link to="/profile">
                       <span onClick={() => setmenu(false)} className='flex gap-2 items-center hover:text-green-800 cursor-pointer'>
                         <BsPerson />
