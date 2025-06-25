@@ -161,9 +161,9 @@
     "xtend": "^4.0.2"
   },
   "devDependencies": {},
- "scripts": {
-  "start": "node app.js",
-  "dev": "nodemon app.js"
+"scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
 },
 "type": "module",
 
