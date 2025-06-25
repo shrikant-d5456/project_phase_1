@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserContext } from '../Utils/UserContext.jsx';
 import AdminPostCard from './AdminPostCard.jsx';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
+import Analysis from './Analysis.jsx';
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([]);
@@ -57,6 +58,7 @@ const Dashboard = () => {
     
 
       {/* Admin Post Cards */}
+      <Analysis/>
       <div className='w-full grid md:grid-cols-4 grid-cols-2'>
         {posts.map((post, index) => (
           <div key={index} >

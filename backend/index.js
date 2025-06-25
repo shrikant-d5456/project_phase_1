@@ -12,6 +12,7 @@ import commentRouter from "./routes/Comment.js";
 import medicineRoutes from "./routes/Verification.js";
 import adminRoutes from "./routes/Admin.js";
 import fileRoutes from "./routes/fileRoutes.js";
+import TextSummury from './routes/TextSummury.js'
 
 const app = express();
 // Middleware
@@ -30,7 +31,7 @@ app.use("/auth/comment", commentRouter);
 app.use("/auth/api/post", medicineRoutes);
 app.use("/auth/api", adminRoutes);
 app.use("/api/files", fileRoutes);
-
+app.use('/api/summary',TextSummury);
 // MongoDB Connection and Server Start
 const PORT = process.env.PORT || 8000;
 mongoose

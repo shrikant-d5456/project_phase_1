@@ -100,40 +100,28 @@ const PostDetails = () => {
     }
   };
 
-  const generateSummary = async () => {
-    if (!post?.desc) {
-      toast.warn('Post description is empty!');
-      return;
-    }
+ const generateSummary = async () => {
+  if (!post?.desc) {
+    toast.warn('Post description is empty!');
+    return;
+  }
 
-    setLoadingSummary(true);
-    try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  setLoadingSummary(true);
+  try {
+    const cleanedText = post.desc.replace(/<[^>]+>/g, '');
 
-      const response = await axios.post(
-        'https://generativelanguage.googleapis.com/v1/models/text-bison-001:generateText',
-        {
-          prompt: {
-            text: `Summarize the following text:\n\n${post.desc.replace(/<[^>]+>/g, '')}`
-          }
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'x-goog-api-key': apiKey
-          }
-        }
-      );
+    const response = await axios.post('http://localhost:8000/api/summary/summarize', {
+      text: cleanedText,
+    });
 
-      const result = response.data.candidates?.[0]?.output;
-      setSummary(result || 'No summary generated.');
-    } catch (error) {
-      console.error('Summary Error:', error.response?.data || error.message);
-      toast.error('Error generating summary!');
-    } finally {
-      setLoadingSummary(false);
-    }
-  };
+    setSummary(response.data.summary || 'No summary generated.');
+  } catch (error) {
+    console.error('Summary Error:', error);
+    toast.error('Error generating summary!');
+  } finally {
+    setLoadingSummary(false);
+  }
+};
 
 
 
