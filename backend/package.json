@@ -160,11 +160,21 @@
     "wrappy": "^1.0.2",
     "xtend": "^4.0.2"
   },
+<<<<<<< HEAD
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "type": "module",
+=======
+  "devDependencies": {},
+"scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
+},
+"type": "module",
+
+>>>>>>> 60e884811be5baaa9197d0033e42cdce50b9355f
   "keywords": [],
   "author": "",
   "license": "ISC",
