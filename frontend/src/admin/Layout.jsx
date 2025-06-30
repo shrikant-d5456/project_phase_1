@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
-import { BsBank, BsClipboardDataFill, BsTree, BsDatabaseFillAdd, BsPersonCheck, BsPersonGear, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
+import { BsExclamationTriangle, BsBank, BsClipboardDataFill, BsTree, BsDatabaseFillAdd, BsPersonCheck, BsPersonGear, BsSliders2, BsGrid1X2Fill } from "react-icons/bs";
 import AllPost from './AllPost';
 import HostedPost from './HostedPost';
 import Profile from '../Post/Profile';
@@ -54,7 +54,7 @@ const AdminLayout = () => {
       path_name: "Practionr's",
       path_link: "/admin/practioner",
     },
-    
+
   ]
 
   return (
@@ -90,7 +90,7 @@ const AdminLayout = () => {
           </div>
         </div>
 
-        <div className='md:w-[95%] lg:h-screen  w-full md:p-2 overflow-y-scroll scroll-smooth'>
+        <div className=' md:block hidden md:w-[95%] lg:h-screen  w-full md:p-2 overflow-y-scroll scroll-smooth'>
           <Routes>
             <Route path="/profile" element={<Profile />} />
             <Route path="/post/:id" element={<PostDetails />} />
@@ -102,6 +102,22 @@ const AdminLayout = () => {
             <Route path="/plant-info" element={<PlantInfo />} />
           </Routes>
         </div>
+        <div className='md:hidden  flex justify-center items-center m-auto px-4 animate-pulse'>
+
+
+          <div className=" bg-green-100 border-l-4 border-green-600 text-green-800 p-4 rounded-md shadow-md my-4">
+            <div className="flex items-center gap-3">
+              <BsExclamationTriangle className="text-green-600 text-xl" />
+              <div>
+                <p className="font-semibold">Desktop View Recommended</p>
+                <p className="text-sm text-green-700">
+                  For the best experience, please open this site in desktop mode.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </>

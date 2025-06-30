@@ -3,11 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
 import Comment from './Comment.jsx';
-import { BsBookmarkHeart, BsBookmarkHeartFill, BsHeart, BsMicMuteFill, BsPauseBtnFill, BsSignStopFill, BsSoundwave, BsYoutube } from 'react-icons/bs';
+import { BsMicMuteFill, BsPauseBtnFill, BsSignStopFill, BsSoundwave, BsYoutube } from 'react-icons/bs';
 import AdminIDs from "../Utils/AdminIDs.jsx";
 import Lang from '../components/Lang.jsx';
 import Email from '../components/Email.jsx';
-import { summarize } from "@ebereplenty/summarize";
 import PostCard from './PostCard.jsx';
 import { toast } from 'react-toastify';
 const PostDetails = () => {
@@ -100,35 +99,32 @@ const PostDetails = () => {
     }
   };
 
- const generateSummary = async () => {
-  if (!post?.desc) {
-    toast.warn('Post description is empty!');
-    return;
-  }
+  const generateSummary = async () => {
+    if (!post?.desc) {
+      toast.warn('Post description is empty!');
+      return;
+    }
 
-  setLoadingSummary(true);
-  try {
-    const cleanedText = post.desc.replace(/<[^>]+>/g, '');
+    setLoadingSummary(true);
+    try {
+      const cleanedText = post.desc.replace(/<[^>]+>/g, '');
 
-    const response = await axios.post('http://localhost:8000/api/summary/summarize', {
-      text: cleanedText,
-    });
+      const response = await axios.post('http://localhost:8000/api/summary/summarize', {
+        text: cleanedText,
+      });
 
-    setSummary(response.data.summary || 'No summary generated.');
-  } catch (error) {
-    console.error('Summary Error:', error);
-    toast.error('Error generating summary!');
-  } finally {
-    setLoadingSummary(false);
-  }
-};
-
-
-
+      setSummary(response.data.summary || 'No summary generated.');
+    } catch (error) {
+      console.error('Summary Error:', error);
+      toast.error('Error generating summary!');
+    } finally {
+      setLoadingSummary(false);
+    }
+  };
 
   const [active, setActive] = useState({ play: false, pause: false, resume: false, close: false });
 
-  // Text-to-speech logic
+  // Text-to-speech
   const synth = window.speechSynthesis;
   const handleSpeak = () => {
     if (synth.speaking) synth.cancel();
@@ -215,10 +211,10 @@ const PostDetails = () => {
             </p>
           )}
 
-
           {post.desc && (
-            <div className='border-l-4 mt-4 border-green-500 pl-4 bg-green-50 p-2 text-justify text-sm prose max-w-none'
-              dangerouslySetInnerHTML={{ __html: post.desc }} />
+            <div className='border-l-4 mt-4 border-green-500 pl-4 bg-green-50 p-2 text-justify text-sm prose max-w-none'>
+              <Lang translateWord={post.desc.replace(/<[^>]+>/g, '')} targetLang={targetLang} />
+            </div>
           )}
 
           <div className=' flex justify-between items-center my-4'>
@@ -263,15 +259,12 @@ const PostDetails = () => {
 
           </div>
 
-
-
           {summary && (
             <div className="my-4 p-4 bg-gray-100 border-l-4 border-green-500">
               <h2 className="font-bold text-green-700 mb-2">Summary:</h2>
               <p className="text-sm text-gray-800">{summary}</p>
             </div>
           )}
-
 
           {post.ingredient && (
             <div className='font-semibold my-2'>Ingredients:
