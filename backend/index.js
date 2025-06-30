@@ -4,7 +4,6 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-
 import authRouter from "./routes/Auth.js";
 import userRouter from "./routes/User.js";
 import postRouter from "./routes/Post.js";
@@ -13,6 +12,8 @@ import medicineRoutes from "./routes/Verification.js";
 import adminRoutes from "./routes/Admin.js";
 import fileRoutes from "./routes/fileRoutes.js";
 import TextSummury from './routes/TextSummury.js'
+import Translate from './routes/Translate.js'
+
 
 const app = express();
 // Middleware
@@ -32,6 +33,7 @@ app.use("/auth/api/post", medicineRoutes);
 app.use("/auth/api", adminRoutes);
 app.use("/api/files", fileRoutes);
 app.use('/api/summary',TextSummury);
+app.use('/api/translate',Translate );
 // MongoDB Connection and Server Start
 const PORT = process.env.PORT || 8000;
 mongoose
