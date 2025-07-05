@@ -15,5 +15,6 @@ router.post('/upload', upload.single('file'), saveFile);
 router.get('/:filename', getFile);
 router.get('/', getUploadedFiles);
 router.delete('/:fileId', deleteFile);
+router.post("/identify", upload.single("image"), identifyPlant);
 
 export default router;
