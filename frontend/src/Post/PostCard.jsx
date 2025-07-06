@@ -44,25 +44,25 @@ const PostCard = ({ post, hovereffect=true },  hover ) => {
           >{(post.validator1 && post.validator2 && post.validator3 && post.validator4 && post.validator5) ? "uploaded" : "uploading.."}</button>
           : ""}
         <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
-          <div className="relative group bg-white cursor-pointer shadow-md overflow-hidden hover:shadow-xl transition duration-300   p-4 border border-gray-100  "
+          <div className="relative group bg-white cursor-pointer shadow-md overflow-hidden hover:shadow-xl transition duration-300 p-4 border border-gray-100  mr-[1px] "
           >
             {hover && hovereffect &&
-            <div className=" z-40 absolute inset-0 bg-white/80 backdrop-blur-md text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out shadow-md overflow-y-auto max-h-96 justify-center items-center flex-col flex-wrap p-4">
+            <div className=" text-xs z-40 absolute inset-0 bg-white/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out shadow-md overflow-y-auto max-h-96 justify-center items-center flex-col flex-wrap p-4">
               This post related to following category <br />
               <div className='flex flex-wrap'>
                 {post.categories?.map((d, i) => (
-                <p key={i} className='w-fit px-2 py-1  rounded-full font-semibold border-2 bg-green text-white text-nowrap mt-2'> {d} </p>
+                <p key={i} className=' w-fit px-2 py-1  rounded-full font-semibold border-2 bg-green text-white text-nowrap mt-2'> {d} </p>
                 
               ))}
               </div>
-              <br /><hr className=' border-green-500' />
-              <p className=' mt-2 text-justify'>{post.desc}</p>
+              <hr className=' mt-2 border-green-500' />
+              <p className=' mt-2 ' dangerouslySetInnerHTML={{ __html: post.desc }}/>
            
             </div>}
 
             <div className=' relative'>
-              <p className=" absolute flex z-20 top-1 right-1 w-fit justify-end bg-green-200  p-2  rounded-full items-center gap-1 text-xs text-right ">
-                <BsEye className="text-base" />
+              <p className=" textsm absolute flex z-20 top-1 right-1 w-fit justify-end bg-white/60  p-2  rounded-full items-center gap-1 text-xs text-right ">
+                <BsEye className="" />
                 <span>{calculateReadingTime(post.desc)} min </span>
               </p>
               <img className='w-full h-[150px]' src={post.img} alt="" />
@@ -78,7 +78,7 @@ const PostCard = ({ post, hovereffect=true },  hover ) => {
               
               {hovereffect && <div className=' text-xs text-gray-500 my-1 '>
                 <div
-                  className=' text-gray-800   text-sm text-justify prose max-w-none line-clamp-2'
+                  className=' text-gray-800  max-w-none line-clamp-2'
                   dangerouslySetInnerHTML={{ __html: post.desc }}
                 />
               </div>

@@ -19,11 +19,12 @@ const Login = () => {
     try {
       const resp = await axios.post(`http://localhost:8000/auth/api/login`, { email, password });
       setUser(resp.data);
-      console.log(resp.data);
+      // localStorage.setItem('data',resp.data);
+      // console.log(resp.data);
       toast.success("Login successful");
       setErr(false);
       setModalIsOpen(false);
-      console.log(resp.data.id);
+      // console.log(resp.data.id);
 
       if (AdminIDs.some((admin) => admin.id === resp.data.id)) {
         navigate("/admin/");

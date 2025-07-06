@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../Utils/UserContext.jsx';
 import Comment from './Comment.jsx';
-import { BsMicMuteFill, BsPauseBtnFill, BsSignStopFill, BsSoundwave, BsYoutube } from 'react-icons/bs';
+import { BsBookmarkPlus, BsBookmarkPlusFill, BsMicMuteFill, BsPauseBtnFill, BsSignStopFill, BsSoundwave, BsYoutube } from 'react-icons/bs';
 import AdminIDs from "../Utils/AdminIDs.jsx";
 import Lang from '../components/Lang.jsx';
 import Email from '../components/Email.jsx';
@@ -20,7 +20,10 @@ const PostDetails = () => {
   const [ttsState, setTtsState] = useState("idle"); // "idle", "playing", "paused"
 
   const { id } = useParams();
+  console.log('postId', id);
   const { user } = useContext(UserContext);
+  console.log('user id', user.id)
+
   const navigate = useNavigate();
 
   const [targetLang, setTargetLang] = useState('en');
@@ -122,6 +125,44 @@ const PostDetails = () => {
     }
   };
 
+
+  const [saved, setSaved] = useState(false);
+  const [postId, setPostId] = useState(id);
+  const [userID, setUserId] = useState(user.id);
+
+  const checkIfPostIsSaved = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8000/auth/user/${user.id}`);
+      const savedIds = res.data.data.savedPosts.map(post => typeof post === 'string' ? post : post._id);
+      setSaved(savedIds.includes(id));
+    } catch (error) {
+      console.error("Error checking saved status:", error);
+    }
+  };
+  useEffect(() => {
+    if (user?.id) {
+      checkIfPostIsSaved();
+    }
+  }, [id, user]);
+
+
+  const handleSave = async (userID, postId) => {
+    try {
+      const res = await axios.post('http://localhost:8000/auth/post/user/savepost', {
+        userId: userID,
+        postId: postId,
+      });
+      console.log(res.data);
+      toast.success("Post saved successfully!");
+      setSaved(true); // or call checkIfPostIsSaved() if needed
+    } catch (err) {
+      console.error('Error saving post:', err);
+      toast.error(err?.response?.data?.msg || "Error saving post.");
+    }
+  };
+
+
+
   const [active, setActive] = useState({ play: false, pause: false, resume: false, close: false });
 
   // Text-to-speech
@@ -146,7 +187,7 @@ const PostDetails = () => {
     (post.validator1 && 1) + post.validator2 + post.validator3 + post.validator4 + post.validator5;
 
   return (
-    <div className='lg:w-full lg:p-4 p-2 sm:flex m-auto bg-white'>
+    <div className='lg:w-full lg:p-4 p-4 sm:flex m-auto bg-white'>
       <div className={`md:w-3/4 ${AdminIDs.some(admin => admin.id === user?.id && "w-full")} w-full`}>
         <div className=' relative w-full bg-transparent text-black'>
 
@@ -171,20 +212,33 @@ const PostDetails = () => {
               </div>
             )}
           </div>
+          
+          <div className=' relative'>
+            <img src={post.img} alt="img" loading='lazy' />
+          <button
+                className=" top-1 bg-white/80 right-0 absolute flex justify-center items-center gap-2 text-sm border  py-2 px-4 mt-2"
+                onClick={() => handleSave(user.id, id)}
+              >
+                {saved ? <BsBookmarkPlusFill className="text-sm" /> : <BsBookmarkPlus className="text-sm" />}
+                {saved ? 'Post saved' : 'Save Post'}
+              </button>
+          </div>
+          <div className=' flex flex-wrap justify-between'>
+            <div>
+              <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>
+                Published by @{post.username}
+              </p>
+            </div>
 
-          <img className='w-full lg:h-[550px] h-[250px]' src={post.img} alt="Post" />
-
-          <select value={targetLang} onChange={(e) => setTargetLang(e.target.value)} className="border p-2 rounded-md float-end mt-2">
-            <option value="en">English</option>
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-            <option value="mr">Marathi</option>
-          </select>
-
-          <p className='text-sm font-extrabold bg-green text-white w-fit px-4 py-1 rounded-full my-4'>
-            Published by @{post.username}
-          </p>
-
+            <div className=' flex justify-center items-center gap-4'>
+              <select value={targetLang} onChange={(e) => setTargetLang(e.target.value)} className="border p-2 rounded-md float-end mt-2">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="mr">Marathi</option>
+              </select>
+            </div>
+          </div>
           <h1 className="text-2xl font-bold text-gray-800 my-2">
             <Lang translateWord={post.title} targetLang={targetLang} />
           </h1>
@@ -206,13 +260,13 @@ const PostDetails = () => {
           )}
 
           {post.wpmh && (
-            <p className='text-sm font-semibold'>Harmful for :
+            <p className='text-sm font-semibold'>Precaution :
               <span className='text-red-800'> <Lang translateWord={post.wpmh} targetLang={targetLang} /></span>
             </p>
           )}
 
           {post.desc && (
-            <div className='border-l-4 mt-4 border-green-500 pl-4 bg-green-50 p-2 text-justify text-sm prose max-w-none'>
+            <div className='border-l-4 mt-4 border-green-500 pl-4  p-2 text-justify text-sm prose max-w-none'>
               <Lang translateWord={post.desc.replace(/<[^>]+>/g, '')} targetLang={targetLang} />
             </div>
           )}
