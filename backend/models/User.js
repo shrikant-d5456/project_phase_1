@@ -19,7 +19,7 @@ const UserSchema = mongoose.Schema(
         savedPosts: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Post', // Reference to the Post model
+                ref: 'Post',
             },
         ],
     },

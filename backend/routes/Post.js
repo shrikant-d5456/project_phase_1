@@ -8,7 +8,8 @@ import {
     getUserPost,
     updatePost,
     getSavedPosts,
-    savePost
+    savePost,
+    postInfo
 } from '../controller/Post.js';
 
 const router = express.Router();
@@ -37,5 +38,7 @@ router.post('/search', getSearchPost);
 router.post('/user/savepost', savePost);
 
 router.get('/user/:userId/getsavedposts',getSavedPosts);
+
+router.post('/bulk', postInfo);
 
 export default router;

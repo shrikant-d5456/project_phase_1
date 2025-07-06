@@ -154,7 +154,7 @@ export const getSavedPosts = async (req, res) => {
     const { userId } = req.params;
 
     try {
-        const user = await User.findById(userId).populate('savedPosts'); // Ensure 'savedPosts' is populated if it references posts.
+        const user = await User.findById(userId).populate('savedPosts');
 
         console.log(user);
         if (!user) {
@@ -166,4 +166,25 @@ export const getSavedPosts = async (req, res) => {
         console.error(error);
         res.status(500).json({ message: 'Internal server error.', error: error.message });
     }
+};
+
+export const postInfo = async (req, res) => {
+  const { ids } = req.body;
+
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ error: 'Invalid or empty post ID list' });
+  }
+
+  const isValidIds = ids.every(id => mongoose.Types.ObjectId.isValid(id));
+  if (!isValidIds) {
+    return res.status(400).json({ error: 'One or more invalid post IDs' });
+  }
+
+  try {
+    const posts = await Posts.find({ _id: { $in: ids } }).sort({ createdAt: -1 });
+    res.status(200).json({ data: posts });
+  } catch (error) {
+    console.error('Error fetching bulk posts:', error);
+    res.status(500).json({ error:'error to fetch' });
+  }
 };
