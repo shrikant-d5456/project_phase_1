@@ -27,7 +27,7 @@ const Scanner = () => {
       <div className='bg-white text-green-500 hover:border-green-500  hover:text-black p-4 text-3xl rounded-full border-dashed border-2 border-black'>
        
        <div className=' scale-150'>
-        <img src="https://play-lh.googleusercontent.com/MzmMmuM1xws9TplGMmIWP-QMJQkmUDikU0-x6nshmOeQZpskh3IUZWzTB3Frvd1l-go" alt="" 
+        <img loading="lazy" src="https://play-lh.googleusercontent.com/MzmMmuM1xws9TplGMmIWP-QMJQkmUDikU0-x6nshmOeQZpskh3IUZWzTB3Frvd1l-go" alt="" 
        className=' w-4 scale-150 rounded-full '
        />
        </div>

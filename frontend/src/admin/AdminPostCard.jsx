@@ -31,7 +31,7 @@ const PostCard = ({ post }) => {
         <Link key={post._id} to={user ? `/admin/post/${post._id}` : "/login"}>
           <div className='w-full m-auto bg-white p-4 border-[1px] border-gray-200 rounded-md'>
             <div>
-              <img className='w-full h-[150px]' src={post.img} alt="" />
+              <img loading="lazy" className='w-full h-[150px]' src={post.img} alt="" />
             </div>
 
             {user.id === AdminIDs[0].id || AdminIDs[1].id || AdminIDs[2].id || AdminIDs[3].id|| AdminIDs[4].id || AdminIDs[5].id ?
@@ -52,12 +52,12 @@ const PostCard = ({ post }) => {
               </div> : ""}
 
             <div>
-              <h1 className='font-medium my-1 line-clamp-1'>{post.title}..</h1>
+              <h1 className='font-medium text-sm my-1 line-clamp-1'>{post.title}..</h1>
               <span>
-                <p className=' text-sm text-gray-400 my-1'>@{post.username}</p>
-                <p className=' text-sm text-gray-00 my-1'>{post.updatedAt}</p>
+                <p className=' text-xs text-gray-500 my-1'>@{post.username}</p>
+                <p className=' text-xs text-gray-400 my-1'>{post.updatedAt}</p>
               </span>
-              <pre className=' text-sm text-gray-400 my-1 line-clamp-1'>{post.desc}<span className=' text-blue-400'>Read More</span></pre>
+              <div className=' text-xs text-gray-500 my-1 line-clamp-1' dangerouslySetInnerHTML={{ __html: post.desc }}></div>
             </div>
 
 

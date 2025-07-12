@@ -1,33 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
-  font-family: "Poppins", sans-serif;  
-  background: #ecffe7;
+body {
+  font-family: "Poppins", sans-serif;
+  /* background: #ecffe7; */
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.735)), url('../assets/bgImg.jpg');
   background-repeat: no-repeat;
+  background-size:cover;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  object-fit: cover;
 }
 
-.bg-green{
-  background-color:#275b21;
-}
-.text-green{
-  color:#275b21;
-}
-.border-green{
-  border-color:#275b21;
+.bg-green {
+  background-color: #275b21;
 }
 
-.hide-scrollbar::-webkit-scrollbar{
+.text-green {
+  color: #275b21;
+}
+
+.border-green {
+  border-color: #275b21;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-.hide-scrollbar{
-  -ms-overflow-style:none;
+.hide-scrollbar {
+  -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
@@ -39,18 +42,20 @@ body{
   display: none;
 }
 
-@layer utilities{
-  .inp{
-    @apply text-sm  text-gray-800  border-[1px] border-green-800  px-4 py-2;
+@layer utilities {
+  .inp {
+    @apply text-sm text-gray-800 border-[1px] border-green-800 px-4 py-2 outline-none;
   }
-  .header-section{
+
+  .header-section {
     @apply w-full py-8 flex flex-col justify-center items-center;
   }
-  
-  .heading{
+
+  .heading {
     @apply text-4xl font-extrabold text-green-800 text-center my-2;
   }
-  .sub-heading{
+
+  .sub-heading {
     @apply w-8/12 text-center;
   }
 }
@@ -65,16 +70,17 @@ body{
   0% {
     background-position: 100%;
   }
+
   100% {
     background-position: 0%;
   }
 }
 
-
-.loginbgimg{
-  background-image: url("https://cdn.pixabay.com/photo/2024/03/20/04/00/ai-generated-8644565_1280.jpg");
+.loginbgimg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.735)), url('https://www.ayurythm.com/home/wp-content/uploads/2022/07/medicinal-neem-leaves-mortar-pestle-with-neem-paste-juice-twigs-green-surface-01-1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .loader {
@@ -88,8 +94,9 @@ body{
   box-sizing: border-box;
   animation: animloader 2s linear infinite;
 }
+
 .loader::after {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   width: 6px;
   height: 24px;
@@ -104,20 +111,24 @@ body{
   0% {
     transform: translate(-10px, -10px);
   }
+
   25% {
     transform: translate(-10px, 10px);
   }
+
   50% {
     transform: translate(10px, 10px);
   }
+
   75% {
     transform: translate(10px, -10px);
   }
+
   100% {
     transform: translate(-10px, -10px);
   }
 }
-    
+
 li {
   position: relative;
   /* Ensure positioning for the tooltip */
@@ -127,7 +138,8 @@ li {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  top: 14px; /* Adjust based on your layout */
+  top: 14px;
+  /* Adjust based on your layout */
   left: 50px;
   transform: translateX(-10%);
   background-color: rgba(255, 255, 255);
@@ -153,6 +165,7 @@ li:hover .tooltip-text {
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
 }
+
 @-webkit-keyframes vanishOut {
   0% {
     opacity: 1;
@@ -160,6 +173,7 @@ li:hover .tooltip-text {
     -webkit-transform: scale(1, 1);
     -webkit-filter: blur(0px);
   }
+
   100% {
     opacity: 0;
     -webkit-transform-origin: 50% 50%;
@@ -175,6 +189,7 @@ li:hover .tooltip-text {
     transform: scale(1, 1);
     -webkit-filter: blur(0px);
   }
+
   100% {
     opacity: 0;
     transform-origin: 50% 50%;
@@ -182,10 +197,15 @@ li:hover .tooltip-text {
     -webkit-filter: blur(20px);
   }
 }
+
 .bgImg {
   /* background-image: url('https://designerapp.officeapps.live.com/designerapp/document.ashx?path=/c93fd13b-4ec0-4fe1-9edd-8d182394af2a/DallEGeneratedImages/dalle-06689530-6203-4e2e-954f-f0012ada5d270251651952653025732600.jpg&dcHint=JapanEast&fileToken=ac1f8a5d-32c0-4226-bd83-f2c37c1ee232&speCId=a1509c2d-ae5c-4102-8d54-f8796153b571&speType=Image&speIdx=2'); */
   background-repeat: no-repeat;
-  background-size: cover; /* Correct property */
+  background-size: cover;
+  /* Correct property */
   background-position: center;
 }
 
+.bg-no-Img-found {
+  background-image: url("https://st2.depositphotos.com/2586633/46477/v/450/depositphotos_464771766-stock-illustration-no-photo-or-blank-image.jpg");
+}

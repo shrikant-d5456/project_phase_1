@@ -1,6 +1,6 @@
 const AyurvedaPage = () => {
   return (
-    <div className="min-h-screen bg-green-50 p-6 lg:flex lg:gap-6">
+    <div className="min-h-screen  p-6 lg:flex lg:gap-6">
       {/* Left Side Image */}
       <div className="lg:w-1/2 w-full h-[300px] lg:h-auto mb-6 lg:mb-0">
         <img
@@ -11,28 +11,18 @@ const AyurvedaPage = () => {
       </div>
 
       {/* Right Side Content */}
-      <div className="lg:w-1/2 w-full bg-white rounded-2xl shadow-lg p-6 space-y-10">
+      <div className="lg:w-1/2 w-full  space-y-10">
         {/* What is Ayurveda */}
-        <section>
+        <section className="bg-white/80 rounded-2xl border shadow-sm p-4">
           <h2 className="text-3xl font-extrabold text-green-800 mb-4">What is Ayurveda?</h2>
-          <img
-            src="https://static.toiimg.com/thumb/msid-81619012,width-1280,resizemode-4/81619012.jpg"
-            alt="Ayurvedic Herbs"
-            className="rounded-xl shadow mb-4"
-          />
           <p className="text-gray-700 leading-relaxed">
             Ayurveda is a traditional system of medicine originating from the Indian subcontinent. It emphasizes balance among bodily elements—vata, pitta, and kapha—for health. Therapies include herbal medicines, special diets, yoga, meditation, massage, and surgical techniques described in ancient texts like the Sushruta Samhita.
           </p>
         </section>
 
         {/* Eight Branches */}
-        <section>
+        <section className="bg-white/80 rounded-2xl border shadow-sm p-4">
           <h3 className="text-2xl font-semibold text-green-700 mb-3">Aṣṭāṅga Ayurveda – Eight Branches</h3>
-          <img
-            src="https://www.ayurveda.com/wp-content/uploads/2019/12/shutterstock_157095202.jpg"
-            alt="Eight Branches"
-            className="rounded-xl shadow mb-4"
-          />
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li><strong>Kāyachikitsā:</strong> General medicine</li>
             <li><strong>Kaumāra-bhṛtya:</strong> Pediatrics</li>
@@ -46,7 +36,7 @@ const AyurvedaPage = () => {
         </section>
 
         {/* Global Ayurveda */}
-        <section>
+        <section className="bg-white/80 rounded-2xl border shadow-sm p-4">
           <h3 className="text-2xl font-semibold text-green-700 mb-3">Global Overview</h3>
           <p className="text-gray-700 mb-3">
             Ayurveda is widely practiced in India and Nepal. Education is formalized through the Bachelor of Ayurvedic Medicine and Surgery (BAMS) degree.
@@ -58,13 +48,9 @@ const AyurvedaPage = () => {
         </section>
 
         {/* India */}
-        <section>
+        <section className="bg-white/80 rounded-2xl border shadow-sm p-4">
           <h3 className="text-2xl font-semibold text-green-700 mb-3">India</h3>
-          <img
-            src="https://cdn.pixabay.com/photo/2017/08/30/12/45/ayurveda-2698009_960_720.jpg"
-            alt="India Ayurveda"
-            className="rounded-xl shadow mb-4"
-          />
+         
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li><strong>80% population</strong> uses Ayurveda</li>
             <li><strong>Education:</strong> 180+ centers, UG & PG institutions</li>
@@ -75,7 +61,7 @@ const AyurvedaPage = () => {
         </section>
 
         {/* Nepal */}
-        <section>
+        <section className="bg-white/80 rounded-2xl border shadow-sm p-4">
           <h3 className="text-2xl font-semibold text-green-700 mb-3">Nepal</h3>
           <p className="text-gray-700">
             Ayurveda is used by 75–80% of the population and remains the most trusted form of traditional medicine.
@@ -83,13 +69,9 @@ const AyurvedaPage = () => {
         </section>
 
         {/* Sri Lanka */}
-        <section>
+        <section className="bg-white/80 rounded-2xl border shadow-sm p-4">
           <h3 className="text-2xl font-semibold text-green-700 mb-3">Sri Lanka</h3>
-          <img
-            src="https://www.sundayobserver.lk/sites/default/files/styles/large/public/news/2019/09/08/z_p09-Mihintale.jpg"
-            alt="Mihintale Hospital"
-            className="rounded-xl shadow mb-4"
-          />
+         
           <ul className="list-disc list-inside space-y-2 text-gray-700">
             <li>Similar tradition to India with some unique herbs</li>
             <li>Ministry of Indigenous Medicine oversees Ayurveda</li>

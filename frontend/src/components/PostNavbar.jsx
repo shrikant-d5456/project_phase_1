@@ -83,7 +83,7 @@ const PostNavbar = () => {
 
         <div className='flex justify-between items-center p-4'>
           <Link to="/">
-            <div className=' w-40'><img src={logo} alt="logo" />
+            <div className=' w-40'><img loading="lazy" src={logo} alt="logo" />
             </div></Link>
 
 
@@ -160,9 +160,9 @@ const PostNavbar = () => {
         </div>
       </div>
 
-      <div className=' h-28'></div>
+      <div className=' h-24'></div>
       {/* Loading Indicator */}
-      {loading && <p>Loading...</p>}
+      {/* {loading && <p>Loading...</p>} */}
 
       {/* Display Posts
       <div className="post-list">

@@ -294,4 +294,4 @@ export const plants = [
 ];
 
 // Log the sample data
-console.log(plants);
+// console.log(plants);

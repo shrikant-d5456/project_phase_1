@@ -24,7 +24,7 @@ const ScannerPage = () => {
   };
 
   return (
-    <div className='w-full h-full overflow-scroll  text-white flex flex-col items-center justify-center p-4'>
+    <div className='w-full h-[100vh] overflow-scroll  text-white flex flex-col items-center justify-center p-4'>
       <div className='border-2  border-black border-dashed p-8 bg-white w-full max-w-3xl text-center'>
         <h1 className='text-4xl font-bold text-black mb-2'>AayurMedGuide Image Scanner</h1>
         <p className='text-lg text-gray-600 mb-6'>
@@ -81,7 +81,7 @@ const ScannerPage = () => {
       {imageSrc && (
         <div className='mt-8 text-center'>
           <h2 className='text-xl font-semibold mb-4'>Scanned Image:</h2>
-          <img src={imageSrc} alt='Scanned' className='max-w-md rounded shadow-lg mb-4' />
+          <img loading="lazy" src={imageSrc} alt='Scanned' className='max-w-md rounded shadow-lg mb-4' />
           <p className='bg-slate-700 p-4 rounded text-green-300'>
             {scanInfo}
           </p>

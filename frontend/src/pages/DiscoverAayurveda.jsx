@@ -25,7 +25,7 @@ const DiscoverAayurveda = () => {
   ];
 
   return (
-    <main id="about" className="bg-gradient-to-b from-green-50 to-white w-full py-16 px-6">
+    <main id="about" className=" w-full py-16 px-6">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-extrabold text-green-800 mb-4">Discover Ayurveda’s Magic With Us</h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
@@ -39,7 +39,7 @@ const DiscoverAayurveda = () => {
         <div className="flex flex-col gap-8">
           {array.slice(0, 2).map((item, ind) => (
             <div key={ind} className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:scale-105 flex flex-col items-center text-center">
-              <img src={item.img} alt={item.heading} className="w-16 h-16 mb-4" />
+              <img loading="lazy" src={item.img} alt={item.heading} className="w-16 h-16 mb-4" />
               <h3 className="text-xl font-semibold text-green-900 mb-2">{item.heading}</h3>
               <p className="text-gray-600 text-sm">{item.subheading}</p>
             </div>
@@ -59,7 +59,7 @@ const DiscoverAayurveda = () => {
         <div className="flex flex-col gap-8">
           {array.slice(2, 4).map((item, ind) => (
             <div key={ind} className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:scale-105 flex flex-col items-center text-center">
-              <img src={item.img} alt={item.heading} className="w-16 h-16 mb-4" />
+              <img loading="lazy" src={item.img} alt={item.heading} className="w-16 h-16 mb-4" />
               <h3 className="text-xl font-semibold text-green-900 mb-2">{item.heading}</h3>
               <p className="text-gray-600 text-sm">{item.subheading}</p>
             </div>

@@ -15,7 +15,7 @@ import {
 const router = express.Router();
 // router.get('/user/getsavepost',getSavedPosts);
 // Create post
-router.post('/:id', createPost);
+router.post('/create', createPost);
 
 // Update post
 router.put('/:id', updatePost);

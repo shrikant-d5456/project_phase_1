@@ -80,7 +80,7 @@ const AdminNavbar = () => {
             </div>
 
             <div className='flex justify-between items-center px-4 border-b-[1px] bg-white border-gray-200'>
-                <Link to="/admin"> <div className=' w-40 py-2'><img src={logo} alt="logo" /></div></Link>
+                <Link to="/admin"> <div className=' w-40 py-2'><img loading="lazy" src={logo} alt="logo" /></div></Link>
                 <div className='md:hidden block z-10 absolute top-14 right-14 bg-white w-fit bg-color-blue-dark border-r-[1px] border-green text-sm font-semibold'>
 
                     {user && menu && arr.map((element, index) =>

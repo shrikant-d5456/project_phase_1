@@ -2,45 +2,68 @@ import { User } from "../models/User.js";
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-export const register =  async (req, res) => {
-    const { username, email, password } = req.body;
-    
-    try {
-        const checkuser = await User.findOne({ username });
-
-        if (checkuser) {
-            return res.status(400).json({ msg: 'User already exists' });
-        }
-
-        const newUser = new User({ username, email, password } );
-
-        const salt = await bcryptjs.genSalt(10);
-
-        newUser.password = await bcryptjs.hash(password, salt);
-
-        await newUser.save();
-
-
-        jwt.sign(
-            { id: newUser._id }, "hello", { expiresIn: 3600 }, 
-            (err, token) => 
-            {
-            if (err) 
-                throw err;
-
-            res.json({ 
-                token,
-                msg :"user registred",
-                data:newUser 
-                });
-            }
-        );
-
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
+export const register = async (req, res) => {
+  const {
+    fullName,
+    username,
+    email,
+    password,
+    phoneNo,
+    age,
+    gender,
+    educationLevel,
+    languagesSpoken,
+    address,
+  } = req.body;
+  try {
+    // Check if user already exists
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ msg: 'Username already exists' });
     }
+
+    // Create new user
+    const newUser = new User({
+      fullName,
+      username,
+      email,
+      password,
+      phoneNo,
+      age,
+      gender,
+      educationLevel,
+      languagesSpoken,
+      address,
+    });
+
+    // Hash password
+    const salt = await bcryptjs.genSalt(10);
+    newUser.password = await bcryptjs.hash(password, salt);
+
+    // Save user
+    await newUser.save();
+
+    // Generate JWT
+    jwt.sign(
+      { id: newUser._id },
+      'hello', // Replace with process.env.JWT_SECRET in production
+      { expiresIn: 3600 },
+      (err, token) => {
+        if (err) throw err;
+
+        res.status(201).json({
+          token,
+          msg: 'User registered successfully',
+          data: newUser,
+        });
+      }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 };
+
 
 export const login =  async (req, res) => {
     try {

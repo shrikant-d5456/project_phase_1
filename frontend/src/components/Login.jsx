@@ -44,21 +44,26 @@ const Login = () => {
 
   return (
     <>
-
+  
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={CloseEventCall}
         className="transition-all"
         preventScroll={false}
       >
-        <div className="flex  w-full h-screen justify-center items-center text-center bg-[#c8ffb9]">
+        <div className="flex w-full h-screen justify-center items-center text-center bg-none">
 
 
-          <div className="lg:w-8/12 md:w-6/12 w-[90%] flex gap-4 text-start h-[550px] lg:p-8  shadow-xl rounded-tl-3xl rounded-br-3xl loginbgimg">
-            <div className="lg:block hidden w-3/5"></div>
+          <div className="lg:w-10/12 md:w-6/12  flex text-start h-[600px]  border-8 border-white  shadow-xl lg:rounded-tl-3xl lg:rounded-br-3xl loginbgimg">
+            <div className="lg:block hidden w-1/2 text-white p-4 ">
+            <p  className=' text-4xl font-bold mt-60 '>Ayurveda Blog: Where Healing Meets Heritage</p>
+            <p className=' text-sm mt-5'>
+              "Dive into the world of Ayurveda — a 5,000-year-old healing science rooted in nature. Read, post, and share natural remedies, wellness tips, and herbal knowledge to empower and heal."
+            </p>
+            </div>
 
 
-            <div className=" relative lg:w-2/5 w-full flex flex-col gap-4 bg-white p-4 shadow-inner">
+            <div className=" relative lg:w-1/2 w-full flex flex-col gap-4 bg-white p-4 ">
               <button
                 className="absolute top-4 left-4 text-2xl text-gray-400 rounded-full "
                 onClick={CloseEventCall}

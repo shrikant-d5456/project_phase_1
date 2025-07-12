@@ -9,6 +9,7 @@ import Lang from '../components/Lang.jsx';
 import Email from '../components/Email.jsx';
 import PostCard from './PostCard.jsx';
 import { toast } from 'react-toastify';
+import PostCardForFilter from './PostCardForFilter.jsx';
 const PostDetails = () => {
   const [post, setPost] = useState({});
   const [posts, setPosts] = useState([]);
@@ -187,11 +188,11 @@ const PostDetails = () => {
     (post.validator1 && 1) + post.validator2 + post.validator3 + post.validator4 + post.validator5;
 
   return (
-    <div className='lg:w-full lg:p-4 p-4 sm:flex m-auto bg-white'>
+    <div className='lg:w-full lg:px-4 px-4 sm:flex m-auto bg-white pt-4'>
       <div className={`md:w-3/4 ${AdminIDs.some(admin => admin.id === user?.id && "w-full")} w-full`}>
         <div className=' relative w-full bg-transparent text-black'>
 
-          <div className=' w-full absolute'>
+          <div className=' w-full absolute z-50'>
             {user?.id === AdminIDs[0]?.id && (
               <div className=' w-full flex justify-between items-center'>
                 <div>
@@ -207,21 +208,21 @@ const PostDetails = () => {
                   </div>
                 </div>
                 <div>
-                  <button onClick={deletePost} className='bg-red-500 px-4 py-2 text-white font-semibold mx-4 my-2'>Delete</button>
+                  <button onClick={deletePost} className=' bg-red-500 px-4 py-2 text-white font-semibold mx-4 my-2'>Delete</button>
                 </div>
               </div>
             )}
           </div>
-          
-          <div className=' relative'>
-            <img src={post.img} alt="img" loading='lazy' />
-          <button
-                className=" top-1 bg-white/80 right-0 absolute flex justify-center items-center gap-2 text-sm border  py-2 px-4 mt-2"
-                onClick={() => handleSave(user.id, id)}
-              >
-                {saved ? <BsBookmarkPlusFill className="text-sm" /> : <BsBookmarkPlus className="text-sm" />}
-                {saved ? 'Post saved' : 'Save Post'}
-              </button>
+
+          <div className=' relative bg-no-Img-found'>
+            <img loading="lazy" src={post?.img} loading='lazy' className=' h-[500px] w-full object-cover' />
+            <button
+              className=" bottom-5 bg-white/80 right-0 absolute flex justify-center items-center gap-2 text-sm border  py-2 px-4 mt-2"
+              onClick={() => handleSave(user.id, id)}
+            >
+              {saved ? <BsBookmarkPlusFill className="text-sm" /> : <BsBookmarkPlus className="text-sm" />}
+              {saved ? 'Post saved' : 'Save Post'}
+            </button>
           </div>
           <div className=' flex flex-wrap justify-between'>
             <div>
@@ -345,31 +346,59 @@ const PostDetails = () => {
           )}
 
           {post.video_link && (
-            <p className='flex items-center text-sm font-semibold mt-4'>
-              Video link:
-              <a target='_blank' rel="noopener noreferrer" href={post.video_link}
-                className='flex items-center gap-2 ml-2 bg-red-500 px-4 py-1 rounded-full text-white'>
+            <div className='flex items-center text-sm font-semibold mt-4'>
+              <span>Video link:</span>
+              <a
+                href={post?.video_link}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-2 ml-2 bg-red-500 px-4 py-1 rounded-full text-white'
+              >
                 <BsYoutube /> See Video
               </a>
-            </p>
+            </div>
+
           )}
 
           {(user && AdminIDs.some(admin => admin.id === user.id)) && (
-            <div className='w-full p-4 border-2 my-4 bg-[#275b21] text-white'>
-              <Email username={post.username} userEmail={post.email} validation_length={validation_length} />
-              <div className='mt-2'>You can change your validation anytime.</div>
-              <div className='flex gap-2 mt-2'>
-                <button onClick={() => validateBy(true)} className={`px-4 py-1 rounded-full ${valid ? 'bg-green-700' : 'bg-green-500'}`}>
+            <div className="w-full p-4  my-6 bg-[#bdffa9] shadow-md">
+              {/* Header */}
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <Email username={post.username} userEmail={post.email} validation_length={validation_length} />
+                <span className="text-sm text-center w-full text-gray-600">You can change your validation anytime.</span>
+              </div>
+
+              {/* Validation Buttons */}
+              <div className="mt-4 flex flex-wrap justify-center items-center gap-3">
+                <button
+                  onClick={() => validateBy(true)}
+                  className={`px-5 py-2 rounded-full text-white transition-all duration-300 
+        ${valid ? 'bg-green-700 hover:bg-green-800' : 'bg-green-500 hover:bg-green-600'}
+      `}
+                >
                   {valid ? "Yes! ✓" : "Yes"}
                 </button>
-                <button onClick={() => validateBy(false)} className={`px-4 py-1 rounded-full ${!valid ? 'bg-red-700' : 'bg-red-500'}`}>
+
+                <button
+                  onClick={() => validateBy(false)}
+                  className={`px-5 py-2 rounded-full text-white transition-all duration-300 
+        ${!valid ? 'bg-red-700 hover:bg-red-800' : 'bg-red-500 hover:bg-red-600'}
+      `}
+                >
                   {!valid ? "No ✓" : "No"}
                 </button>
+
+                <button
+                  onClick={() => checkedBy(!check)}
+                  className={`px-5 py-2 rounded-full text-white transition-all duration-300 
+        ${check ? 'bg-yellow-700 hover:bg-yellow-800' : 'bg-yellow-500 hover:bg-yellow-600'}
+      `}
+                >
+                  {check ? "Checked! ✓" : "Check & Close"}
+                </button>
               </div>
-              <button onClick={() => checkedBy(!check)} className={`mt-2 px-4 py-1 rounded-full ${check ? 'bg-yellow-700' : 'bg-yellow-500'}`}>
-                {check ? "Checked! ✓" : "Check & Close"}
-              </button>
             </div>
+
           )}
         </div>
 
@@ -377,12 +406,12 @@ const PostDetails = () => {
       </div>
 
       {!AdminIDs.some(admin => admin.id === user?.id) && (
-        <div className='w-1/4 md:block hidden'>
-          <p className='pl-4 font-bold'>Also check these posts</p>
+        <div className='w-1/4 md:block hidden overscroll-y-scroll'>
+          {/* <p className='pl-6 font-bold '>Also check these posts</p> */}
           {posts.map(p => (
-            <div key={p._id}>
+            <div key={p._id} className=' pl-4' >
               <Link to={`/posts/post/${p._id}`}>
-                <PostCard post={p} hovereffect={false} />
+                <PostCardForFilter post={p} hovereffect={false} />
               </Link>
             </div>
           ))}

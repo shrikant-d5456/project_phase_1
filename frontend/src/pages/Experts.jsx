@@ -31,7 +31,7 @@ const Experts = () => {
   ]
 
   return (
-    <main className="bg-white flex flex-col justify-center items-center gap-y-4 p-8 ">
+    <main className="flex flex-col justify-center items-center gap-y-4 p-8 ">
        <div className='header-section'>
             <p className='heading'>Meet our Ayurveda experts</p>
         </div>
@@ -41,7 +41,7 @@ const Experts = () => {
         array.map((item, ind)=>(
           <div key={ind}  className=" hover:scale-110 bg-[#FFF7E2] rounded-3xl overflow-hidden flex flex-col justify-center items-center mb-8 shadow-xl transition-all cursor-pointer">
           <div className=" relative overflow-hidden top-6 gap-2">
-            <img src={item.img} alt="img" 
+            <img loading="lazy" src={item.img} alt="img" 
              className="rounded-full w-32 h-32 object-cover"
             />
             <p className=" absolute bottom-1 text-center px-4 bg-black text-white rounded-2xl left-10  text-sm flex justify-center items-center py-1 gap-1">{item.rating} <BsStarFill className=" text-yellow-400"/></p>

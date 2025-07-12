@@ -82,16 +82,32 @@ const Home = () => {
 
   return (
     <div className='w-full'>
-      <div className=' text-sm w-full bg-white flex lg:justify-center justify-between lg:px-0 px-4 items-center py-4 text-[#284525] lg:gap-20 gap-10 list-none border-[1px] border-t-gray-200 border-b-gray-200 overflow-x-scroll  shadow-md'>
-        <Link to="/"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Home</li></Link>
-        <a href='#post'><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Post</li></a>
-        <Link to='/plant-informaion'> <li className='hover:text-green lg:tracking-widest lg:uppercase w-full whitespace-nowrap'>Plant Information</li></Link>
-        <Link to="/practitioner"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Practioner's</li></Link>
-        <Link to="/diseases"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Diseases</li></Link>
-        <Link to="/allergies"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Allergies</li></Link>
-        <a href="#service"><li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>Service</li></a>
-
+      <div className='text-sm w-full bg-white flex md:justify-center justify-start lg:px-0 px-4 items-center py-4 text-[#284525] lg:gap-20 gap-10 border-[1px] border-t-gray-200 border-b-gray-200 overflow-x-scroll shadow-md'>
+        <ul className="flex gap-10 lg:gap-20 list-none">
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>
+            <Link to="/">Home</Link>
+          </li>
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>
+            <a href="#post">Post</a>
+          </li>
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full whitespace-nowrap'>
+            <Link to="/plant-informaion">Plant Information</Link>
+          </li>
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>
+            <Link to="/practitioner">Practitioner's</Link>
+          </li>
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>
+            <Link to="/diseases">Diseases</Link>
+          </li>
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>
+            <Link to="/allergies">Allergies</Link>
+          </li>
+          <li className='hover:text-green lg:tracking-widest lg:uppercase w-full'>
+            <a href="#service">Service</a>
+          </li>
+        </ul>
       </div>
+
       <div className=' lg:px-14 my-8 '>
         <Slider />
       </div>
@@ -111,18 +127,21 @@ const Home = () => {
         }
       </div> */}
 
-      <div id='post' className='lg:w-10/12 lg:p-0 px-4 m-auto justify-center items-center'>
-        <h1 className='text-2xl font-semibold text-gray-600 py-4 mt-4'>Releases Topics </h1>
+      <div id='post' className=' lg:w-11/12 lg:p-0 p-8 m-auto justify-center items-center'>
+        <h1 className='text-2xl font-semibold text-gray-950 py-4 mt-4'>Releases Topics </h1>
         <hr />
-        <div className='w-full flex flex-wrap lg:justify-start justify-center items-center m-auto py-6'>
-          {posts.slice(0, 4).map((post, index) => (
-            <div key={post._id} className='lg:w-1/4'>
-              <Link key={post._id} to={user ? `/posts/post/${post._id}` : "/login"}>
-                <PostCard key={post._id} post={post} />
-              </Link>
-            </div>
-          ))}
+        <div className='w-full flex justify-start py-6'>
+          <div className="w-full grid md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4">
+            {posts.slice(0, 4).map((post) => (
+              <div key={post._id} className=' hover:shadow-md'>
+                <Link to={user ? `/posts/post/${post._id}` : "/login"}>
+                  <PostCard post={post} />
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
+
         <div>
           <Link to={user ? "/post" : "/login"}>
             <button className='flex float-right bg-green px-4 py-1 text-white'>See More ⫸</button>
@@ -130,7 +149,7 @@ const Home = () => {
         </div>
       </div>
       <DiscoverAayurveda />
-    <AyurvedaPage/>
+      <AyurvedaPage />
       <Service />
       <Experts />
       <PlayStoreApp />

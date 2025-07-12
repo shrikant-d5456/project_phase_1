@@ -47,7 +47,7 @@ const Service = () => {
         {array.map((item, ind) => (
           <div
             key={ind}
-            className="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center transform hover:scale-105 transition-transform duration-300 border border-green-200"
+            className="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center transform hover:scale-105 transition-transform duration-300 "
           >
             <div className="bg-green-100 text-green-800 w-12 h-12 flex items-center justify-center rounded-full font-bold text-lg mb-4 shadow-md">
               {item.id}

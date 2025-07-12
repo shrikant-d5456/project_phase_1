@@ -32,17 +32,7 @@ const Slider = () => {
       setHasShowPopup(true);
       sessionStorage.setItem('hasShowPopup', true);
     }
-    // Play audio only after user interacts
-    const handleUserInteraction = () => {
-      audioRef.current.play().catch(err => console.error("Audio play error:", err));
-      window.removeEventListener('click', handleUserInteraction);
-      window.removeEventListener('keydown', handleUserInteraction);
-    };
-
-    return () => {
-      window.removeEventListener('click', handleUserInteraction);
-      window.removeEventListener('keydown', handleUserInteraction);
-    };
+    
   }, [isOpen]);
 
   return (
@@ -52,7 +42,7 @@ const Slider = () => {
         cancelOnInteraction={false}
         interval={5000}
         bullets={true}
-        className='border-8 border-white z-0 w-full lg:h-[700px] md:h-[500px] h-[250px] lg:rounded-3xl overflow-hidden'
+        className='border-8 border-white z-0 w-full lg:h-[700px] md:h-[500px] h-[250px] lg:rounded-2xl overflow-hidden'
       >
         <div className='w-full h-full'>
           <img

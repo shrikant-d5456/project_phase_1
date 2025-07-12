@@ -3,26 +3,34 @@ import { User } from '../models/User.js';
 // Create a new post
 export const createPost = async (req, res) => {
     try {
-        const { title, desc, img, username,email,userId,categories,
-            established,
-            places,
-            wpmh,
-            vitamin,
-            ingredient,
-            step,
-            video_link, } = req.body;
+        // const { title, desc, img, username,email,userId,categories,
+        //     established,
+        //     places,
+        //     wpmh,
+        //     vitamin,
+        //     ingredient,
+        //     step,
+        //     video_link, } = req.body;
 
-        if (!title || !desc || !img || !username || !userId || !categories ) {
-            return res.status(401).send({ msg: "All fields are required" });
-        }
+        // if (!title || !desc || !img || !username || !userId || !categories ) {
+        //     return res.status(401).send({ msg: "All fields are required" });
+        // }
 
-        const newPost = await Posts.create({ title, desc, img, username,email,userId,categories,established,
-            places,
-            wpmh,
-            vitamin,
-            ingredient,
-            step,
-            video_link, });
+        // const newPost = await Posts.create({ title, desc, img, username,email,userId,categories,established,
+        //     places,
+        //     wpmh,
+        //     vitamin,
+        //     ingredient,
+        //     step,
+        //     video_link, });
+        const { title, desc, img, username, email, userId, category, categories, established, places, wpmh, vitamin, ingredient, step, video_link } = req.body;
+
+if (!title || !desc || !img || !username || !userId || !category || !categories ) {
+    return res.status(401).send({ msg: "All fields are required" });
+}
+
+const newPost = await Posts.create({ title, desc, img, username, email, userId, category, categories, established, places, wpmh, vitamin, ingredient, step, video_link });
+
         return res.status(201).send({
             msg: "Stored Post successfully",
             data: newPost,
